@@ -334,7 +334,6 @@ footer{border-top:1px solid var(--line);padding:36px var(--g);display:flex;flex-
       <p>Em paralelo, construi um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server, GPOs e Wazuh SIEM. Antes disso, três outros estágios deram-me a base — desde cabling e CCTV até automação com shell scripts. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA e grande parte da experiência prática veio de laboratório próprio e documentação técnica.</p>
     </div>
     <div class="about-side reveal" data-d="1">
-      <img src="portifolio.jpg" alt="João Almeida" fetchpriority="high">
       <dl class="kv-list">
         <div class="kv"><dt>Nome</dt><dd>João Almeida</dd></div>
         <div class="kv"><dt>Localização</dt><dd>Vale de Cambra <span class="acc">· PT</span></dd></div>
@@ -351,7 +350,7 @@ footer{border-top:1px solid var(--line);padding:36px var(--g);display:flex;flex-
     <div class="stat"><span class="stat-n" data-count="4">0</span><span class="stat-l">Estágios</span></div>
     <div class="stat"><span class="stat-n" data-count="13">0<span class="u">+</span></span><span class="stat-l">Projetos</span></div>
     <div class="stat"><span class="stat-n" data-count="680">0<span class="u">h</span></span><span class="stat-l">Estágio em curso</span></div>
-    <div class="stat"><span class="stat-n" data-count="36">0</span><span class="stat-l">GPOs implementadas</span></div>
+    <div class="stat"><span class="stat-n" data-count="39">0</span><span class="stat-l">Mapas Zabbix</span></div>
   </div>
 </section>
 
@@ -628,21 +627,42 @@ const bt=document.getElementById('backtop');
 window.addEventListener('scroll',()=>{const s=window.scrollY>800;bt.style.opacity=s?'1':'0';bt.style.pointerEvents=s?'all':'none';bt.style.transform=s?'translateY(0)':'translateY(6px)';},{passive:true});
 bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-/* COOKIES */
+})();
+
+// Funções globais de cookies e privacidade
 function loadFonts(){
-  ['https://fonts.googleapis.com','https://fonts.gstatic.com'].forEach((h,i)=>{const l=document.createElement('link');l.rel='preconnect';if(i===1)l.crossOrigin='';l.href=h;document.head.appendChild(l);});
-  const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap';document.head.appendChild(l);
+  ['https://fonts.googleapis.com','https://fonts.gstatic.com'].forEach((h,i)=>{
+    const l=document.createElement('link');l.rel='preconnect';if(i===1)l.crossOrigin='';l.href=h;document.head.appendChild(l);
+  });
+  const l=document.createElement('link');l.rel='stylesheet';
+  l.href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap';
+  document.head.appendChild(l);
   const fb=document.getElementById('font-fallback');if(fb)fb.remove();
 }
-function acceptCookies(){localStorage.setItem('cookie-consent','accepted');document.getElementById('cookie-banner').classList.add('hidden');loadFonts();}
-function rejectCookies(){localStorage.setItem('cookie-consent','rejected');document.getElementById('cookie-banner').classList.add('hidden');}
-function openPrivacy(){document.getElementById('privacy-modal').classList.add('open');}
-function closePrivacy(){document.getElementById('privacy-modal').classList.remove('open');}
-document.getElementById('privacy-modal').addEventListener('click',function(e){if(e.target===this)closePrivacy();});
-const _c=localStorage.getItem('cookie-consent');
-if(_c==='accepted'){loadFonts();document.getElementById('cookie-banner').classList.add('hidden');}
-else if(_c==='rejected'){document.getElementById('cookie-banner').classList.add('hidden');}
+function acceptCookies(){
+  localStorage.setItem('cookie-consent','accepted');
+  document.getElementById('cookie-banner').classList.add('hidden');
+  loadFonts();
+}
+function rejectCookies(){
+  localStorage.setItem('cookie-consent','rejected');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+function openPrivacy(){
+  document.getElementById('privacy-modal').classList.add('open');
+}
+function closePrivacy(){
+  document.getElementById('privacy-modal').classList.remove('open');
+}
+document.getElementById('privacy-modal').addEventListener('click',function(e){
+  if(e.target===this)closePrivacy();
+});
 
+// Verificar consentimento ao carregar
+(function(){
+  const c=localStorage.getItem('cookie-consent');
+  if(c==='accepted'){loadFonts();document.getElementById('cookie-banner').classList.add('hidden');}
+  else if(c==='rejected'){document.getElementById('cookie-banner').classList.add('hidden');}
 })();
 </script>
 </body>
