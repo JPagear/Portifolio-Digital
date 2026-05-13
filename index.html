@@ -4,7 +4,19 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>João Almeida — Sysadmin · Infrastructure · Defensive Security</title>
-<meta name="description" content="Portfólio pessoal de João Almeida, técnico de sistemas e infraestrutura, Vale de Cambra, Portugal."/>
+<meta name="description" content="João Almeida — Sysadmin e Infrastructure Engineer focado em Wazuh, Zabbix, Active Directory, observabilidade e segurança defensiva. Vale de Cambra, Portugal."/>
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="sysadmin, infraestrutura, Wazuh, Zabbix, Active Directory, CrowdStrike, FortiGate, NIST, CIS, segurança defensiva, Portugal">
+<meta name="theme-color" content="#0a0f0d">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:url" content="https://jpagear.github.io/Portifolio-Digital/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="João Almeida — Sysadmin & Infrastructure">
+<meta name="twitter:description" content="Sysadmin focado em infraestrutura, observabilidade e segurança defensiva. Experiência real em produção industrial.">
+<link rel="canonical" href="https://jpagear.github.io/Portifolio-Digital/">
+<meta property="og:image" content="https://jpagear.github.io/Portifolio-Digital/portifolio.jpg">
 <meta property="og:title" content="João Almeida — Sysadmin & Infrastructure"/>
 <meta property="og:description" content="Infraestrutura, segurança defensiva e automação. Baseado em Vale de Cambra, Portugal."/>
 <meta property="og:type" content="website"/>
@@ -315,7 +327,7 @@ img{max-width:100%;display:block}
   transition:transform .22s,border-color .22s,background .22s;
   position:relative;overflow:hidden
 }
-.card:hover{transform:translateY(-4px);border-color:var(--line-2);background:linear-gradient(180deg,rgba(0,168,120,.03),transparent)}
+.card:hover{transform:translateY(-8px) scale(1.01);border-color:rgba(0,168,120,.4);background:linear-gradient(180deg,rgba(0,168,120,.06),transparent);box-shadow:0 20px 40px rgba(0,168,120,.12)}
 .card.hide{display:none}
 .card-media{aspect-ratio:16/10;background:var(--bg-2);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .card-media::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 2px,transparent 2px 14px)}
@@ -414,6 +426,11 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
 @media(max-width:720px){footer .sig{text-align:center}}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+@media(max-width:820px){.globe-stage{height:280px}#globe-canvas{filter:brightness(.8)}}
+.card-media{overflow:hidden}
+.card-media img{transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.card:hover .card-media img{transform:scale(1.06)}
+:root{--ink-2:#c4cdc8}
 .reveal.in{opacity:1;transform:none}
 .reveal[data-delay="1"].in{transition-delay:.1s}
 .reveal[data-delay="2"].in{transition-delay:.2s}
@@ -459,6 +476,9 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
 <body>
 
 
+<!-- BACK TO TOP -->
+<button id="backtop" aria-label="Voltar ao topo" style="position:fixed;bottom:32px;right:32px;z-index:200;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;transform:translateY(8px);background:var(--bg-2);border:1px solid var(--line-2);color:var(--jade);font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:10px 14px;border-radius:999px;cursor:pointer">↑ topo</button>
+
 <!-- COOKIE BANNER -->
 <div id="cookie-banner">
   <p class="cookie-text">
@@ -502,6 +522,7 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
   <ul>
     <li><a href="#about">about</a></li>
     <li><a href="#stack">stack</a></li>
+    <li><a href="#certifications">certs</a></li>
     <li><a href="#work">work</a></li>
     <li><a href="#path">path</a></li>
     <li><a href="#contact">contact</a></li>
@@ -512,6 +533,7 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about">./about</a>
   <a href="#stack">./stack</a>
+  <a href="#certifications">./certs</a>
   <a href="#work">./work</a>
   <a href="#path">./path</a>
   <a href="#contact">./contact</a>
@@ -524,7 +546,7 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
     <div class="hero-text">
       <div class="meta-row reveal">
         <span><b>PORTFOLIO</b> &nbsp; MMXXVI / v.3.0</span>
-        <span class="status"><span class="blip"></span> DISPONÍVEL APÓS 17 JUN 2026</span>
+        <span class="status"><span class="blip"></span> DISPONÍVEL · JUN 2026</span>
       </div>
       <h1 class="hero-name">
         <span class="line"><span>João</span></span>
@@ -535,11 +557,17 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
         <div class="body" id="typed"></div>
       </div>
       <p class="hero-desc reveal" data-delay="2">
-        Estudante do <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA, em estágio curricular na <strong>Simoldes Tools</strong>. Construo infraestrutura real com Active Directory, Zabbix, Grafana e Wazuh. Foco em infraestrutura, segurança defensiva e automação.
+        <strong>Sysadmin &amp; Infrastructure Engineer</strong> em formação.<br>
+        Foco em infraestrutura, observabilidade e segurança defensiva.<br>
+        <span style="font-size:.9em;color:var(--mute)">CTeSP RSI · ESTGA-UA · estágio na Simoldes Tools</span>
       </p>
       <div class="hero-ctas reveal" data-delay="3">
         <a href="#work" class="btn btn-primary">▸ Ver Projetos</a>
         <a href="#contact" class="btn btn-outline">Contacto →</a>
+      </div>
+      <div class="scroll-hint reveal" data-delay="3" style="margin-top:clamp(32px,5vw,56px);font-family:var(--mono);font-size:11px;color:var(--mute);display:flex;align-items:center;gap:10px;letter-spacing:.06em">
+        <span style="display:inline-block;width:1px;height:32px;background:linear-gradient(to bottom,transparent,var(--jade))"></span>
+        scroll para explorar
       </div>
     </div>
     <div class="globe-stage" aria-hidden="true">
@@ -564,10 +592,10 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
 
     <div class="about-grid">
       <div class="reveal" style="display:flex;gap:clamp(24px,3vw,48px);align-items:flex-start;flex-wrap:wrap">
-        <img src="portifolio.jpg" alt="João Almeida" style="width:clamp(120px,18%,180px);border-radius:12px;border:2px solid var(--jade);flex-shrink:0;object-fit:cover;aspect-ratio:3/4">
+        <img src="portifolio.jpg" alt="João Almeida" fetchpriority="high" style="width:clamp(160px,20%,220px);border-radius:12px;border:2px solid var(--jade);box-shadow:0 0 24px rgba(0,168,120,.2);flex-shrink:0;object-fit:cover;aspect-ratio:3/4;align-self:flex-start">
         <div>
         <p>Atualmente em <strong>estágio curricular na Simoldes Tools</strong>, onde trabalho diretamente em ambiente de produção industrial. Fiz o hardening de um SIEM Wazuh com 19 agentes ativos, integrei o CrowdStrike Falcon EDR via pipeline Python, o FortiGate e o Office 365, e construi 39 mapas de rede Zabbix cobrindo 8 unidades industriais do Grupo Simoldes. Alinhamento com <strong>NIST SP 800-53</strong> e <strong>CIS v8</strong> em ambiente real.</p>
-        <p>Em paralelo, construi um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server, GPOs e Wazuh SIEM. Antes disso, três outros estágios deram-me a base — desde cabling e CCTV até automação com shell scripts. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA, mas grande parte do que sei vem de partir coisas em lab e ler mais documentação que livros.</p>
+        <p>Em paralelo, construi um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server, GPOs e Wazuh SIEM. Antes disso, três outros estágios deram-me a base — desde cabling e CCTV até automação com shell scripts. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA, mas grande parte da experiência prática veio de laboratório próprio e documentação técnica.</p>
         </div>
       </div>
       <aside class="about-side reveal" data-delay="1">
@@ -576,7 +604,7 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
           <div class="kv"><dt>baseado</dt><dd>Vale de Cambra, Aveiro <span class="acc">/ PT</span></dd></div>
           <div class="kv"><dt>foco</dt><dd>Infraestrutura · Segurança Defensiva</dd></div>
           <div class="kv"><dt>a estudar</dt><dd>CTeSP RSI · ESTGA-UA</dd></div>
-          <div class="kv"><dt>estado</dt><dd><span class="acc">●</span> Aberto a roles de ops / SRE</dd></div>
+          <div class="kv"><dt>estado</dt><dd><span class="acc">●</span> Disponível a partir de junho 2026</dd></div>
           <div class="kv"><dt>idiomas</dt><dd>PT (nativo) · EN (B1)</dd></div>
         </dl>
         <a href="cv-joao-almeida.pdf" download class="cv-cta">
@@ -619,6 +647,34 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
     </div>
   </section>
 
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications" data-screen-label="03.5 Certs">
+    <header class="sec-head">
+      <div class="sec-num reveal">02.5 <b>/ certs</b></div>
+      <div class="reveal" data-delay="1">
+        <h2 class="sec-title">Aprendizagem <i>contínua</i>.</h2>
+        <p class="sec-sub">// certificações &amp; formação complementar</p>
+      </div>
+    </header>
+    <div class="stack-groups">
+      <div class="stack-group reveal" data-cat="certs">
+        <h3>Em preparação <span class="count">02</span></h3>
+        <div class="chips">
+          <span class="chip"><span class="sw" style="background:#0078d4"></span>Microsoft AZ-900</span>
+          <span class="chip"><span class="sw" style="background:#ee0000"></span>Cisco CCNA (NetAcad)</span>
+        </div>
+      </div>
+      <div class="stack-group reveal" data-delay="1" data-cat="certs">
+        <h3>Formação complementar <span class="count">03</span></h3>
+        <div class="chips">
+          <span class="chip"><span class="sw"></span>Wazuh Documentation &amp; Labs</span>
+          <span class="chip"><span class="sw"></span>Microsoft Learn (Azure &amp; Security)</span>
+          <span class="chip"><span class="sw"></span>Cisco NetAcad (Networking Basics)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- WORK -->
   <section class="section" id="work" data-screen-label="04 Work">
     <header class="sec-head">
@@ -629,7 +685,7 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
       </div>
     </header>
     <div class="filters reveal" id="filters">
-      <button class="filter-btn active" data-filter="all">Todos <span class="n">13</span></button>
+      <button class="filter-btn active" data-filter="all" aria-label="Mostrar todos os projetos">Todos <span class="n">13</span></button>
       <button class="filter-btn" data-filter="curso">Curso <span class="n">10</span></button>
       <button class="filter-btn" data-filter="infra">Infraestrutura <span class="n">08</span></button>
       <button class="filter-btn" data-filter="dev">Dev &amp; Scripts <span class="n">04</span></button>
@@ -710,6 +766,11 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
     <div class="contact-grid">
       <div class="reveal">
         <p class="contact-lead">A contratar para ops / SRE / sysadmin? <i>Trocamos uns emails</i> — pronto a entregar desde o dia 1.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px">
+          <a href="cv-joao-almeida.pdf" download class="btn btn-primary" style="font-size:11px;padding:10px 18px">↓ Download CV</a>
+          <a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:11px;padding:10px 18px">LinkedIn →</a>
+          <a href="https://github.com/JPagear" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:11px;padding:10px 18px">GitHub →</a>
+        </div>
         <ul class="contact-list">
           <li><a href="mailto:j.joao.almeida06@gmail.com"><span class="lbl">email</span><span>j.joao.almeida06@gmail.com</span><span class="arr">→</span></a></li>
           <li><a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank" rel="noopener"><span class="lbl">linkedin</span><span>in/joão-almeida-it</span><span class="arr">→</span></a></li>
@@ -748,7 +809,7 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
 /* PROJECTS */
 const PROJECTS = [
   {idx:'P_01',img:'Moliceiros.png',cat:'curso infra estagio',type:'infra',tags:['vpn','voip','zabbix','ospf','docker'],title:'Projeto Final RSI — Moliceiros da Ria',desc:'Infraestrutura empresarial completa multi-site com VLANs, OSPF, VPN site-to-site, VoIP com Asterisk, DHCP, DNS, NAT, Zabbix + Grafana e Docker.',year:'2025',phLabel:'MOLICEIROS DA RIA',links:[{label:'Relatório →',href:'Moliceiros da Ria.pdf'}]},
-  {idx:'P_02',img:'simoldestooldivision_logo.jpg',imgContain:true,cat:'estagio infra',type:'intern',tags:['wazuh','crowdstrike','fortigate','zabbix','nist','cisv8'],title:'Segurança &amp; Infra — Simoldes Tools',desc:'Hardening do Wazuh SIEM com 19 agentes em produção. Integração de CrowdStrike Falcon EDR via pipeline Python, FortiGate (4,7M+ alertas) e Office 365. Políticas CIS v8 e NIST SP 800-53. 39 mapas Zabbix para 8 unidades industriais. Lab Hyper-V com AD, 36 GPOs e Wazuh.',year:'2026 · em curso',phLabel:'SIMOLDES · PROD',conf:true,links:[{label:'NDA · sob pedido',mute:true}]},
+  {idx:'P_02',img:'simoldestooldivision_logo.jpg',imgContain:true,cat:'estagio infra',type:'intern',tags:['wazuh','crowdstrike','fortigate','zabbix','nist','cisv8'],title:'Segurança &amp; Infra — Simoldes Tools',desc:'Hardening Wazuh SIEM em produção · 19 agentes ativos · CrowdStrike Falcon EDR via pipeline Python · FortiGate 4,7M+ alertas · Office 365 · CIS v8 · NIST SP 800-53 · 39 mapas Zabbix em 8 unidades industriais · Lab Hyper-V com AD e 36 GPOs.',year:'2026 · em curso',phLabel:'SIMOLDES · PROD',conf:true,metrics:[{v:'19',l:'agentes SIEM'},{v:'4.7M+',l:'alertas FortiGate'},{v:'39',l:'mapas Zabbix'}],links:[{label:'NDA · sob pedido',mute:true}]},
   {idx:'P_02B',img:'luxtis.png',imgContain:true,cat:'estagio dev',type:'dev',tags:['react 19','vite','website'],title:'LUXTIS — Website Corporativo',desc:'Website corporativo para empresa de iluminações festivas. Desenvolvido com React 19 e Vite, com design responsivo e animações.',year:'2026',phLabel:'LUXTIS · REACT',links:[{label:'Ver Site →',href:'https://luxtis.pt/'}]},
   {idx:'P_03',img:'administracao.png',cat:'curso infra',type:'infra',tags:['terraform','ansible','azure','nginx'],title:'Administração de Sistemas',desc:'Correção de credenciais expostas e config NGINX via Terraform/Ansible. Servidor DHCP Linux no Azure totalmente automatizado.',year:'2025',phLabel:'IaC · TERRAFORM',links:[{label:'Ex. 1 →',href:'https://github.com/JPagear/final_assignment-127140'},{label:'Ex. 2 →',href:'https://github.com/JPagear/127140-dhcp-azure'}]},
   {idx:'P_04',img:'Gemini_Generated_Image_k0aatfk0aatfk0aa.png',cat:'curso dev',type:'dev',tags:['sockets','threads','linux'],title:'Sistemas Operativos — Semáforos',desc:'Sistema distribuído de controlo de semáforos. Cliente-servidor sockets, multithreading e sincronização entre interseções.',year:'2024',phLabel:'SEMÁFOROS',links:[{label:'Relatório →',href:'André_Lima_João_Almeida_Relatório.pdf'},{label:'GitHub →',href:'https://github.com/JPagear/semaforos'}]},
@@ -774,16 +835,21 @@ const ICONS = {
     const delay=(i%3===1)?'1':((i%3===2)?'2':'');
     const tags=p.tags.map(t=>`<span>${t}</span>`).join('');
     const links=p.links.map(l=>l.mute?`<span style="color:var(--mute)">${l.label}</span>`:`<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('');
+    const imgStyle=p.imgContain?'width:100%;height:100%;object-fit:contain;padding:16px;background:#060d09':'width:100%;height:100%;object-fit:cover';
+    const mediaInner=p.img
+      ?`<img src="${p.img}" alt="${p.title}" style="${imgStyle}" loading="lazy">`
+      :`<div class="ph">${ICONS[p.type]||ICONS.infra}<span>${p.phLabel}</span></div>`;
     return `<article class="card reveal"${delay?` data-delay="${delay}"`:''} data-cat="${p.cat}">
       <div class="card-media" data-type="${p.type}">
         ${p.conf?'<span class="conf-badge">⚠ CONFIDENCIAL</span>':''}
         <span class="card-idx">${p.idx}</span>
-        <div class="ph">${ICONS[p.type]||ICONS.infra}<span>${p.phLabel}</span></div>
+        ${mediaInner}
       </div>
       <div class="card-body">
         <div class="card-tags">${tags}</div>
         <h4>${p.title}</h4>
         <p>${p.desc}</p>
+        ${p.metrics?`<div style="display:flex;gap:12px;margin:12px 0;flex-wrap:wrap">${p.metrics.map(m=>`<div style="text-align:center;padding:8px 12px;border:1px solid var(--jade);border-radius:4px;background:rgba(0,168,120,.06)"><div style="font-family:var(--serif);font-size:22px;color:var(--jade);line-height:1">${m.v}</div><div style="font-family:var(--mono);font-size:10px;color:var(--mute);letter-spacing:.06em;margin-top:3px">${m.l}</div></div>`).join('')}</div>`:''}
         <div class="card-foot"><span class="year">${p.year}</span><span class="links">${links}</span></div>
       </div>
     </article>`;
@@ -897,6 +963,15 @@ filters.addEventListener('click',e=>{
   });
 });
 
+/* Form email validation */
+const femailEl=document.getElementById('f-email');
+if(femailEl){
+  femailEl.addEventListener('input',e=>{
+    const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value);
+    e.target.style.borderColor=e.target.value.length>0?(ok?'var(--jade)':'rgba(255,100,80,.5)'):'var(--line-2)';
+  });
+}
+
 /* Form */
 const form=document.getElementById('cform');
 const note=document.getElementById('fnote');
@@ -930,7 +1005,8 @@ if(pcanvas && !matchMedia('(prefers-reduced-motion: reduce)').matches){
     pcanvas.style.width=W+'px';pcanvas.style.height=H+'px';
     pcanvas.width=W*dpr;pcanvas.height=H*dpr;
     ctx.setTransform(dpr,0,0,dpr,0,0);
-    const count=Math.min(60,Math.floor((W*H)/32000));
+    const isMob=W<768;
+    const count=isMob?Math.min(20,Math.floor((W*H)/40000)):Math.min(60,Math.floor((W*H)/32000));
     parts=Array.from({length:count},()=>({
       x:Math.random()*W,y:Math.random()*H,
       vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,
@@ -966,6 +1042,7 @@ if(pcanvas && !matchMedia('(prefers-reduced-motion: reduce)').matches){
 (function initGlobe(){
   const canvas=document.getElementById('globe-canvas');
   if(typeof THREE==='undefined'||!canvas) return;
+  if(window.innerWidth<820){canvas.style.opacity='.5';return;}
   const stage=canvas.parentElement;
   const RADIUS=1.0;
   const JADE=0x00A878;
@@ -1098,7 +1175,8 @@ if(pcanvas && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   const packetMat=new THREE.MeshBasicMaterial({color:JADE_BRIGHT});
   const packetGlowGeo=new THREE.SphereGeometry(0.034,8,8);
   const packetGlowMat=new THREE.MeshBasicMaterial({color:JADE_BRIGHT,transparent:true,opacity:0.45});
-  const PACKETS=Math.min(38,links.length*2);
+  const isMobile=window.innerWidth<820;
+  const PACKETS=Math.min(isMobile?14:38,links.length*2);
   const packets=[];
   for(let i=0;i<PACKETS;i++){
     const m=new THREE.Mesh(packetGeo,packetMat);
@@ -1160,6 +1238,35 @@ if(pcanvas && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   requestAnimationFrame(animate);
 })();
 
+
+/* Stack chips -> filtrar projetos */
+document.querySelectorAll('.stack-group .chip').forEach(chip=>{
+  chip.style.cursor='pointer';
+  chip.title='Clica para filtrar projetos';
+  chip.addEventListener('click',()=>{
+    const skill=chip.textContent.trim().toLowerCase();
+    const cards=document.querySelectorAll('#projects .card');
+    let found=0;
+    cards.forEach(c=>{
+      const tags=(c.dataset.cat||'')+(c.querySelector('.card-tags')||{textContent:''}).textContent;
+      const match=tags.toLowerCase().includes(skill.split(' ')[0]);
+      c.classList.toggle('hide',!match);
+      if(match)found++;
+    });
+    if(found===0) cards.forEach(c=>c.classList.remove('hide'));
+    document.querySelector('#work')?.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* Back to top */
+const backtop=document.getElementById('backtop');
+window.addEventListener('scroll',()=>{
+  const show=window.scrollY>800;
+  backtop.style.opacity=show?'1':'0';
+  backtop.style.pointerEvents=show?'all':'none';
+  backtop.style.transform=show?'translateY(0)':'translateY(8px)';
+},{passive:true});
+backtop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 /* Cookie consent & Google Fonts */
 function loadFonts(){
