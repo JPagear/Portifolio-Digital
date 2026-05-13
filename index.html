@@ -1,267 +1,470 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>João Almeida — Portfolio</title>
-  <meta name="description" content="Portfolio de João Almeida, Administrador de Sistemas focado em infraestrutura, monitorização e segurança defensiva."/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>João Almeida — Sysadmin · Infrastructure · Defensive Security</title>
+<meta name="description" content="Portfólio pessoal de João Almeida, técnico de sistemas e infraestrutura, Vale de Cambra, Portugal."/>
+<meta property="og:title" content="João Almeida — Sysadmin & Infrastructure"/>
+<meta property="og:description" content="Infraestrutura, segurança defensiva e automação. Baseado em Vale de Cambra, Portugal."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="portifolio.jpg"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"João Almeida","jobTitle":"Systems Administrator","email":"j.joao.almeida06@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Vale de Cambra","addressRegion":"Aveiro","addressCountry":"PT"},"sameAs":["https://www.linkedin.com/in/jo%C3%A3o-almeida-it/","https://github.com/JPagear"]}
+</script>
+<!-- Google Fonts carregado apenas após consentimento de cookies -->
+<style id="font-fallback">
+  body { font-family: Georgia, 'Times New Roman', serif; }
+  .nav, .btn, .chip, .filter-btn { font-family: monospace; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root{
+  --bg:#0a0f0d;--bg-2:#0e1613;--panel:#111916;
+  --line:#1b2622;--line-2:#263430;
+  --ink:#e8ece8;--ink-2:#b3bdb7;--mute:#6c7a74;
+  --jade:#00A878;--jade-2:#00d99a;--jade-soft:rgba(0,168,120,.12);
+  --yellow:#FDFAC5;--yellow-warm:#F5F0A0;--yellow-deep:#E8E27A;
+  --serif:'Playfair Display',serif;
+  --sans:'Outfit',ui-sans-serif,system-ui,sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,monospace;
+  --gutter:clamp(20px,4vw,56px);--maxw:1440px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.55;font-weight:400;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden
+}
+::selection{background:var(--jade);color:#001a12}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{max-width:100%;display:block}
 
-  <!-- Google Fonts carregado apenas após consentimento via JS -->
-  <style id="font-fallback">
-    body { font-family: Georgia, 'Times New Roman', serif; }
-  </style>
+/* Backdrop */
+.backdrop{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(1200px 700px at 85% -10%,rgba(0,168,120,.08),transparent 60%),
+    radial-gradient(900px 600px at -10% 110%,rgba(253,250,197,.04),transparent 55%),
+    var(--bg);
+}
+.backdrop::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 85%);
+          mask-image:radial-gradient(ellipse at center,black 30%,transparent 85%);
+  animation:gridDrift 40s linear infinite;
+}
+@keyframes gridDrift{to{background-position:56px 56px,56px 56px}}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+.scanline{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);
+  mix-blend-mode:overlay
+}
 
-  <style>
-    :root {
-      --jade:        #00A878;
-      --jade-dark:   #007A57;
-      --jade-light:  #C8F0E5;
-      --jade-muted:  #E6F7F3;
-      --yellow:      #FDFAC5;
-      --yellow-warm: #F5F0A0;
-      --yellow-deep: #E8E27A;
-      --ink:         #0F1C17;
-      --ink-mid:     #2B3D35;
-      --ink-soft:    #5A7066;
-      --cream:       #FAFEF9;
-      --border:      rgba(0,168,120,0.18);
-      --shadow:      0 8px 40px rgba(0,120,87,0.12);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Outfit', Georgia, sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
-    img  { max-width: 100%; display: block; }
-    a    { color: inherit; text-decoration: none; }
+/* Layout */
+.wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.section{position:relative;z-index:2;padding:clamp(80px,10vw,140px) 0;border-top:1px solid var(--line)}
+.section:first-of-type{border-top:0}
 
-    /* COOKIE BANNER */
-    #cookie-banner {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
-      background: var(--ink); color: rgba(255,255,255,.88);
-      padding: 18px 6%; display: flex; align-items: center; justify-content: space-between;
-      gap: 20px; flex-wrap: wrap;
-      border-top: 2px solid var(--jade);
-      box-shadow: 0 -4px 30px rgba(0,0,0,.3);
-      transition: transform .4s ease;
-    }
-    #cookie-banner.hidden { transform: translateY(110%); }
-    .cookie-text { font-size: .85rem; line-height: 1.6; max-width: 700px; }
-    .cookie-text a { color: var(--jade); text-decoration: underline; }
-    .cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
-    .cookie-btn { padding: 9px 20px; border-radius: 7px; font-size: .82rem; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
-    .cookie-accept { background: var(--jade); color: #fff; }
-    .cookie-accept:hover { background: var(--jade-dark); }
-    .cookie-reject { background: transparent; color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.25); }
-    .cookie-reject:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+.sec-head{
+  display:grid;grid-template-columns:140px 1fr;gap:clamp(20px,4vw,60px);
+  align-items:end;margin-bottom:clamp(40px,6vw,72px)
+}
+.sec-num{
+  font-family:var(--mono);font-size:12px;color:var(--jade);letter-spacing:.08em;
+  padding-top:14px;border-top:1px solid var(--jade);align-self:start
+}
+.sec-num b{color:var(--mute);font-weight:400;margin-left:10px}
+.sec-title{
+  font-family:var(--serif);font-weight:400;font-size:clamp(40px,6.5vw,88px);
+  line-height:.98;letter-spacing:-.02em;margin:0
+}
+.sec-title i{color:var(--yellow-warm);font-style:italic}
+.sec-sub{font-family:var(--mono);font-size:12px;color:var(--ink-2);margin:14px 0 0;letter-spacing:.02em}
 
-    /* PRIVACY MODAL */
-    #privacy-modal {
-      display: none; position: fixed; inset: 0; z-index: 10000;
-      background: rgba(0,0,0,.7); backdrop-filter: blur(4px);
-      align-items: center; justify-content: center; padding: 20px;
-    }
-    #privacy-modal.open { display: flex; }
-    .privacy-box {
-      background: var(--cream); border-radius: 16px; max-width: 680px; width: 100%;
-      max-height: 80vh; overflow-y: auto; padding: 40px;
-      border: 1px solid var(--border);
-    }
-    .privacy-box h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--ink); margin-bottom: 8px; }
-    .privacy-box .privacy-date { font-size: .75rem; color: var(--ink-soft); margin-bottom: 24px; }
-    .privacy-box h3 { font-size: 1rem; font-weight: 600; color: var(--jade-dark); margin: 20px 0 8px; }
-    .privacy-box p, .privacy-box li { font-size: .88rem; line-height: 1.75; color: var(--ink-mid); }
-    .privacy-box ul { margin-left: 16px; margin-top: 6px; }
-    .privacy-box li { margin-bottom: 4px; }
-    .privacy-close { margin-top: 28px; background: var(--jade); color: #fff; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: .88rem; font-weight: 600; }
-    .privacy-close:hover { background: var(--jade-dark); }
+/* Nav */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  padding:18px var(--gutter);
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--mono);font-size:12px;
+  transition:background .22s ease,border-color .22s ease,backdrop-filter .22s ease;
+  border-bottom:1px solid transparent
+}
+.nav.scrolled{
+  background:rgba(10,15,13,.72);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+          backdrop-filter:saturate(140%) blur(10px);
+  border-bottom-color:var(--line)
+}
+.nav .brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:500}
+.nav .brand .dot{
+  width:8px;height:8px;border-radius:50%;background:var(--jade);
+  box-shadow:0 0 12px var(--jade);animation:pulse 1.6s ease-in-out infinite
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{color:var(--ink-2);transition:color .16s ease;position:relative}
+.nav ul a::before{content:"./";color:var(--mute);margin-right:4px}
+.nav ul a:hover,.nav ul a.active{color:var(--jade)}
+.nav .cta{
+  color:var(--jade);border:1px solid var(--line-2);padding:8px 14px;border-radius:999px;
+  transition:border-color .16s ease,background .16s ease
+}
+.nav .cta:hover{border-color:var(--jade);background:var(--jade-soft)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:6px;border:1px solid var(--line-2);border-radius:6px}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--ink);transition:transform .25s,opacity .25s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{
+  display:none;position:fixed;top:60px;left:0;right:0;z-index:49;
+  background:rgba(10,15,13,.97);border-bottom:1px solid var(--line);
+  flex-direction:column;padding:14px var(--gutter)
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  font-family:var(--mono);font-size:13px;color:var(--ink-2);
+  padding:14px 0;border-bottom:1px solid var(--line);letter-spacing:.04em
+}
+.mobile-menu a:last-child{border-bottom:0}
+@media(max-width:820px){.nav ul,.nav .cta{display:none}.hamburger{display:flex}}
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 6%;
-      background: rgba(250,254,249,0.9); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border); transition: box-shadow .3s;
-    }
-    .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: var(--jade-dark); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: .8rem; font-weight: 500; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--ink-soft);
-      position: relative; padding-bottom: 3px; transition: color .2s;
-    }
-    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--jade); transition: width .3s; }
-    .nav-links a:hover { color: var(--jade-dark); }
-    .nav-links a:hover::after { width: 100%; }
+/* HERO */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(32px,4vw,64px);align-items:center;
+  padding:120px 0 80px;position:relative
+}
+@media(max-width:980px){.hero{grid-template-columns:1fr;gap:40px}}
+.hero .meta-row{
+  display:flex;align-items:center;justify-content:flex-start;gap:18px;
+  font-family:var(--mono);font-size:11px;color:var(--ink-2);
+  margin-bottom:clamp(28px,4vw,48px);flex-wrap:wrap
+}
+.hero .meta-row span b{color:var(--mute);font-weight:400}
+.status{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 12px;
+  border:1px solid rgba(0,168,120,.35);background:var(--jade-soft);
+  border-radius:999px;color:var(--jade);font-family:var(--mono);font-size:11px;letter-spacing:.04em
+}
+.status .blip{width:6px;height:6px;border-radius:50%;background:var(--jade);box-shadow:0 0 8px var(--jade);animation:pulse 1.4s ease-in-out infinite}
 
-    section { min-height: 100vh; padding: 120px 6% 80px; }
+.hero-name{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(64px,10vw,148px);line-height:.88;
+  letter-spacing:-.035em;margin:0
+}
+.hero-name .line{display:block;overflow:hidden}
+.hero-name .line span{display:inline-block;transform:translateY(110%)}
+.hero-name .line.in span{transform:translateY(0);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.hero-name .line:nth-child(2) span{transition-delay:.12s}
+.hero-name em{font-style:italic;color:var(--jade)}
+.hero-name .ampersand{font-style:italic;color:var(--mute);margin:0 .05em}
 
-    /* INTRO */
-    #intro {
-      background: linear-gradient(150deg, var(--yellow) 0%, var(--jade-muted) 100%);
-      display: flex; align-items: center; position: relative; overflow: hidden;
-    }
-    #intro::before {
-      content: ''; position: absolute; top: -100px; right: -100px;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,168,120,.12) 0%, transparent 70%); pointer-events: none;
-    }
-    #intro::after {
-      content: ''; position: absolute; bottom: -80px; left: 8%;
-      width: 350px; height: 350px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(232,226,122,.3) 0%, transparent 70%); pointer-events: none;
-    }
-    .intro-grid {
-      display: grid; grid-template-columns: 1fr 420px;
-      gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
-    }
-    .intro-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--jade); color: #fff;
-      font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .08em;
-      padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
-    }
-    .intro-tag span { width: 6px; height: 6px; border-radius: 50%; background: var(--yellow-warm); animation: blink 1.4s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .intro-name { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.8rem, 5vw, 4.4rem); line-height: 1.08; margin-bottom: 10px; }
-    .intro-name em { font-style: italic; color: var(--jade-dark); }
-    .intro-role { font-family: 'DM Mono', monospace; font-size: .9rem; color: var(--ink-soft); margin-bottom: 26px; letter-spacing: .04em; }
-    .intro-desc { font-size: 1.05rem; line-height: 1.78; color: var(--ink-mid); max-width: 500px; margin-bottom: 38px; }
-    .intro-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: .88rem; font-weight: 600; letter-spacing: .03em;
-      padding: 12px 26px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; transition: all .25s;
-    }
-    .btn-primary { background: var(--jade); color: #fff; border-color: var(--jade); }
-    .btn-primary:hover { background: var(--jade-dark); border-color: var(--jade-dark); transform: translateY(-2px); box-shadow: var(--shadow); }
-    .btn-outline { background: transparent; color: var(--jade-dark); border-color: var(--jade); }
-    .btn-outline:hover { background: var(--jade-muted); transform: translateY(-2px); }
-    .intro-visual { display: flex; flex-direction: column; align-items: center; gap: 24px; }
-    .photo-frame {
-      width: 280px; height: 340px; border-radius: 20px;
-      border: 3px solid var(--jade-light); overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,120,87,.2), 0 0 0 8px var(--yellow);
-      background: var(--jade-muted); display: flex; align-items: center; justify-content: center;
-    }
-    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-    .intro-stats { display: flex; gap: 20px; }
-    .stat { text-align: center; padding: 14px 18px; border-radius: 14px; background: rgba(255,255,255,.7); backdrop-filter: blur(10px); border: 1px solid var(--border); }
-    .stat-num { font-size: 1.7rem; font-weight: 700; color: var(--jade-dark); line-height: 1; }
-    .stat-label { font-size: .65rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .07em; margin-top: 4px; }
+.hero-term{
+  margin-top:clamp(22px,3vw,32px);
+  font-family:var(--mono);font-size:13px;
+  color:var(--ink-2);background:rgba(0,168,120,.05);
+  border:1px solid rgba(0,168,120,.18);border-radius:8px;
+  padding:14px 18px;max-width:560px
+}
+.hero-term .head{color:var(--mute);font-size:11px;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.hero-term .head::before{content:"●●●";color:var(--jade);letter-spacing:2px;font-size:8px}
+.hero-term .body{min-height:46px;color:var(--ink)}
+.hero-term .body .cmd{color:var(--ink)}
+.hero-term .body .cmd::before{content:"$ ";color:var(--jade)}
+.hero-term .body .res{color:var(--jade);display:block;margin-top:2px}
+.caret{
+  display:inline-block;width:7px;height:1em;background:var(--jade);
+  vertical-align:-2px;animation:blink 1s step-end infinite;margin-left:2px
+}
+@keyframes blink{50%{opacity:0}}
 
-    /* CV */
-    #cv { background: var(--ink); color: #fff; }
-    .section-label { font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--jade); margin-bottom: 10px; }
-    .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 56px; }
-    .section-title span { color: var(--yellow-warm); font-style: italic; }
-    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
-    .cv-col-title { font-family: 'DM Mono', monospace; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--jade); margin-bottom: 32px; padding-bottom: 12px; border-bottom: 1px solid rgba(0,168,120,.25); }
-    .timeline { display: flex; flex-direction: column; gap: 34px; }
-    .tl-item { position: relative; padding-left: 22px; }
-    .tl-item::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--jade); box-shadow: 0 0 0 3px rgba(0,168,120,.2); }
-    .tl-item::after { content: ''; position: absolute; left: 3.5px; top: 18px; width: 1px; height: calc(100% + 14px); background: rgba(0,168,120,.18); }
-    .tl-item:last-child::after { display: none; }
-    .tl-date { font-family: 'DM Mono', monospace; font-size: .68rem; color: var(--jade); letter-spacing: .06em; margin-bottom: 4px; }
-    .tl-org  { font-weight: 600; font-size: .98rem; margin-bottom: 2px; }
-    .tl-role { font-size: .85rem; color: rgba(255,255,255,.5); margin-bottom: 8px; }
-    .tl-desc { font-size: .85rem; line-height: 1.68; color: rgba(255,255,255,.7); }
-    .tl-desc ul { margin: 6px 0 0 14px; display: flex; flex-direction: column; gap: 4px; }
-    .tl-sublabel { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--jade); margin: 10px 0 6px; }
-    .skills-block { margin-top: 48px; }
-    .skills-group { margin-bottom: 24px; }
-    .skills-group-name { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.38); margin-bottom: 10px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 7px; }
-    .chip { font-family: 'DM Mono', monospace; font-size: .72rem; padding: 5px 13px; border-radius: 6px; border: 1px solid rgba(0,168,120,.28); color: rgba(255,255,255,.8); background: rgba(0,168,120,.08); transition: all .2s; cursor: default; }
-    .chip:hover { background: var(--jade); color: #fff; border-color: var(--jade); }
-    .chip-y { border-color: rgba(232,226,122,.28); background: rgba(232,226,122,.07); }
-    .chip-y:hover { background: var(--yellow-deep); color: var(--ink); border-color: var(--yellow-deep); }
-    .cv-download { margin-top: 36px; display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1.5px solid var(--yellow-warm); color: var(--yellow-warm); font-weight: 500; font-size: .875rem; padding: 11px 22px; border-radius: 8px; cursor: pointer; transition: all .25s; }
-    .cv-download:hover { background: var(--yellow-warm); color: var(--ink); }
+.hero-desc{
+  margin-top:clamp(20px,2.5vw,28px);
+  font-size:clamp(15px,1.3vw,17px);line-height:1.65;
+  color:var(--ink-2);max-width:52ch;text-wrap:pretty
+}
+.hero-desc strong{color:var(--ink);font-weight:500}
 
-    /* PROJETOS */
-    #projetos { background: var(--yellow); }
-    #projetos .section-label { color: var(--jade-dark); }
-    #projetos .section-title { color: var(--ink); }
-    #projetos .section-title span { color: var(--jade-dark); }
-    .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto 36px; }
-    .filter-btn { font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; padding: 7px 16px; border-radius: 100px; border: 1.5px solid rgba(0,168,120,.3); background: transparent; color: var(--ink-soft); cursor: pointer; transition: all .2s; }
-    .filter-btn:hover { border-color: var(--jade); color: var(--jade-dark); }
-    .filter-btn.active { background: var(--jade); color: #fff; border-color: var(--jade); }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 26px; max-width: 1200px; margin: 0 auto; }
-    .project-card { background: #fff; border-radius: 18px; border: 1.5px solid var(--border); overflow: hidden; box-shadow: 0 4px 20px rgba(0,120,87,.07); transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
-    .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,120,87,.14); }
-    .project-img { width: 100%; height: 195px; background: var(--jade-muted); overflow: hidden; }
-    .project-img img { width: 100%; height: 100%; object-fit: cover; }
-    .img-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: .68rem; color: var(--jade-dark); border: 2px dashed rgba(0,168,120,.25); }
-    .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .project-tag { font-family: 'DM Mono', monospace; font-size: .62rem; padding: 3px 9px; border-radius: 100px; background: var(--jade-muted); color: var(--jade-dark); letter-spacing: .04em; }
-    .project-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: var(--ink); margin-bottom: 9px; }
-    .project-desc { font-size: .85rem; line-height: 1.72; color: var(--ink-soft); flex: 1; margin-bottom: 18px; }
-    .project-links { display: flex; gap: 10px; margin-top: auto; flex-wrap: wrap; }
-    .proj-link { font-size: .78rem; font-weight: 600; letter-spacing: .03em; display: inline-flex; align-items: center; gap: 5px; padding: 7px 15px; border-radius: 6px; border: 1.5px solid var(--jade); color: var(--jade-dark); transition: all .2s; }
-    .proj-link:hover { background: var(--jade); color: #fff; }
-    .proj-link svg { width: 12px; height: 12px; }
-    .proj-link.disabled { opacity: .4; cursor: default; pointer-events: none; }
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(24px,3vw,36px)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+  padding:11px 22px;border-radius:999px;border:1px solid transparent;
+  cursor:pointer;transition:all .2s;text-transform:uppercase;font-weight:500
+}
+.btn-primary{background:var(--jade);color:#001a12;border-color:var(--jade)}
+.btn-primary:hover{background:var(--jade-2);transform:translateY(-2px)}
+.btn-outline{color:var(--jade);border-color:var(--line-2)}
+.btn-outline:hover{border-color:var(--jade);background:var(--jade-soft);transform:translateY(-2px)}
 
-    /* CONTACTOS */
-    #contactos { background: var(--ink-mid); color: #fff; display: flex; align-items: center; }
-    #contactos .section-label { color: var(--jade); }
-    #contactos .section-title { color: #fff; }
-    #contactos .section-title span { color: var(--yellow-warm); font-style: italic; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1200px; margin: 0 auto; }
-    .contact-intro { font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,.7); margin-bottom: 40px; }
-    .contact-items { display: flex; flex-direction: column; gap: 20px; }
-    .contact-item { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(0,168,120,.2); transition: background .2s; }
-    .contact-item:hover { background: rgba(0,168,120,.1); }
-    .contact-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(0,168,120,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .contact-icon svg { width: 20px; height: 20px; color: var(--jade); }
-    .contact-label { font-size: .7rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; }
-    .contact-value { font-size: .95rem; color: #fff; }
-    .contact-value a { color: inherit; transition: color .2s; }
-    .contact-value a:hover { color: var(--jade); }
-    .contact-form { display: flex; flex-direction: column; gap: 16px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group label { font-size: .75rem; color: rgba(255,255,255,.5); letter-spacing: .05em; text-transform: uppercase; }
-    .form-group input, .form-group textarea { background: rgba(255,255,255,.06); border: 1px solid rgba(0,168,120,.25); color: #fff; border-radius: 8px; padding: 11px 14px; font-family: 'Outfit', sans-serif; font-size: .9rem; transition: border-color .2s; resize: none; outline: none; }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--jade); background: rgba(0,168,120,.08); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,.25); }
-    .form-privacy { font-size: .75rem; color: rgba(255,255,255,.45); line-height: 1.6; }
-    .form-privacy a { color: var(--jade); text-decoration: underline; cursor: pointer; }
-    .form-submit { align-self: flex-start; background: var(--jade); color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: .9rem; cursor: pointer; transition: all .25s; }
-    .form-submit:hover { background: var(--jade-dark); transform: translateY(-2px); }
+/* Globe stage in hero */
+.globe-stage{
+  position:relative;height:clamp(380px,52vw,560px);
+  display:flex;align-items:center;justify-content:center
+}
+#globe-canvas{
+  width:100%;height:100%;display:block;cursor:grab;
+}
+#globe-canvas:active{cursor:grabbing}
+.globe-ring{
+  position:absolute;border-radius:50%;border:1px solid rgba(0,168,120,.12);
+  pointer-events:none;animation:ring-pulse 4s ease-in-out infinite
+}
+.globe-ring:nth-child(1){width:78%;aspect-ratio:1;animation-delay:0s}
+.globe-ring:nth-child(2){width:90%;aspect-ratio:1;animation-delay:1s}
+.globe-ring:nth-child(3){width:102%;aspect-ratio:1;animation-delay:2s}
+@keyframes ring-pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.1;transform:scale(1.02)}}
+.globe-hud{
+  position:absolute;top:8px;left:8px;
+  font-family:var(--mono);font-size:10px;color:var(--mute);
+  letter-spacing:.1em;text-transform:uppercase;pointer-events:none
+}
+.globe-hud b{color:var(--jade);font-weight:400}
+.globe-hud-r{
+  position:absolute;bottom:8px;right:8px;
+  font-family:var(--mono);font-size:9px;color:var(--mute);
+  letter-spacing:.1em;text-transform:uppercase;pointer-events:none;opacity:.7
+}
 
-    /* FOOTER */
-    footer { background: var(--ink); color: rgba(255,255,255,.45); padding: 36px 6%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
-    .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; color: #fff; }
-    .footer-links { display: flex; gap: 24px; align-items: center; }
-    .footer-links a { font-size: .8rem; transition: color .2s; }
-    .footer-links a:hover { color: var(--jade); }
-    .footer-privacy { font-size: .75rem; color: rgba(255,255,255,.35); cursor: pointer; text-decoration: underline; }
-    .footer-privacy:hover { color: var(--jade); }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: .68rem; }
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px)}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+.about p{font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:var(--ink);margin:0 0 18px;max-width:54ch;text-wrap:pretty}
+.about p+p{color:var(--ink-2)}
+.about p strong{color:var(--jade);font-weight:500}
+.about-side{border-left:1px solid var(--line);padding-left:clamp(20px,3vw,40px)}
+@media(max-width:820px){.about-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:32px}}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:8px;padding:14px 0;border-bottom:1px dashed var(--line);font-family:var(--mono);font-size:13px}
+.kv:last-child{border-bottom:0}
+.kv dt{color:var(--mute)}
+.kv dd{margin:0;color:var(--ink)}
+.kv dd .acc{color:var(--jade)}
+.cv-cta{
+  margin-top:24px;display:inline-flex;align-items:center;gap:9px;
+  padding:10px 18px;border:1px solid rgba(245,240,160,.4);
+  color:var(--yellow-warm);border-radius:999px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+  transition:background .2s,color .2s
+}
+.cv-cta:hover{background:var(--yellow-warm);color:#1a1605}
 
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: .12s; }
-    .d2 { transition-delay: .24s; }
-    .d3 { transition-delay: .36s; }
+.stat-rail{margin-top:clamp(48px,7vw,88px);display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+@media(max-width:820px){.stat-rail{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:28px clamp(16px,2.5vw,32px);border-right:1px solid var(--line);position:relative}
+.stat:last-child{border-right:0}
+@media(max-width:820px){
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+}
+.stat .n{font-family:var(--serif);font-size:clamp(48px,6vw,80px);line-height:1;color:var(--ink);display:block}
+.stat .n .u{font-size:.4em;color:var(--yellow-warm);vertical-align:.6em;margin-left:4px;font-family:var(--mono);font-style:normal}
+.stat .l{display:block;margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.06em;text-transform:uppercase}
+.stat::before{content:attr(data-idx);position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:10px;color:var(--mute)}
 
-    @media (max-width: 960px) { .intro-grid, .cv-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; } .intro-visual { flex-direction: row; justify-content: center; flex-wrap: wrap; } .form-row { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) { .nav-links { display: none; } .intro-stats { flex-direction: column; align-items: center; } }
-  </style>
+/* Stack */
+.stack-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,3vw,48px)}
+@media(max-width:820px){.stack-groups{grid-template-columns:1fr}}
+.stack-group{
+  border:1px solid var(--line);padding:clamp(20px,2.5vw,32px);
+  background:linear-gradient(180deg,rgba(255,255,255,.01),transparent);position:relative
+}
+.stack-group h3{font-family:var(--mono);font-size:11px;color:var(--jade);margin:0 0 20px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.stack-group h3::before{content:"\25B8";color:var(--yellow-warm)}
+.stack-group .count{color:var(--mute);margin-left:auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 14px;
+  border:1px solid var(--line-2);border-radius:999px;
+  font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  transition:transform .16s,border-color .16s,color .16s,background .16s
+}
+.chip:hover{color:var(--ink);border-color:var(--jade);background:var(--jade-soft);transform:translateY(-2px)}
+.chip .sw{width:7px;height:7px;border-radius:2px;background:var(--jade)}
+.stack-group[data-cat="security"] .chip .sw{background:var(--yellow-warm)}
+.stack-group[data-cat="dev"] .chip .sw{background:var(--yellow-deep)}
+.stack-group[data-cat="net"] .chip .sw{background:#c490ff}
+
+/* Projects */
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px;border-bottom:1px solid var(--line);padding-bottom:20px}
+.filter-btn{font-family:var(--mono);font-size:12px;padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink-2);transition:all .16s;letter-spacing:.02em}
+.filter-btn:hover{color:var(--ink);border-color:var(--mute)}
+.filter-btn.active{background:var(--jade);color:#001a12;border-color:var(--jade)}
+.filter-btn .n{color:var(--mute);margin-left:6px;font-size:10px}
+.filter-btn.active .n{color:#006b4f}
+
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+@media(max-width:1100px){.projects{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.projects{grid-template-columns:1fr}}
+
+.card{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);
+  display:flex;flex-direction:column;
+  transition:transform .22s,border-color .22s,background .22s;
+  position:relative;overflow:hidden
+}
+.card:hover{transform:translateY(-4px);border-color:var(--line-2);background:linear-gradient(180deg,rgba(0,168,120,.03),transparent)}
+.card.hide{display:none}
+.card-media{aspect-ratio:16/10;background:var(--bg-2);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.card-media::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 2px,transparent 2px 14px)}
+.card-media .ph{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--mute);text-align:center;padding:12px;gap:6px}
+.card-media .ph .icn{width:42px;height:42px;color:var(--jade);opacity:.6}
+.card-media .ph span{display:block;color:var(--ink-2);letter-spacing:.06em}
+.card-media[data-type="infra"]{background:radial-gradient(circle at 30% 30%,rgba(0,168,120,.14),transparent 55%),var(--bg-2)}
+.card-media[data-type="dev"]{background:radial-gradient(circle at 70% 30%,rgba(245,240,160,.10),transparent 55%),var(--bg-2)}
+.card-media[data-type="intern"]{background:radial-gradient(circle at 50% 80%,rgba(90,200,250,.10),transparent 55%),var(--bg-2)}
+
+.conf-badge{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:10px;padding:4px 8px;background:rgba(245,240,160,.12);border:1px solid rgba(245,240,160,.4);color:var(--yellow-warm);letter-spacing:.08em}
+.card-idx{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:10px;color:var(--mute)}
+.card-body{padding:22px;display:flex;flex-direction:column;flex:1}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--mute);letter-spacing:.04em;margin-bottom:14px}
+.card-tags span::before{content:"#";color:var(--jade)}
+.card h4{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;margin:0 0 10px;color:var(--ink);letter-spacing:-.01em}
+.card p{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink-2);flex:1;text-wrap:pretty}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px}
+.card-foot a{color:var(--jade);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.card-foot a:hover{gap:10px}
+.card-foot .year{color:var(--mute)}
+.card-foot .links{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+
+/* Timeline */
+.timeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px)}
+@media(max-width:820px){.timeline-grid{grid-template-columns:1fr}}
+.tl-col h3{font-family:var(--mono);font-size:11px;color:var(--jade);margin:0 0 24px;letter-spacing:.1em;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.tl-col h3::before{content:"// ";color:var(--mute)}
+.tl{position:relative;padding-left:28px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line-2)}
+.tl-item{position:relative;padding-bottom:32px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-28px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:1.5px solid var(--line-2)}
+.tl-item.current::before{border-color:var(--jade);background:var(--jade);box-shadow:0 0 0 4px rgba(0,168,120,.18);animation:pulse 2s ease-in-out infinite}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--yellow-warm);letter-spacing:.04em;margin-bottom:4px}
+.tl-title{font-family:var(--serif);font-size:22px;line-height:1.2;margin:0 0 2px;color:var(--ink)}
+.tl-org{font-family:var(--mono);font-size:12px;color:var(--ink-2);margin-bottom:8px}
+.tl-desc{font-size:14px;color:var(--ink-2);margin:0;max-width:42ch;text-wrap:pretty}
+.tl-desc ul{margin:6px 0 0 16px;padding:0;display:flex;flex-direction:column;gap:3px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
+@media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
+.contact-lead{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);line-height:1.2;margin:0 0 32px;color:var(--ink);text-wrap:pretty}
+.contact-lead i{font-style:italic;color:var(--yellow-warm)}
+.contact-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.contact-list li{border-bottom:1px solid var(--line)}
+.contact-list a,.contact-list .row{
+  display:grid;grid-template-columns:110px 1fr 20px;align-items:center;gap:12px;
+  padding:18px 4px;font-family:var(--mono);font-size:13px;color:var(--ink);
+  transition:padding .2s,background .2s
+}
+.contact-list a:hover{padding-left:14px;background:rgba(0,168,120,.04)}
+.contact-list .lbl{color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.contact-list .arr{text-align:right;color:var(--jade);transition:transform .2s}
+.contact-list a:hover .arr{transform:translateX(4px)}
+
+form.cform{
+  border:1px solid var(--line);padding:clamp(20px,3vw,36px);
+  background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);position:relative
+}
+form.cform::before{content:"~/contact --send";position:absolute;top:-10px;left:20px;font-family:var(--mono);font-size:11px;color:var(--jade);background:var(--bg);padding:0 10px;letter-spacing:.04em}
+.field{display:block;margin-bottom:20px}
+.field>span.lab{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.field>span.lab::before{content:"> ";color:var(--jade)}
+.field input,.field textarea{
+  width:100%;background:var(--bg);border:1px solid var(--line-2);color:var(--ink);
+  font-family:var(--mono);font-size:14px;padding:12px 14px;border-radius:2px;
+  transition:border-color .16s,background .16s
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--jade);background:rgba(0,168,120,.04)}
+.field textarea{resize:vertical;min-height:120px;line-height:1.5}
+.submit{
+  display:inline-flex;align-items:center;gap:10px;padding:12px 22px;
+  background:var(--jade);color:#001a12;font-family:var(--mono);font-size:12px;
+  letter-spacing:.06em;border-radius:2px;text-transform:uppercase;
+  transition:background .16s,transform .16s;font-weight:600
+}
+.submit:hover:not(:disabled){background:var(--jade-2);transform:translateY(-1px)}
+.submit:disabled{opacity:.6;cursor:wait}
+.form-note{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:12px;min-height:1.2em}
+.form-note.ok{color:var(--jade)}
+.form-note.err{color:#ff8a7a}
+
+footer{
+  position:relative;z-index:2;border-top:1px solid var(--line);
+  padding:40px var(--gutter);font-family:var(--mono);font-size:12px;
+  color:var(--ink-2);display:grid;grid-template-columns:1fr auto 1fr;gap:20px;
+  align-items:center;max-width:var(--maxw);margin:0 auto
+}
+@media(max-width:720px){footer{grid-template-columns:1fr;text-align:center}}
+footer .fname{color:var(--ink)}
+footer .socials{display:flex;gap:20px;justify-content:center}
+footer .socials a:hover{color:var(--jade)}
+footer .sig{text-align:right;color:var(--mute);font-style:italic}
+@media(max-width:720px){footer .sig{text-align:center}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-delay="1"].in{transition-delay:.1s}
+.reveal[data-delay="2"].in{transition-delay:.2s}
+.reveal[data-delay="3"].in{transition-delay:.3s}
+
+:focus-visible{outline:2px solid var(--jade);outline-offset:3px}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .hero-name .line span{transform:none}
+}
+
+/* COOKIE BANNER */
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,15,13,.97);border-top:1px solid var(--jade);padding:18px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;backdrop-filter:blur(10px);transition:transform .4s ease}
+#cookie-banner.hidden{transform:translateY(110%)}
+.cookie-text{font-family:var(--mono);font-size:12px;color:var(--ink-2);line-height:1.6;max-width:700px}
+.cookie-text a{color:var(--jade);text-decoration:underline;cursor:pointer}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0}
+.cookie-btn{font-family:var(--mono);font-size:12px;padding:8px 18px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:all .2s;letter-spacing:.04em}
+.cookie-accept{background:var(--jade);color:#001a12;border-color:var(--jade)}
+.cookie-accept:hover{background:#00d99a}
+.cookie-reject{background:transparent;color:var(--ink-2);border-color:var(--line-2)}
+.cookie-reject:hover{border-color:var(--mute);color:var(--ink)}
+/* PRIVACY MODAL */
+#privacy-modal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+#privacy-modal.open{display:flex}
+.privacy-box{background:var(--bg-2);border:1px solid var(--line-2);border-radius:8px;max-width:680px;width:100%;max-height:80vh;overflow-y:auto;padding:40px}
+.privacy-box h2{font-family:var(--serif);font-size:1.6rem;color:var(--ink);margin:0 0 6px}
+.privacy-date{font-family:var(--mono);font-size:11px;color:var(--mute);margin-bottom:28px}
+.privacy-box h3{font-family:var(--mono);font-size:11px;color:var(--jade);letter-spacing:.08em;text-transform:uppercase;margin:24px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+.privacy-box h3:first-of-type{border-top:0;padding-top:0}
+.privacy-box p,.privacy-box li{font-size:14px;line-height:1.75;color:var(--ink-2);margin:0 0 8px}
+.privacy-box ul{margin:0 0 8px 18px;padding:0}
+.privacy-box li{margin-bottom:4px}
+.privacy-box a{color:var(--jade)}
+.privacy-close{margin-top:28px;background:var(--jade);color:#001a12;border:none;padding:10px 24px;border-radius:999px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;cursor:pointer;text-transform:uppercase}
+.privacy-close:hover{background:#00d99a}
+.form-privacy-note{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:10px;line-height:1.6}
+.form-privacy-note a{color:var(--jade);text-decoration:underline;cursor:pointer}
+</style>
 </head>
 <body>
+
 
 <!-- COOKIE BANNER -->
 <div id="cookie-banner">
   <p class="cookie-text">
-    Este site utiliza cookies de desempenho e fontes externas (Google Fonts) para melhorar a experiência de navegação.
-    Ao aceitar, consente o carregamento de recursos externos de acordo com o
+    Este site usa fontes externas (Google Fonts) e o serviço Formspree para o formulário de contacto.
+    Ao aceitar, consente o carregamento destes recursos de acordo com o
     <a href="#" onclick="openPrivacy();return false;">Aviso de Privacidade</a>.
-    Sem cookies, o site funciona normalmente com tipografia alternativa.
   </p>
   <div class="cookie-btns">
     <button class="cookie-btn cookie-reject" onclick="rejectCookies()">Recusar</button>
@@ -274,486 +477,706 @@
   <div class="privacy-box">
     <h2>Aviso de Privacidade</h2>
     <p class="privacy-date">Última atualização: maio de 2026</p>
-
     <h3>Responsável pelo tratamento</h3>
     <p>João Almeida, Vale de Cambra, Aveiro, Portugal. Contacto: j.joao.almeida06@gmail.com</p>
-
     <h3>Dados recolhidos</h3>
-    <p>Este site recolhe dados pessoais exclusivamente quando utiliza o formulário de contacto. Os dados recolhidos são:</p>
-    <ul>
-      <li>Nome</li>
-      <li>Endereço de email</li>
-      <li>Conteúdo da mensagem enviada</li>
-    </ul>
-
+    <p>Este site recolhe dados pessoais apenas quando utiliza o formulário de contacto: nome, endereço de email e conteúdo da mensagem.</p>
     <h3>Finalidade e base legal</h3>
-    <p>Os dados são recolhidos com base no seu consentimento (artigo 6.º, n.º 1, alínea a) do RGPD) e utilizados exclusivamente para responder à sua mensagem. Não são partilhados com terceiros, com exceção do serviço Formspree (processador de dados) utilizado para envio do formulário.</p>
-
+    <p>Os dados são tratados com base no seu consentimento (art. 6.º, n.º 1, al. a) do RGPD) e usados exclusivamente para responder à sua mensagem. Não são partilhados com terceiros, exceto o serviço Formspree (processador de dados) utilizado para envio do formulário.</p>
     <h3>Cookies e recursos externos</h3>
-    <p>Mediante o seu consentimento, este site carrega fontes tipográficas do Google Fonts (Google LLC, EUA), o que implica a transmissão do seu endereço IP para servidores do Google. Sem consentimento, o site utiliza fontes alternativas locais. Não são utilizados cookies de rastreamento, publicidade ou analítica.</p>
-
+    <p>Mediante consentimento, este site carrega fontes do Google Fonts (Google LLC, EUA), o que implica transmissão do seu IP para servidores Google. Sem consentimento, são usadas fontes locais alternativas. Não são utilizados cookies de rastreamento ou publicidade.</p>
     <h3>Retenção de dados</h3>
-    <p>As mensagens enviadas via formulário são retidas pelo prazo necessário para responder ao seu pedido e eliminadas após 90 dias.</p>
-
+    <p>As mensagens enviadas pelo formulário são retidas pelo prazo necessário para responder e eliminadas após 90 dias.</p>
     <h3>Os seus direitos</h3>
-    <p>Ao abrigo do RGPD, tem direito de acesso, retificação, apagamento, portabilidade e oposição ao tratamento dos seus dados. Para exercer estes direitos, contacte j.joao.almeida06@gmail.com. Tem também o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (CNPD) em www.cnpd.pt.</p>
-
-    <h3>Alterações a este aviso</h3>
-    <p>Este aviso pode ser atualizado. A data de última atualização é indicada no topo deste documento.</p>
-
+    <p>Tem direito de acesso, retificação, apagamento, portabilidade e oposição ao tratamento. Contacte j.joao.almeida06@gmail.com. Pode também reclamar à <a href="https://www.cnpd.pt" target="_blank" rel="noopener">CNPD</a>.</p>
     <button class="privacy-close" onclick="closePrivacy()">Fechar</button>
   </div>
 </div>
 
-<!-- NAV -->
-<nav id="top-nav">
-  <div class="nav-logo">J. Almeida</div>
-  <ul class="nav-links">
-    <li><a href="#intro">Início</a></li>
-    <li><a href="#cv">Currículo</a></li>
-    <li><a href="#projetos">Projetos</a></li>
-    <li><a href="#contactos">Contactos</a></li>
+<div class="backdrop"></div>
+<canvas id="particles"></canvas>
+<div class="scanline"></div>
+
+<nav class="nav" id="nav" aria-label="Navegação principal">
+  <a href="#top" class="brand"><span class="dot"></span>joão.almeida</a>
+  <ul>
+    <li><a href="#about">about</a></li>
+    <li><a href="#stack">stack</a></li>
+    <li><a href="#work">work</a></li>
+    <li><a href="#path">path</a></li>
+    <li><a href="#contact">contact</a></li>
   </ul>
+  <a class="cta" href="#contact">get in touch →</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about">./about</a>
+  <a href="#stack">./stack</a>
+  <a href="#work">./work</a>
+  <a href="#path">./path</a>
+  <a href="#contact">./contact</a>
+</div>
 
-<!-- INTRO -->
-<section id="intro">
-  <div class="intro-grid">
-    <div>
-      <div class="intro-tag"><span></span> Em estágio curricular · Vale de Cambra</div>
-      <h1 class="intro-name">João <em>Almeida</em></h1>
-      <p class="intro-role">Sysadmin · Infraestrutura · Segurança Defensiva</p>
-      <p class="intro-desc">
-        Estudante do CTESP em Redes e Sistemas Informáticos na ESTGA-UA, atualmente em
-        estágio curricular na Simoldes Tools. Trabalho com infraestrutura real em ambiente
-        de produção industrial, com foco em segurança defensiva, monitorização e automação.
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero" data-screen-label="01 Hero">
+    <div class="hero-text">
+      <div class="meta-row reveal">
+        <span><b>PORTFOLIO</b> &nbsp; MMXXVI / v.3.0</span>
+        <span class="status"><span class="blip"></span> DISPONÍVEL APÓS 17 JUN 2026</span>
+      </div>
+      <h1 class="hero-name">
+        <span class="line"><span>João</span></span>
+        <span class="line"><span><em>Almeida</em><span class="ampersand">.</span></span></span>
+      </h1>
+      <div class="hero-term reveal" data-delay="1" aria-label="Terminal interativo">
+        <div class="head">joão@infra:~</div>
+        <div class="body" id="typed"></div>
+      </div>
+      <p class="hero-desc reveal" data-delay="2">
+        Estudante do <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA, em estágio curricular na <strong>Simoldes Tools</strong>. Construo infraestrutura real com Active Directory, Zabbix, Grafana e Wazuh. Foco em infraestrutura, segurança defensiva e automação.
       </p>
-      <div class="intro-ctas">
-        <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
-        <a href="#contactos" class="btn btn-outline">Contacto</a>
+      <div class="hero-ctas reveal" data-delay="3">
+        <a href="#work" class="btn btn-primary">▸ Ver Projetos</a>
+        <a href="#contact" class="btn btn-outline">Contacto →</a>
       </div>
     </div>
-    <div class="intro-visual">
-      <div class="photo-frame">
-        <img src="portifolio.jpg" alt="João Almeida">
+    <div class="globe-stage" aria-hidden="true">
+      <div class="globe-ring"></div>
+      <div class="globe-ring"></div>
+      <div class="globe-ring"></div>
+      <canvas id="globe-canvas"></canvas>
+      <div class="globe-hud"><b>● NETWORK</b> &nbsp; 16 NODES · LIVE</div>
+      <div class="globe-hud-r">drag to rotate</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about" data-screen-label="02 About">
+    <header class="sec-head">
+      <div class="sec-num reveal">01 <b>/ about</b></div>
+      <div class="reveal" data-delay="1">
+        <h2 class="sec-title">Vinte anos. <i>Autodidata</i>. A construir desde os dezasseis.</h2>
+        <p class="sec-sub">// sysadmin · infraestrutura · segurança defensiva</p>
       </div>
-      <div class="intro-stats">
-        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Estágios</div></div>
-        <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Tecnologias</div></div>
-        <div class="stat"><div class="stat-num">5</div><div class="stat-label">Anos Cursos</div></div>
+    </header>
+
+    <div class="about-grid">
+      <div class="reveal">
+        <p>Atualmente em <strong>estágio curricular na Simoldes Tools</strong>, onde trabalho diretamente em ambiente de produção industrial. Fiz o hardening de um SIEM Wazuh com 19 agentes ativos, integrei o CrowdStrike Falcon EDR via pipeline Python, o FortiGate e o Office 365, e construi 39 mapas de rede Zabbix cobrindo 8 unidades industriais do Grupo Simoldes. Alinhamento com <strong>NIST SP 800-53</strong> e <strong>CIS v8</strong> em ambiente real.</p>
+        <p>Em paralelo, construi um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server, GPOs e Wazuh SIEM. Antes disso, três outros estágios deram-me a base — desde cabling e CCTV até automação com shell scripts. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA, mas grande parte do que sei vem de partir coisas em lab e ler mais documentação que livros.</p>
+      </div>
+      <aside class="about-side reveal" data-delay="1">
+        <dl>
+          <div class="kv"><dt>nome</dt><dd>João Almeida</dd></div>
+          <div class="kv"><dt>baseado</dt><dd>Vale de Cambra, Aveiro <span class="acc">/ PT</span></dd></div>
+          <div class="kv"><dt>foco</dt><dd>Infraestrutura · Segurança Defensiva</dd></div>
+          <div class="kv"><dt>a estudar</dt><dd>CTeSP RSI · ESTGA-UA</dd></div>
+          <div class="kv"><dt>estado</dt><dd><span class="acc">●</span> Aberto a roles de ops / SRE</dd></div>
+          <div class="kv"><dt>idiomas</dt><dd>PT (nativo) · EN (B1)</dd></div>
+        </dl>
+        <a href="cv-joao-almeida.pdf" download class="cv-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+          Descarregar CV (PDF)
+        </a>
+      </aside>
+    </div>
+
+    <div class="stat-rail reveal" data-delay="2">
+      <div class="stat" data-idx="▸ 01"><span class="n" data-count="4">0</span><span class="l">estágios concluídos</span></div>
+      <div class="stat" data-idx="▸ 02"><span class="n" data-count="12">0<span class="u">+</span></span><span class="l">projetos publicados</span></div>
+      <div class="stat" data-idx="▸ 03"><span class="n" data-count="680">0<span class="u">h</span></span><span class="l">estágio em curso</span></div>
+      <div class="stat" data-idx="▸ 04"><span class="n" data-count="36">0</span><span class="l">GPOs implementadas</span></div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section" id="stack" data-screen-label="03 Stack">
+    <header class="sec-head">
+      <div class="sec-num reveal">02 <b>/ stack</b></div>
+      <div class="reveal" data-delay="1">
+        <h2 class="sec-title">As <i>ferramentas</i> que uso.</h2>
+        <p class="sec-sub">// $ ls -lah ~/.skills</p>
+      </div>
+    </header>
+    <div class="stack-groups">
+      <div class="stack-group reveal" data-cat="infra"><h3>Infraestrutura <span class="count">10</span></h3>
+        <div class="chips"><span class="chip"><span class="sw"></span>Hyper-V</span><span class="chip"><span class="sw"></span>Proxmox</span><span class="chip"><span class="sw"></span>Active Directory</span><span class="chip"><span class="sw"></span>DNS / DHCP</span><span class="chip"><span class="sw"></span>File Server</span><span class="chip"><span class="sw"></span>GPOs</span><span class="chip"><span class="sw"></span>Windows Server</span><span class="chip"><span class="sw"></span>Linux</span><span class="chip"><span class="sw"></span>Amazon Linux 2</span><span class="chip"><span class="sw"></span>GLPI</span></div>
+      </div>
+      <div class="stack-group reveal" data-delay="1" data-cat="security"><h3>Monitorização &amp; Segurança <span class="count">09</span></h3>
+        <div class="chips"><span class="chip"><span class="sw"></span>Wazuh SIEM</span><span class="chip"><span class="sw"></span>CrowdStrike Falcon</span><span class="chip"><span class="sw"></span>FortiGate</span><span class="chip"><span class="sw"></span>Zabbix</span><span class="chip"><span class="sw"></span>Grafana</span><span class="chip"><span class="sw"></span>Prometheus</span><span class="chip"><span class="sw"></span>Loki</span><span class="chip"><span class="sw"></span>NIST SP 800-53</span><span class="chip"><span class="sw"></span>CIS v8</span></div>
+      </div>
+      <div class="stack-group reveal" data-cat="dev"><h3>Dev &amp; Automação <span class="count">06</span></h3>
+        <div class="chips"><span class="chip"><span class="sw"></span>Python</span><span class="chip"><span class="sw"></span>Shell Script</span><span class="chip"><span class="sw"></span>Docker</span><span class="chip"><span class="sw"></span>Terraform</span><span class="chip"><span class="sw"></span>Ansible</span><span class="chip"><span class="sw"></span>HCL</span></div>
+      </div>
+      <div class="stack-group reveal" data-delay="1" data-cat="net"><h3>Redes <span class="count">05</span></h3>
+        <div class="chips"><span class="chip"><span class="sw"></span>TCP/IP</span><span class="chip"><span class="sw"></span>VLANs</span><span class="chip"><span class="sw"></span>OSPF</span><span class="chip"><span class="sw"></span>SNMP</span><span class="chip"><span class="sw"></span>VoIP / SIP</span></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CV -->
-<section id="cv">
-  <p class="section-label reveal">Percurso Profissional &amp; Académico</p>
-  <h2 class="section-title reveal">O meu <span>currículo</span></h2>
+  <!-- WORK -->
+  <section class="section" id="work" data-screen-label="04 Work">
+    <header class="sec-head">
+      <div class="sec-num reveal">03 <b>/ work</b></div>
+      <div class="reveal" data-delay="1">
+        <h2 class="sec-title">Trabalho <i>selecionado</i>.</h2>
+        <p class="sec-sub">// doze projetos · quatro estágios · um homelab que nunca pára</p>
+      </div>
+    </header>
+    <div class="filters reveal" id="filters">
+      <button class="filter-btn active" data-filter="all">Todos <span class="n">13</span></button>
+      <button class="filter-btn" data-filter="curso">Curso <span class="n">10</span></button>
+      <button class="filter-btn" data-filter="infra">Infraestrutura <span class="n">08</span></button>
+      <button class="filter-btn" data-filter="dev">Dev &amp; Scripts <span class="n">04</span></button>
+      <button class="filter-btn" data-filter="estagio">Estágio <span class="n">03</span></button>
+    </div>
+    <div class="projects" id="projects"></div>
+  </section>
 
-  <div class="cv-grid">
-    <div class="reveal d1">
-      <p class="cv-col-title">// Experiência</p>
-      <div class="timeline">
+  <!-- PATH -->
+  <section class="section" id="path" data-screen-label="05 Path">
+    <header class="sec-head">
+      <div class="sec-num reveal">04 <b>/ path</b></div>
+      <div class="reveal" data-delay="1">
+        <h2 class="sec-title">O <i>percurso</i>, em paralelo.</h2>
+        <p class="sec-sub">// experiência &amp; formação</p>
+      </div>
+    </header>
+    <div class="timeline-grid">
+      <div class="tl-col reveal">
+        <h3>Experiência</h3>
+        <div class="tl">
+          <div class="tl-item current">
+            <div class="tl-date">FEV 2026 — PRESENTE · EM CURSO</div>
+            <h4 class="tl-title">Estagiário Sysadmin</h4>
+            <div class="tl-org">Simoldes Tools · Oliveira de Azeméis</div>
+            <p class="tl-desc">Hardening Wazuh SIEM produção (19 agentes), integração CrowdStrike EDR, FortiGate, Office 365, políticas CIS v8 e NIST SP 800-53. 39 mapas Zabbix para 8 unidades industriais. Lab Hyper-V com AD e GPOs. 680h.</p>
+          </div>
 
-        <div class="tl-item">
-          <div class="tl-date">Fev 2026 — Presente</div>
-          <div class="tl-org">Simoldes Tools, Simoldes Group</div>
-          <div class="tl-role">Estagiário Sysadmin · Estágio Curricular</div>
-          <div class="tl-desc">
-            <div class="tl-sublabel">Produção</div>
-            <ul>
-              <li>Hardening do SIEM Wazuh com 19 agentes ativos em servidores Windows Server e Linux</li>
-              <li>Integração de plataforma EDR via pipeline Python com decoder CEF e regras de alerta por severidade</li>
-              <li>Integração de logs de firewall perimetral com mais de 4,7 milhões de alertas processados</li>
-              <li>Integração de auditoria de plataforma cloud (email, ficheiros, colaboração)</li>
-              <li>Ativação de políticas SCA CIS v8 alinhadas com NIST SP 800-53 em todos os agentes Windows</li>
-              <li>Construção de 39 mapas de rede Zabbix cobrindo 8 unidades industriais via SNMP</li>
-              <li>Gestão de ativos no GLPI e suporte técnico a utilizadores</li>
-            </ul>
-            <div class="tl-sublabel" style="margin-top:12px;">Laboratório Hyper-V</div>
-            <ul>
-              <li>Active Directory, DNS, DHCP, File Server com RBAC e 36 GPOs de hardening</li>
-              <li>Wazuh SIEM com agentes, Filebeat e Wazuh Indexer (SCA, FIM, vulnerabilidades)</li>
-              <li>Zabbix com dashboards Grafana para monitorização das VMs do laboratório</li>
-            </ul>
+          <div class="tl-item">
+            <div class="tl-date">2022 — 2024</div>
+            <h4 class="tl-title">Estagiário · Redes, CCTV &amp; Alarmes</h4>
+            <div class="tl-org">Prevalta</div>
+            <p class="tl-desc">Dois estágios curriculares. Redes estruturadas e CCTV, sistemas de segurança e alarme, Cisco Packet Tracer.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2022 — 2023</div>
+            <h4 class="tl-title">Estagiário · 1.º ano</h4>
+            <div class="tl-org">Arquivo Municipal</div>
+            <p class="tl-desc">Suporte técnico, gestão documental e organização de arquivo.</p>
           </div>
         </div>
-
-        <div class="tl-item">
-          <div class="tl-date">2022 — 2024</div>
-          <div class="tl-org">Prevalta</div>
-          <div class="tl-role">Estagiário · Redes, CCTV &amp; Alarmes</div>
-          <div class="tl-desc">
-            Dois estágios curriculares de 2 meses. Instalação e configuração de redes CCTV e redes estruturadas. Configuração de switches e routers para infraestrutura de segurança e monitorização.
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">2022 — 2023</div>
-          <div class="tl-org">Arquivo Municipal de Vale de Cambra</div>
-          <div class="tl-role">Estagiário · Suporte Informático</div>
-          <div class="tl-desc">
-            Suporte técnico a utilizadores, gestão documental e organização de arquivo digital. Primeiro contacto com ambiente profissional institucional.
-          </div>
-        </div>
-
       </div>
-    </div>
-
-    <div class="reveal d2">
-      <p class="cv-col-title">// Formação</p>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-date">2024 — Presente</div>
-          <div class="tl-org">ESTGA — Universidade de Aveiro</div>
-          <div class="tl-role">CTESP em Redes e Sistemas Informáticos (Nível 5)</div>
-          <div class="tl-desc">Infraestrutura de Redes, Virtualização, Linux, Segurança, Scripting, Sistemas Distribuídos, VoIP, Gestão de Redes.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">2021 — 2024</div>
-          <div class="tl-org">Escola Básica e Secundária de Búzio</div>
-          <div class="tl-role">Técnico de Instalação e Gestão de Redes (Nível 4)</div>
-          <div class="tl-desc">Curso técnico-profissional com foco em infraestrutura de redes e telecomunicações.</div>
-        </div>
-      </div>
-
-      <div class="skills-block">
-        <p class="cv-col-title" style="margin-top:44px;">// Stack &amp; Competências</p>
-
-        <div class="skills-group">
-          <div class="skills-group-name">Infraestrutura</div>
-          <div class="chips">
-            <span class="chip">Hyper-V</span><span class="chip">Proxmox</span><span class="chip">VirtualBox</span>
-            <span class="chip">Active Directory</span><span class="chip">DNS / DHCP</span>
-            <span class="chip">File Server</span><span class="chip">GPOs</span>
-            <span class="chip">Windows Server</span><span class="chip">Linux</span><span class="chip">Amazon Linux 2</span>
+      <div class="tl-col reveal" data-delay="1">
+        <h3>Formação</h3>
+        <div class="tl">
+          <div class="tl-item current">
+            <div class="tl-date">2024 — PRESENTE · EM CURSO</div>
+            <h4 class="tl-title">CTeSP — Redes e Sistemas Informáticos</h4>
+            <div class="tl-org">ESTGA · Universidade de Aveiro · Nível 5</div>
+            <p class="tl-desc">Sistemas Distribuídos, VoIP, Fundamentos de Rede, Planeamento de Redes, Sistemas Operativos, Programação, Gestão de Redes, Segurança de Redes, Serviços Telemáticos, Administração de Sistemas.</p>
           </div>
-        </div>
-
-        <div class="skills-group">
-          <div class="skills-group-name">Monitorização &amp; Segurança</div>
-          <div class="chips">
-            <span class="chip">Wazuh SIEM</span><span class="chip">CrowdStrike Falcon</span>
-            <span class="chip">FortiGate</span><span class="chip">Zabbix</span>
-            <span class="chip">Grafana</span><span class="chip">Prometheus</span><span class="chip">Loki</span>
-            <span class="chip">NIST SP 800-53</span><span class="chip">CIS v8</span><span class="chip">CCTV</span>
+          <div class="tl-item">
+            <div class="tl-date">2021 — 2024</div>
+            <h4 class="tl-title">Técnico de Instalação e Gestão de Redes</h4>
+            <div class="tl-org">Escola Básica e Secundária de Búzio · Nível 4</div>
+            <p class="tl-desc">Curso técnico-profissional com foco em infraestrutura de redes e telecomunicações.</p>
           </div>
-        </div>
-
-        <div class="skills-group">
-          <div class="skills-group-name">Dev &amp; Ferramentas</div>
-          <div class="chips">
-            <span class="chip chip-y">Python</span><span class="chip chip-y">Shell Script</span>
-            <span class="chip chip-y">HTML / CSS</span><span class="chip chip-y">Docker</span>
-            <span class="chip chip-y">HCL / Terraform</span><span class="chip chip-y">React</span>
-            <span class="chip chip-y">GLPI</span>
-          </div>
-        </div>
-
-        <div class="skills-group">
-          <div class="skills-group-name">Redes</div>
-          <div class="chips">
-            <span class="chip">TCP/IP</span><span class="chip">VoIP / SIP</span>
-            <span class="chip">Routing &amp; Switching</span><span class="chip">SNMP</span><span class="chip">VLAN</span>
+          <div class="tl-item">
+            <div class="tl-date">CONTÍNUO</div>
+            <h4 class="tl-title">Auto-aprendizagem</h4>
+            <div class="tl-org">Homelab · Documentação</div>
+            <p class="tl-desc">Sempre num rabbit-hole no Microsoft Learn, na Arch wiki ou num PDF do NIST.</p>
           </div>
         </div>
       </div>
-
-      <a href="cv-joao-almeida.pdf" download class="cv-download">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-        Descarregar CV (PDF)
-      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJETOS -->
-<section id="projetos">
-  <p class="section-label reveal">Trabalho Académico &amp; Prático</p>
-  <h2 class="section-title reveal">Projetos &amp; <span>Laboratório</span></h2>
-
-  <div class="filter-bar reveal">
-    <button class="filter-btn active" data-filter="all">Todos</button>
-    <button class="filter-btn" data-filter="curso">Curso</button>
-    <button class="filter-btn" data-filter="infra">Infraestrutura</button>
-    <button class="filter-btn" data-filter="dev">Dev &amp; Scripts</button>
-    <button class="filter-btn" data-filter="estagio">Estágio</button>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- Estágio Simoldes -->
-    <div class="project-card reveal" data-cat="estagio infra">
-      <div class="project-img"><img src="simoldestooldivision_logo.jpg" alt="Simoldes Tools"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Estágio</span><span class="project-tag">Produção</span><span class="project-tag">SIEM</span><span class="project-tag">Segurança</span></div>
-        <h3 class="project-title">Infraestrutura &amp; Segurança — Simoldes Tools</h3>
-        <p class="project-desc">Hardening de SIEM Wazuh em produção com 19 agentes, integração de EDR e firewall, ativação de políticas CIS v8 alinhadas com NIST SP 800-53, e construção de 39 mapas de rede Zabbix para 8 unidades industriais. Trabalho autónomo em ambiente de produção real.</p>
-        <div class="project-links">
-          <span class="proj-link disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>Confidencial</span>
-        </div>
+  <!-- CONTACT -->
+  <section class="section" id="contact" data-screen-label="06 Contact">
+    <header class="sec-head">
+      <div class="sec-num reveal">05 <b>/ contact</b></div>
+      <div class="reveal" data-delay="1">
+        <h2 class="sec-title">Vamos <i>falar</i> de infraestrutura.</h2>
+        <p class="sec-sub">// resposta em 24h · disponível após 17 jun 2026</p>
       </div>
-    </div>
-
-    <!-- LUXTIS -->
-    <div class="project-card reveal d1" data-cat="dev estagio">
-      <div class="project-img"><img src="luxtis.png" alt="LUXTIS" style="object-fit:contain;background:#0a0a0a;padding:20px;"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">React 19</span><span class="project-tag">Vite</span><span class="project-tag">Website</span><span class="project-tag">Colaboração</span></div>
-        <h3 class="project-title">LUXTIS — Website Corporativo</h3>
-        <p class="project-desc">Website corporativo desenvolvido para a LUXTIS, empresa de iluminações festivas. Construído com React 19 e Vite, com design responsivo, animações e apresentação dos produtos e serviços da empresa.</p>
-        <div class="project-links">
-          <a href="https://luxtis.pt/" class="proj-link" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
-            Ver Site
-          </a>
-        </div>
+    </header>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-lead">A contratar para ops / SRE / sysadmin? <i>Trocamos uns emails</i> — pronto a entregar desde o dia 1.</p>
+        <ul class="contact-list">
+          <li><a href="mailto:j.joao.almeida06@gmail.com"><span class="lbl">email</span><span>j.joao.almeida06@gmail.com</span><span class="arr">→</span></a></li>
+          <li><a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank" rel="noopener"><span class="lbl">linkedin</span><span>in/joão-almeida-it</span><span class="arr">→</span></a></li>
+          <li><a href="https://github.com/JPagear" target="_blank" rel="noopener"><span class="lbl">github</span><span>@JPagear</span><span class="arr">→</span></a></li>
+          <li><div class="row"><span class="lbl">localização</span><span>Vale de Cambra · Aveiro · PT</span><span class="arr" style="color:var(--mute)">●</span></div></li>
+        </ul>
       </div>
-    </div>
-
-    <!-- Projeto Final RSI -->
-    <div class="project-card reveal d2" data-cat="curso infra estagio">
-      <div class="project-img"><img src="Moliceiros.png" alt="Projeto Final RSI"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Projeto Final</span><span class="project-tag">VPN</span><span class="project-tag">VoIP</span><span class="project-tag">Zabbix</span></div>
-        <h3 class="project-title">Projeto Final RSI — Moliceiros da Ria</h3>
-        <p class="project-desc">Infraestrutura empresarial completa com VLANs, OSPF, VPN site-to-site, VoIP com Asterisk, DHCP, DNS, NAT, monitorização com Zabbix e Grafana, automação de backups e Docker.</p>
-        <div class="project-links">
-          <a href="Moliceiros da Ria.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Ver Relatório</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Administração de Sistemas -->
-    <div class="project-card reveal" data-cat="curso infra">
-      <div class="project-img"><img src="administracao.png" alt="Administração de Sistemas"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Terraform</span><span class="project-tag">Ansible</span><span class="project-tag">Azure</span><span class="project-tag">NGINX</span></div>
-        <h3 class="project-title">Administração de Sistemas</h3>
-        <p class="project-desc">Dois projetos individuais: correção de credenciais expostas e configuração de NGINX via Terraform e Ansible; provisionamento de servidor DHCP Linux no Azure totalmente automatizado.</p>
-        <div class="project-links">
-          <a href="https://github.com/JPagear/final_assignment-127140" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>Exercício 1</a>
-          <a href="https://github.com/JPagear/127140-dhcp-azure" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>Exercício 2</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sistemas Operativos Semáforos -->
-    <div class="project-card reveal d1" data-cat="curso dev">
-      <div class="project-img"><img src="Gemini_Generated_Image_k0aatfk0aatfk0aa.png" alt="Semáforos"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Sockets</span><span class="project-tag">Threads</span><span class="project-tag">Linux</span></div>
-        <h3 class="project-title">Sistemas Operativos — Semáforos</h3>
-        <p class="project-desc">Sistema distribuído que simula o controlo de semáforos. Comunicação cliente-servidor via sockets, multithreading e sincronização de estados em arquitetura distribuída Linux.</p>
-        <div class="project-links">
-          <a href="André_Lima_João_Almeida_Relatório.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Relatório</a>
-          <a href="https://github.com/JPagear/semaforos" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Shell Script -->
-    <div class="project-card reveal d2" data-cat="curso dev">
-      <div class="project-img"><img src="Gemini_Generated_Image_nf5j9znf5j9znf5j.png" alt="Shell Script"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Shell Script</span><span class="project-tag">Backups</span><span class="project-tag">Linux</span></div>
-        <h3 class="project-title">Sistemas Operativos — Shell Script</h3>
-        <p class="project-desc">Sistema de gestão de backups em Shell Script com exclusão automática de ficheiros irrelevantes, verificação de integridade, controlo de espaço em disco e log persistente.</p>
-        <div class="project-links">
-          <a href="Relatório_Trabalho_Prático_JoãoAlmeida_AndréLima.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Relatório</a>
-          <a href="https://github.com/JPagear/-gest-o-de-backups-" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Weather2Travel -->
-    <div class="project-card reveal" data-cat="curso dev">
-      <div class="project-img"><img src="Gemini_Generated_Image_9zw4419zw4419zw4.png" alt="Weather2Travel"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">RFID</span><span class="project-tag">API</span></div>
-        <h3 class="project-title">Programação Aplicada — Weather2Travel</h3>
-        <p class="project-desc">Aplicação gráfica em Python com login RFID, previsão do tempo via API IPMA, interface CustomTkinter e base de dados de utilizadores.</p>
-        <div class="project-links">
-          <a href="Projeto-Versão Final.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Relatório</a>
-          <a href="https://github.com/JPagear/Pogram-Aplicada-127140" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sistemas Distribuídos -->
-    <div class="project-card reveal d1" data-cat="curso dev">
-      <div class="project-img"><img src="Gemini_Generated_Image_28ar0l28ar0l28ar.png" alt="Microserviços"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Microserviços</span><span class="project-tag">Docker</span><span class="project-tag">Prometheus</span></div>
-        <h3 class="project-title">Sistemas Distribuídos — Microserviços</h3>
-        <p class="project-desc">Sistema distribuído para gestão de pedidos com API Gateway, REST, monitorização com Prometheus, Grafana e Loki, orquestrado com Docker Compose.</p>
-        <div class="project-links">
-          <a href="SD - Guia 8 - Projeto final.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Relatório</a>
-          <a href="https://github.com/Alpine5096/Projeto-Sistemas-Distribuidos-127878-127140" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- VoIP -->
-    <div class="project-card reveal d2" data-cat="curso infra">
-      <div class="project-img"><img src="Gemini_Generated_Image_3mdbq3mdbq3mdbq3.png" alt="VoIP"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">VoIP</span><span class="project-tag">Asterisk</span><span class="project-tag">RADIUS</span></div>
-        <h3 class="project-title">VoIP — Asterisk, DNS &amp; RADIUS</h3>
-        <p class="project-desc">Infraestrutura VoIP com Asterisk PBX, DNS via Bind9, autenticação FreeRADIUS e terminais SIP. Tentativa de integração com Kamailio.</p>
-        <div class="project-links">
-          <a href="RELATÓRIO infraestrutura Voip.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Relatório</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Planeamento de Redes -->
-    <div class="project-card reveal" data-cat="curso infra">
-      <div class="project-img"><img src="Gemini_Generated_Image_sejtdysejtdysejt.png" alt="Planeamento de Redes"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">OSPF</span><span class="project-tag">VLAN</span><span class="project-tag">GNS3</span></div>
-        <h3 class="project-title">Planeamento de Redes — BikeParts</h3>
-        <p class="project-desc">Infraestrutura multi-edifício com VLANs por departamento, OSPF, NAT, DHCP, DNS e arquitetura em camadas simulada em GNS3.</p>
-        <div class="project-links">
-          <a href="Relatório_projetofinal_PlaneamentoRedes_Andrelima_JoaoAlmeida-1.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Relatório</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gestão de Redes -->
-    <div class="project-card reveal d1" data-cat="curso infra">
-      <div class="project-img"><img src="Gemini_Generated_Image_m9e7dgm9e7dgm9e7.png" alt="Gestão de Redes"></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Zabbix</span><span class="project-tag">Prometheus</span><span class="project-tag">SNMP</span></div>
-        <h3 class="project-title">Gestão de Redes — Zabbix vs Prometheus</h3>
-        <p class="project-desc">Análise comparativa entre Zabbix e Prometheus com estudo de SNMP, ICMP e APIs, e implementação prática com alertas e métricas.</p>
-        <div class="project-links">
-          <a href="Projeto de Gestão de Rede.pdf" class="proj-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>Relatório</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACTOS -->
-<section id="contactos">
-  <p class="section-label reveal">Fala comigo</p>
-  <h2 class="section-title reveal">Entra em <span>contacto</span></h2>
-
-  <div class="contact-grid">
-    <div class="reveal d1">
-      <p class="contact-intro">
-        Estou disponível para oportunidades, colaborações ou simplesmente para trocar
-        ideias sobre infraestrutura e tecnologia.
-      </p>
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg></div>
-          <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:j.joao.almeida06@gmail.com">j.joao.almeida06@gmail.com</a></div></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="color:var(--jade)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
-          <div><div class="contact-label">LinkedIn</div><div class="contact-value"><a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank">linkedin.com/in/joão-almeida-it</a></div></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="color:var(--jade)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
-          <div><div class="contact-label">GitHub</div><div class="contact-value"><a href="https://github.com/JPagear" target="_blank">github.com/JPagear</a></div></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg></div>
-          <div><div class="contact-label">Localização</div><div class="contact-value">Vale de Cambra, Aveiro</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="reveal d2">
-      <form class="contact-form" action="https://formspree.io/f/xqeyvzwz" method="POST">
-        <div class="form-row">
-          <div class="form-group"><label>Nome</label><input type="text" name="name" placeholder="O teu nome" required/></div>
-          <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="email@exemplo.com" required/></div>
-        </div>
-        <div class="form-group"><label>Assunto</label><input type="text" name="subject" placeholder="Do que se trata?"/></div>
-        <div class="form-group"><label>Mensagem</label><textarea name="message" rows="5" placeholder="Escreve a tua mensagem aqui..." required></textarea></div>
-        <p class="form-privacy">
-          Ao enviar esta mensagem, consente que os dados fornecidos sejam utilizados exclusivamente para responder ao seu contacto.
-          Consulte o nosso <a href="#" onclick="openPrivacy();return false;">Aviso de Privacidade</a>.
-        </p>
-        <button type="submit" class="form-submit">Enviar Mensagem</button>
+      <form class="cform reveal" data-delay="1" id="cform" action="https://formspree.io/f/xqeyvzwz" method="POST" novalidate>
+        <label class="field"><span class="lab">nome</span><input type="text" name="name" id="f-name" autocomplete="name" required placeholder="o teu nome"/></label>
+        <label class="field"><span class="lab">email</span><input type="email" name="email" id="f-email" autocomplete="email" required placeholder="email@exemplo.com"/></label>
+        <label class="field"><span class="lab">assunto</span><input type="text" name="subject" id="f-subject" placeholder="do que se trata?"/></label>
+        <label class="field"><span class="lab">mensagem</span><textarea name="message" id="f-message" rows="5" required placeholder="conta-me em que estás a trabalhar…"></textarea></label>
+        <p class="form-privacy-note">Ao enviar, consente o uso dos seus dados para responder ao contacto. Ver <a href="#" onclick="openPrivacy();return false;">Aviso de Privacidade</a>.</p>
+        <button type="submit" class="submit">▸ enviar mensagem</button>
+        <div class="form-note" id="fnote">// envio via Formspree · resposta em 24-48h</div>
       </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer>
-  <div class="footer-brand">João Almeida</div>
-  <div class="footer-links">
-    <a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank">LinkedIn</a>
-    <a href="https://github.com/JPagear" target="_blank">GitHub</a>
-    <a href="mailto:j.joao.almeida06@gmail.com">Email</a>
-    <span class="footer-privacy" onclick="openPrivacy()">Privacidade</span>
+  <div class="fname">João Almeida · © 2026</div>
+  <div class="socials">
+    <a href="https://github.com/JPagear" target="_blank" rel="noopener">github</a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank" rel="noopener">linkedin</a>
+    <a href="mailto:j.joao.almeida06@gmail.com">email</a>
   </div>
-  <div class="footer-copy">© 2026 João Almeida · Vale de Cambra</div>
+  <div class="sig"><span class="footer-privacy-link" onclick="openPrivacy()" style="cursor:pointer;text-decoration:underline;color:var(--mute)">Privacidade</span> · Site desenvolvido por João Almeida</div>
 </footer>
 
 <script>
-  /* Google Fonts — carrega apenas com consentimento */
-  function loadFonts() {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap';
-    document.head.appendChild(link);
-    document.getElementById('font-fallback').remove();
+(()=>{
+'use strict';
+
+/* PROJECTS */
+const PROJECTS = [
+  {idx:'P_01',cat:'curso infra estagio',type:'infra',tags:['vpn','voip','zabbix','ospf','docker'],title:'Projeto Final RSI — Moliceiros da Ria',desc:'Infraestrutura empresarial completa multi-site com VLANs, OSPF, VPN site-to-site, VoIP com Asterisk, DHCP, DNS, NAT, Zabbix + Grafana e Docker.',year:'2025',phLabel:'MOLICEIROS DA RIA',links:[{label:'Relatório →',href:'Moliceiros da Ria.pdf'}]},
+  {idx:'P_02',cat:'estagio infra',type:'intern',tags:['wazuh','crowdstrike','fortigate','zabbix','nist','cisv8'],title:'Segurança &amp; Infra — Simoldes Tools',desc:'Hardening do Wazuh SIEM com 19 agentes em produção. Integração de CrowdStrike Falcon EDR via pipeline Python, FortiGate (4,7M+ alertas) e Office 365. Políticas CIS v8 e NIST SP 800-53. 39 mapas Zabbix para 8 unidades industriais. Lab Hyper-V com AD, 36 GPOs e Wazuh.',year:'2026 · em curso',phLabel:'SIMOLDES · PROD',conf:true,links:[{label:'NDA · sob pedido',mute:true}]},
+  {idx:'P_02B',cat:'estagio dev',type:'dev',tags:['react 19','vite','website'],title:'LUXTIS — Website Corporativo',desc:'Website corporativo para empresa de iluminações festivas. Desenvolvido com React 19 e Vite, com design responsivo e animações.',year:'2026',phLabel:'LUXTIS · REACT',links:[{label:'Ver Site →',href:'https://luxtis.pt/'}]},
+  {idx:'P_03',cat:'curso infra',type:'infra',tags:['terraform','ansible','azure','nginx'],title:'Administração de Sistemas',desc:'Correção de credenciais expostas e config NGINX via Terraform/Ansible. Servidor DHCP Linux no Azure totalmente automatizado.',year:'2025',phLabel:'IaC · TERRAFORM',links:[{label:'Ex. 1 →',href:'https://github.com/JPagear/final_assignment-127140'},{label:'Ex. 2 →',href:'https://github.com/JPagear/127140-dhcp-azure'}]},
+  {idx:'P_04',cat:'curso dev',type:'dev',tags:['sockets','threads','linux'],title:'Sistemas Operativos — Semáforos',desc:'Sistema distribuído de controlo de semáforos. Cliente-servidor sockets, multithreading e sincronização entre interseções.',year:'2024',phLabel:'SEMÁFOROS',links:[{label:'Relatório →',href:'André_Lima_João_Almeida_Relatório.pdf'},{label:'GitHub →',href:'https://github.com/JPagear/semaforos'}]},
+  {idx:'P_05',cat:'curso dev',type:'dev',tags:['bash','backups','linux'],title:'Sistemas Operativos — Shell Script',desc:'Gestão de backups para servidores web. Verificação de integridade, controlo de espaço e log persistente.',year:'2024',phLabel:'BASH · BACKUPS',links:[{label:'Relatório →',href:'Relatório_Trabalho_Prático_JoãoAlmeida_AndréLima.pdf'},{label:'GitHub →',href:'https://github.com/JPagear/-gest-o-de-backups-'}]},
+  {idx:'P_06',cat:'curso dev',type:'dev',tags:['python','rfid','api'],title:'Programação Aplicada — Weather2Travel',desc:'App Python com login por cartão RFID e previsão IPMA. CustomTkinter e BD de utilizadores.',year:'2024',phLabel:'PYTHON · IPMA',links:[{label:'Relatório →',href:'Projeto-Versão Final.pdf'},{label:'GitHub →',href:'https://github.com/JPagear/Pogram-Aplicada-127140'}]},
+  {idx:'P_07',cat:'curso dev',type:'dev',tags:['microserviços','docker','prometheus','loki'],title:'Sistemas Distribuídos — Microserviços',desc:'Orders, Payments, Notifications + API Gateway. HTTP REST, monitorização Prometheus + Grafana + Loki, Docker Compose.',year:'2025',phLabel:'MICROSERVIÇOS',links:[{label:'Relatório →',href:'SD - Guia 8 - Projeto final.pdf'},{label:'GitHub →',href:'https://github.com/Alpine5096/Projeto-Sistemas-Distribuidos-127878-127140'}]},
+  {idx:'P_08',cat:'curso infra',type:'infra',tags:['asterisk','sip','radius','bind9'],title:'VoIP — Asterisk, DNS &amp; RADIUS',desc:'PBX Asterisk, Bind9, FreeRADIUS e terminais SIP. Tentativa de integração com Kamailio.',year:'2025',phLabel:'ASTERISK · SIP',links:[{label:'Relatório →',href:'RELATÓRIO infraestrutura Voip.pdf'}]},
+  {idx:'P_09',cat:'curso infra',type:'infra',tags:['telemática','redes'],title:'Serviços Telemáticos',desc:'Configuração e análise de serviços de comunicação em rede, protocolos de transporte e integração telemática em laboratório.',year:'2025',phLabel:'TELEMÁTICA',links:[{label:'Relatório →',href:'Relatório_ST.pdf'}]},
+  {idx:'P_10',cat:'curso infra',type:'infra',tags:['tcp/ip','dhcp','dns','nat','rip'],title:'Fundamentos de Rede — Universitária',desc:'Rede universitária segmentada por departamentos. Sub-redes IPv4, DHCP, DNS, NAT, FTP, web/email, RIP e datacenter central.',year:'2024',phLabel:'REDE UNIVERSITÁRIA',links:[{label:'Relatório →',href:'Relatório_projetofinal_fundamentosderedes4.pdf'}]},
+  {idx:'P_11',cat:'curso infra',type:'infra',tags:['vlans','ospf','gns3'],title:'Planeamento de Redes — BikeParts',desc:'Rede multi-edifício para BikeParts. VLANs por departamento, OSPF, NAT, redes guest isoladas e arquitetura em camadas em GNS3.',year:'2025',phLabel:'BIKEPARTS · GNS3',links:[{label:'Relatório →',href:'Relatório_projetofinal_PlaneamentoRedes_Andrelima_JoaoAlmeida-1.pdf'}]},
+  {idx:'P_12',cat:'curso infra',type:'infra',tags:['zabbix','prometheus','snmp'],title:'Gestão de Redes — Zabbix vs Prometheus',desc:'Análise comparativa entre Zabbix e Prometheus. SNMP, ICMP e APIs, arquitetura, desempenho e implementação prática com alertas.',year:'2025',phLabel:'ZABBIX vs PROMETHEUS',links:[{label:'Relatório →',href:'Projeto de Gestão de Rede.pdf'}]}
+];
+
+const ICONS = {
+  infra:'<svg class="icn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z"/></svg>',
+  dev:'<svg class="icn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>',
+  intern:'<svg class="icn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>'
+};
+
+(function renderProjects(){
+  const grid=document.getElementById('projects');
+  grid.innerHTML=PROJECTS.map((p,i)=>{
+    const delay=(i%3===1)?'1':((i%3===2)?'2':'');
+    const tags=p.tags.map(t=>`<span>${t}</span>`).join('');
+    const links=p.links.map(l=>l.mute?`<span style="color:var(--mute)">${l.label}</span>`:`<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('');
+    return `<article class="card reveal"${delay?` data-delay="${delay}"`:''} data-cat="${p.cat}">
+      <div class="card-media" data-type="${p.type}">
+        ${p.conf?'<span class="conf-badge">⚠ CONFIDENCIAL</span>':''}
+        <span class="card-idx">${p.idx}</span>
+        <div class="ph">${ICONS[p.type]||ICONS.infra}<span>${p.phLabel}</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-tags">${tags}</div>
+        <h4>${p.title}</h4>
+        <p>${p.desc}</p>
+        <div class="card-foot"><span class="year">${p.year}</span><span class="links">${links}</span></div>
+      </div>
+    </article>`;
+  }).join('');
+})();
+
+/* Nav scroll */
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>20);
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* Hamburger */
+const hb=document.getElementById('hamburger');
+const mm=document.getElementById('mobile-menu');
+hb.addEventListener('click',()=>{
+  const open=mm.classList.toggle('open');
+  hb.classList.toggle('open');
+  hb.setAttribute('aria-expanded',open);
+});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mm.classList.remove('open');hb.classList.remove('open');hb.setAttribute('aria-expanded','false');
+}));
+
+/* Hero name lines */
+requestAnimationFrame(()=>{
+  document.querySelectorAll('.hero-name .line').forEach((ln,i)=>{
+    setTimeout(()=>ln.classList.add('in'),120+i*140);
+  });
+});
+
+/* Hero typing */
+const typedEl=document.getElementById('typed');
+const cmds=[
+  ['whoami','João Almeida'],
+  ['role --current','sysadmin · infrastructure · defensive security'],
+  ['location','Vale de Cambra, Aveiro · PT'],
+  ['status','available after june 17, 2026']
+];
+let cIdx=0,phase=0,chIdx=0;
+function render(cmd,res,showRes){
+  let h=`<span class="cmd">${cmd}</span><span class="caret"></span>`;
+  if(showRes) h=`<span class="cmd">${cmd}</span><span class="res">→ ${res}</span><span class="caret"></span>`;
+  typedEl.innerHTML=h;
+}
+function tick(){
+  const [cmd,res]=cmds[cIdx];
+  if(phase===0){
+    chIdx++;render(cmd.slice(0,chIdx),res,false);
+    if(chIdx>=cmd.length){phase=1;chIdx=0;return setTimeout(tick,420);}
+    return setTimeout(tick,55+Math.random()*40);
+  }
+  if(phase===1){
+    chIdx++;render(cmd,res.slice(0,chIdx),true);
+    if(chIdx>=res.length){phase=2;return setTimeout(tick,1700);}
+    return setTimeout(tick,28+Math.random()*22);
+  }
+  if(phase===2){
+    typedEl.innerHTML='<span class="caret"></span>';
+    cIdx=(cIdx+1)%cmds.length;phase=0;chIdx=0;
+    return setTimeout(tick,300);
+  }
+}
+setTimeout(tick,800);
+
+/* Reveal */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Stat counters */
+const sio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target;const target=+el.dataset.count;
+    const u=el.querySelector('.u');const unit=u?u.outerHTML:'';
+    const dur=1200;const t0=performance.now();
+    const step=t=>{
+      const p=Math.min(1,(t-t0)/dur);
+      const v=Math.round(target*(1-Math.pow(1-p,3)));
+      el.innerHTML=v+unit;
+      if(p<1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);sio.unobserve(el);
+  });
+},{threshold:.6});
+document.querySelectorAll('.stat .n').forEach(el=>sio.observe(el));
+
+/* Nav active */
+const sections=document.querySelectorAll('main section[id]');
+const navLinks=document.querySelectorAll('.nav ul a');
+const aio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+    }
+  });
+},{threshold:.4});
+sections.forEach(s=>aio.observe(s));
+
+/* Filters */
+const filters=document.getElementById('filters');
+filters.addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');if(!btn)return;
+  filters.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const f=btn.dataset.filter;
+  document.querySelectorAll('#projects .card').forEach(c=>{
+    const cats=(c.dataset.cat||'').split(/\s+/);
+    c.classList.toggle('hide',!(f==='all'||cats.includes(f)));
+  });
+});
+
+/* Form */
+const form=document.getElementById('cform');
+const note=document.getElementById('fnote');
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const msg=document.getElementById('f-message').value.trim();
+  if(!name||!email||!msg||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    note.textContent='// preenche todos os campos obrigatórios.';
+    note.className='form-note err';return;
+  }
+  const btn=form.querySelector('.submit');
+  btn.textContent='▸ a enviar...';btn.disabled=true;
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){note.textContent='// mensagem enviada · resposta em 24-48h.';note.className='form-note ok';form.reset();}
+    else{note.textContent='// erro no envio. tenta novamente ou usa o email diretamente.';note.className='form-note err';}
+  }catch{note.textContent='// erro de ligação. usa o email diretamente.';note.className='form-note err';}
+  btn.textContent='▸ enviar mensagem';btn.disabled=false;
+});
+
+/* Particle field */
+const pcanvas=document.getElementById('particles');
+if(pcanvas && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const ctx=pcanvas.getContext('2d');
+  let W,H,dpr,parts;
+  const resize=()=>{
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=window.innerWidth;H=window.innerHeight;
+    pcanvas.style.width=W+'px';pcanvas.style.height=H+'px';
+    pcanvas.width=W*dpr;pcanvas.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count=Math.min(60,Math.floor((W*H)/32000));
+    parts=Array.from({length:count},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,
+      r:Math.random()*1.2+.3,a:Math.random()*.5+.2
+    }));
+  };
+  const draw=()=>{
+    ctx.clearRect(0,0,W,H);
+    for(const p of parts){
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;else if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;else if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.fillStyle=`rgba(0,168,120,${p.a})`;
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    }
+    for(let i=0;i<parts.length;i++){
+      for(let j=i+1;j<parts.length;j++){
+        const a=parts[i],b=parts[j];
+        const dx=a.x-b.x,dy=a.y-b.y;const d2=dx*dx+dy*dy;
+        if(d2<120*120){
+          const al=(1-d2/(120*120))*.13;
+          ctx.strokeStyle=`rgba(0,168,120,${al})`;ctx.lineWidth=.5;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  };
+  window.addEventListener('resize',resize);resize();draw();
+}
+
+/* ===== GLOBE (Three.js) ===== */
+(function initGlobe(){
+  const canvas=document.getElementById('globe-canvas');
+  if(typeof THREE==='undefined'||!canvas) return;
+  const stage=canvas.parentElement;
+  const RADIUS=1.0;
+  const JADE=0x00A878;
+  const JADE_BRIGHT=0x00ffaa;
+  const YELLOW=0xFDFAC5;
+
+  const CITIES=[
+    {n:'London',lat:51.5074,lon:-0.1278},
+    {n:'New York',lat:40.7128,lon:-74.0060},
+    {n:'Tokyo',lat:35.6762,lon:139.6503},
+    {n:'Sydney',lat:-33.8688,lon:151.2093},
+    {n:'Paris',lat:48.8566,lon:2.3522},
+    {n:'Singapore',lat:1.3521,lon:103.8198},
+    {n:'Istanbul',lat:41.0082,lon:28.9784},
+    {n:'Moscow',lat:55.7558,lon:37.6173},
+    {n:'Mumbai',lat:19.0760,lon:72.8777},
+    {n:'São Paulo',lat:-23.5505,lon:-46.6333},
+    {n:'San Francisco',lat:37.7749,lon:-122.4194},
+    {n:'Helsinki',lat:60.1699,lon:24.9384},
+    {n:'Delhi',lat:28.7041,lon:77.1025},
+    {n:'Nairobi',lat:-1.2921,lon:36.8219},
+    {n:'Dubai',lat:25.2048,lon:55.2708},
+    {n:'Vale de Cambra',lat:40.8420,lon:-8.3956,home:true}
+  ];
+
+  function ll(lat,lon,r){
+    const phi=(90-lat)*Math.PI/180;
+    const theta=(lon+180)*Math.PI/180;
+    return new THREE.Vector3(
+      -r*Math.sin(phi)*Math.cos(theta),
+       r*Math.cos(phi),
+       r*Math.sin(phi)*Math.sin(theta)
+    );
   }
 
-  /* Cookie consent */
-  function acceptCookies() {
-    localStorage.setItem('cookie-consent', 'accepted');
-    document.getElementById('cookie-banner').classList.add('hidden');
-    loadFonts();
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setClearColor(0x000000,0);
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,1,0.1,100);
+  camera.position.set(0,0.3,3.0);
+  camera.lookAt(0,0,0);
+
+  scene.add(new THREE.AmbientLight(0x223028,0.55));
+  const dir=new THREE.DirectionalLight(JADE,1.2);dir.position.set(3,4,2);scene.add(dir);
+  const fill=new THREE.DirectionalLight(0x0a3a2a,0.35);fill.position.set(-3,-2,-1);scene.add(fill);
+
+  const globe=new THREE.Group();scene.add(globe);
+
+  const sphereMat=new THREE.MeshPhongMaterial({color:0x0d1a15,emissive:0x041008,specular:0x0a3a2a,shininess:18});
+  const sphere=new THREE.Mesh(new THREE.SphereGeometry(RADIUS,64,64),sphereMat);
+  globe.add(sphere);
+
+  const wire=new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.SphereGeometry(RADIUS*1.001,30,20)),
+    new THREE.LineBasicMaterial({color:JADE,transparent:true,opacity:0.18})
+  );
+  globe.add(wire);
+
+  // Nodes
+  const nodeGeo=new THREE.SphereGeometry(0.018,12,12);
+  const nodeGeoHome=new THREE.SphereGeometry(0.028,14,14);
+  const nodeMat=new THREE.MeshBasicMaterial({color:JADE_BRIGHT});
+  const nodeMatHome=new THREE.MeshBasicMaterial({color:YELLOW});
+  const haloMat=new THREE.MeshBasicMaterial({color:JADE,transparent:true,opacity:0.35});
+  const haloMatHome=new THREE.MeshBasicMaterial({color:YELLOW,transparent:true,opacity:0.4});
+  const haloGeo=new THREE.SphereGeometry(0.038,12,12);
+  const haloGeoHome=new THREE.SphereGeometry(0.055,12,12);
+
+  const nodePositions=CITIES.map(c=>ll(c.lat,c.lon,RADIUS*1.005));
+  CITIES.forEach((c,i)=>{
+    const p=nodePositions[i];
+    const n=new THREE.Mesh(c.home?nodeGeoHome:nodeGeo,c.home?nodeMatHome:nodeMat);
+    n.position.copy(p);globe.add(n);
+    const h=new THREE.Mesh(c.home?haloGeoHome:haloGeo,c.home?haloMatHome:haloMat);
+    h.position.copy(p);globe.add(h);
+  });
+
+  // Great-circle arcs
+  function arcPoints(p1,p2,segments){
+    const v1=p1.clone().normalize();
+    const v2=p2.clone().normalize();
+    const angle=v1.angleTo(v2);
+    const lift=1+Math.min(0.18,angle*0.12);
+    const sinA=Math.sin(angle);
+    const pts=[];
+    for(let i=0;i<=segments;i++){
+      const t=i/segments;
+      let v;
+      if(sinA<1e-6){v=v1.clone();}
+      else{
+        const a=Math.sin((1-t)*angle)/sinA;
+        const b=Math.sin(t*angle)/sinA;
+        v=v1.clone().multiplyScalar(a).add(v2.clone().multiplyScalar(b));
+      }
+      const bulge=Math.sin(t*Math.PI);
+      const r=RADIUS*(1+(lift-1)*bulge);
+      pts.push(v.normalize().multiplyScalar(r));
+    }
+    return pts;
   }
-  function rejectCookies() {
-    localStorage.setItem('cookie-consent', 'rejected');
-    document.getElementById('cookie-banner').classList.add('hidden');
+
+  const N=nodePositions.length;
+  const HOME=N-1;
+  const pairs=new Set();
+  const addPair=(a,b)=>{const k=a<b?`${a}-${b}`:`${b}-${a}`;pairs.add(k);};
+  for(let i=0;i<N-1;i++){
+    addPair(i,(i+3)%(N-1));
+    addPair(i,(i+7)%(N-1));
+  }
+  // Connect Vale de Cambra to a few cities
+  [0,1,4,9,14].forEach(i=>addPair(HOME,i));
+  [[0,2],[1,3],[5,11],[12,14]].forEach(([a,b])=>addPair(a,b));
+
+  const linkMat=new THREE.LineBasicMaterial({color:JADE,transparent:true,opacity:0.30});
+  const linkMatHome=new THREE.LineBasicMaterial({color:YELLOW,transparent:true,opacity:0.45});
+  const links=[];
+  pairs.forEach(k=>{
+    const [a,b]=k.split('-').map(Number);
+    const isHome=(a===HOME||b===HOME);
+    const pts=arcPoints(nodePositions[a],nodePositions[b],56);
+    const geo=new THREE.BufferGeometry().setFromPoints(pts);
+    globe.add(new THREE.Line(geo,isHome?linkMatHome:linkMat));
+    links.push({curve:new THREE.CatmullRomCurve3(pts),len:new THREE.CatmullRomCurve3(pts).getLength(),home:isHome});
+  });
+
+  // Packets
+  const packetGeo=new THREE.SphereGeometry(0.018,8,8);
+  const packetMat=new THREE.MeshBasicMaterial({color:JADE_BRIGHT});
+  const packetGlowGeo=new THREE.SphereGeometry(0.034,8,8);
+  const packetGlowMat=new THREE.MeshBasicMaterial({color:JADE_BRIGHT,transparent:true,opacity:0.45});
+  const PACKETS=Math.min(38,links.length*2);
+  const packets=[];
+  for(let i=0;i<PACKETS;i++){
+    const m=new THREE.Mesh(packetGeo,packetMat);
+    const g=new THREE.Mesh(packetGlowGeo,packetGlowMat);
+    globe.add(m);globe.add(g);
+    packets.push({linkIdx:Math.floor(Math.random()*links.length),speed:0.12+Math.random()*0.28,dir:Math.random()<.5?1:-1,t:Math.random(),mesh:m,glow:g});
   }
 
-  /* Privacy modal */
-  function openPrivacy() { document.getElementById('privacy-modal').classList.add('open'); }
-  function closePrivacy() { document.getElementById('privacy-modal').classList.remove('open'); }
-  document.getElementById('privacy-modal').addEventListener('click', function(e) {
-    if (e.target === this) closePrivacy();
+  // Drag rotation with inertia
+  let dragging=false,lastX=0,lastY=0,velX=0,velY=0,rotX=0,rotY=0;
+  const AUTO=0.0018,DAMP=0.94,SENS=0.005;
+  canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;velX=velY=0;canvas.setPointerCapture(e.pointerId);});
+  canvas.addEventListener('pointermove',e=>{
+    if(!dragging) return;
+    const dx=e.clientX-lastX,dy=e.clientY-lastY;
+    lastX=e.clientX;lastY=e.clientY;
+    velX=dx*SENS;velY=dy*SENS;
+    rotY+=velX;rotX+=velY;
+    rotX=Math.max(-Math.PI/2+0.05,Math.min(Math.PI/2-0.05,rotX));
   });
+  canvas.addEventListener('pointerup',e=>{dragging=false;try{canvas.releasePointerCapture(e.pointerId);}catch{}});
+  canvas.addEventListener('pointerleave',()=>{dragging=false;});
 
-  /* Init */
-  const consent = localStorage.getItem('cookie-consent');
-  if (consent === 'accepted') { loadFonts(); document.getElementById('cookie-banner').classList.add('hidden'); }
-  else if (consent === 'rejected') { document.getElementById('cookie-banner').classList.add('hidden'); }
+  function resize(){
+    const rect=stage.getBoundingClientRect();
+    const size=Math.min(rect.width,rect.height);
+    renderer.setSize(size,size,false);
+    canvas.style.width=size+'px';canvas.style.height=size+'px';
+    camera.aspect=1;camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize',resize);resize();
 
-  /* Scroll reveal */
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  let lastT=performance.now();
+  function animate(now){
+    requestAnimationFrame(animate);
+    const dt=Math.min(0.05,(now-lastT)/1000);lastT=now;
+    if(!dragging){
+      rotY+=velX;rotX+=velY;
+      velX*=DAMP;velY*=DAMP;
+      if(Math.abs(velX)<0.0001)velX=0;
+      if(Math.abs(velY)<0.0001)velY=0;
+      rotX=Math.max(-Math.PI/2+0.05,Math.min(Math.PI/2-0.05,rotX));
+      rotY+=AUTO;
+    }
+    globe.rotation.y=rotY;globe.rotation.x=rotX;
+    for(const p of packets){
+      const link=links[p.linkIdx];
+      p.t+=(p.speed*p.dir*dt)/Math.max(0.4,link.len);
+      if(p.t>1||p.t<0){
+        p.linkIdx=Math.floor(Math.random()*links.length);
+        p.speed=0.12+Math.random()*0.28;p.dir=Math.random()<.5?1:-1;
+        p.t=p.dir>0?0:1;
+      }
+      const pos=links[p.linkIdx].curve.getPoint(Math.min(1,Math.max(0,p.t)));
+      p.mesh.position.copy(pos);p.glow.position.copy(pos);
+    }
+    renderer.render(scene,camera);
+  }
+  requestAnimationFrame(animate);
+})();
 
-  /* Nav shadow */
-  window.addEventListener('scroll', () => {
-    document.getElementById('top-nav').style.boxShadow = window.scrollY > 10 ? '0 2px 24px rgba(0,120,87,.1)' : 'none';
-  });
 
-  /* Filtros */
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      document.querySelectorAll('.project-card').forEach(card => {
-        const cat = card.dataset.cat || '';
-        card.style.display = (f === 'all' || cat.includes(f)) ? 'flex' : 'none';
-      });
-    });
-  });
+/* Cookie consent & Google Fonts */
+function loadFonts(){
+  const pc=document.createElement('link');pc.rel='preconnect';pc.href='https://fonts.googleapis.com';document.head.appendChild(pc);
+  const pc2=document.createElement('link');pc2.rel='preconnect';pc2.href='https://fonts.gstatic.com';pc2.crossOrigin='';document.head.appendChild(pc2);
+  const lk=document.createElement('link');lk.rel='stylesheet';
+  lk.href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap';
+  document.head.appendChild(lk);
+  const fb=document.getElementById('font-fallback');if(fb)fb.remove();
+}
+function acceptCookies(){localStorage.setItem('cookie-consent','accepted');document.getElementById('cookie-banner').classList.add('hidden');loadFonts();}
+function rejectCookies(){localStorage.setItem('cookie-consent','rejected');document.getElementById('cookie-banner').classList.add('hidden');}
+function openPrivacy(){document.getElementById('privacy-modal').classList.add('open');}
+function closePrivacy(){document.getElementById('privacy-modal').classList.remove('open');}
+document.getElementById('privacy-modal').addEventListener('click',function(e){if(e.target===this)closePrivacy();});
+const _consent=localStorage.getItem('cookie-consent');
+if(_consent==='accepted'){loadFonts();document.getElementById('cookie-banner').classList.add('hidden');}
+else if(_consent==='rejected'){document.getElementById('cookie-banner').classList.add('hidden');}
+
+})();
 </script>
 </body>
 </html>
