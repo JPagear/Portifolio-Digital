@@ -592,9 +592,7 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
         <p>Em paralelo, construi um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server, GPOs e Wazuh SIEM. Antes disso, três outros estágios deram-me a base — desde cabling e CCTV até automação com shell scripts. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA e grande parte da experiência prática veio de laboratório próprio e documentação técnica.</p>
       </div>
       <aside class="about-side reveal" data-delay="1">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:24px;margin-bottom:32px">
-          <img src="portifolio.jpg" alt="João Almeida" fetchpriority="high" style="width:200px;height:240px;border-radius:16px;border:2px solid var(--jade);box-shadow:0 0 32px rgba(0,168,120,.25);object-fit:cover;object-position:top">
-        </div>
+        <img src="portifolio.jpg" alt="João Almeida" fetchpriority="high" style="width:100%;max-width:280px;aspect-ratio:3/4;border-radius:16px;border:2px solid var(--jade);box-shadow:0 0 32px rgba(0,168,120,.2);object-fit:cover;object-position:top;display:block;margin:0 auto 28px">
         <dl>
           <div class="kv"><dt>nome</dt><dd>João Almeida</dd></div>
           <div class="kv"><dt>baseado</dt><dd>Vale de Cambra, Aveiro <span class="acc">/ PT</span></dd></div>
@@ -654,18 +652,19 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
     </header>
     <div class="stack-groups">
       <div class="stack-group reveal" data-cat="certs">
-        <h3>Em preparação <span class="count">02</span></h3>
-        <div class="chips">
-          <span class="chip"><span class="sw" style="background:#0078d4"></span>Microsoft AZ-900</span>
-          <span class="chip"><span class="sw" style="background:#ee0000"></span>Cisco CCNA (NetAcad)</span>
-        </div>
-      </div>
-      <div class="stack-group reveal" data-delay="1" data-cat="certs">
         <h3>Formação complementar <span class="count">03</span></h3>
         <div class="chips">
           <span class="chip"><span class="sw"></span>Wazuh Documentation &amp; Labs</span>
-          <span class="chip"><span class="sw"></span>Microsoft Learn (Azure &amp; Security)</span>
-          <span class="chip"><span class="sw"></span>Cisco NetAcad (Networking Basics)</span>
+          <span class="chip"><span class="sw"></span>Microsoft Learn — Azure &amp; Security</span>
+          <span class="chip"><span class="sw"></span>Cisco NetAcad — Networking Basics</span>
+        </div>
+      </div>
+      <div class="stack-group reveal" data-delay="1" data-cat="certs">
+        <h3>Plataformas de estudo <span class="count">03</span></h3>
+        <div class="chips">
+          <span class="chip"><span class="sw"></span>Microsoft Learn</span>
+          <span class="chip"><span class="sw"></span>Cisco Skills for All</span>
+          <span class="chip"><span class="sw"></span>Wazuh Official Docs</span>
         </div>
       </div>
     </div>
@@ -685,7 +684,8 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
       <button class="filter-btn" data-filter="curso">Curso <span class="n">10</span></button>
       <button class="filter-btn" data-filter="infra">Infraestrutura <span class="n">08</span></button>
       <button class="filter-btn" data-filter="dev">Dev &amp; Scripts <span class="n">04</span></button>
-      <button class="filter-btn" data-filter="estagio">Estágio <span class="n">03</span></button>
+      <button class="filter-btn" data-filter="estagio">Estágio <span class="n">01</span></button>
+      <button class="filter-btn" data-filter="individual">Individuais <span class="n">01</span></button>
     </div>
     <div class="projects" id="projects"></div>
   </section>
@@ -805,8 +805,8 @@ footer .sig{text-align:right;color:var(--mute);font-style:italic}
 /* PROJECTS */
 const PROJECTS = [
   {idx:'P_01',img:'Moliceiros.png',cat:'curso infra estagio',type:'infra',tags:['vpn','voip','zabbix','ospf','docker'],title:'Projeto Final RSI — Moliceiros da Ria',desc:'Infraestrutura empresarial completa multi-site com VLANs, OSPF, VPN site-to-site, VoIP com Asterisk, DHCP, DNS, NAT, Zabbix + Grafana e Docker.',year:'2025',phLabel:'MOLICEIROS DA RIA',links:[{label:'Relatório →',href:'Moliceiros da Ria.pdf'}]},
-  {idx:'P_02',img:'simoldestooldivision_logo.jpg',imgContain:true,cat:'estagio infra',type:'intern',tags:['wazuh','crowdstrike','fortigate','zabbix','nist','cisv8'],title:'Segurança &amp; Infra — Simoldes Tools',desc:'Hardening Wazuh SIEM em produção · 19 agentes ativos · CrowdStrike Falcon EDR via pipeline Python · FortiGate 4,7M+ alertas · Office 365 · CIS v8 · NIST SP 800-53 · 39 mapas Zabbix em 8 unidades industriais · Lab Hyper-V com AD e 36 GPOs.',year:'2026 · em curso',phLabel:'SIMOLDES · PROD',conf:true,metrics:[{v:'19',l:'agentes SIEM'},{v:'4.7M+',l:'alertas FortiGate'},{v:'39',l:'mapas Zabbix'}],links:[{label:'NDA · sob pedido',mute:true}]},
-  {idx:'P_02B',img:'luxtis.png',imgContain:true,cat:'estagio dev',type:'dev',tags:['react 19','vite','website'],title:'LUXTIS — Website Corporativo',desc:'Website corporativo para empresa de iluminações festivas. Desenvolvido com React 19 e Vite, com design responsivo e animações.',year:'2026',phLabel:'LUXTIS · REACT',links:[{label:'Ver Site →',href:'https://luxtis.pt/'}]},
+  {idx:'P_02',img:'simoldestooldivision_logo.jpg',imgContain:true,imgBg:'#ffffff',cat:'estagio infra curso',type:'intern',tags:['wazuh','crowdstrike','fortigate','zabbix','nist','cisv8'],title:'Segurança &amp; Infra — Simoldes Tools',desc:'Hardening Wazuh SIEM em produção · 19 agentes ativos · CrowdStrike Falcon EDR via pipeline Python · FortiGate 4,7M+ alertas · Office 365 · CIS v8 · NIST SP 800-53 · 39 mapas Zabbix em 8 unidades industriais · Lab Hyper-V com AD e 36 GPOs.',year:'Fev 2026 · Em curso',phLabel:'SIMOLDES · PROD',conf:true,metrics:[{v:'19',l:'agentes SIEM'},{v:'4.7M+',l:'alertas FortiGate'},{v:'39',l:'mapas Zabbix'}],links:[{label:'NDA · sob pedido',mute:true}]},
+  {idx:'P_02B',img:'luxtis.png',imgContain:true,cat:'individual dev',type:'dev',tags:['react 19','vite','website'],title:'LUXTIS — Website Corporativo',desc:'Website corporativo para empresa de iluminações festivas. Desenvolvido com React 19 e Vite, com design responsivo e animações.',year:'2026',phLabel:'LUXTIS · REACT',links:[{label:'Ver Site →',href:'https://luxtis.pt/'}]},
   {idx:'P_03',img:'administracao.png',cat:'curso infra',type:'infra',tags:['terraform','ansible','azure','nginx'],title:'Administração de Sistemas',desc:'Correção de credenciais expostas e config NGINX via Terraform/Ansible. Servidor DHCP Linux no Azure totalmente automatizado.',year:'2025',phLabel:'IaC · TERRAFORM',links:[{label:'Ex. 1 →',href:'https://github.com/JPagear/final_assignment-127140'},{label:'Ex. 2 →',href:'https://github.com/JPagear/127140-dhcp-azure'}]},
   {idx:'P_04',img:'Gemini_Generated_Image_k0aatfk0aatfk0aa.png',cat:'curso dev',type:'dev',tags:['sockets','threads','linux'],title:'Sistemas Operativos — Semáforos',desc:'Sistema distribuído de controlo de semáforos. Cliente-servidor sockets, multithreading e sincronização entre interseções.',year:'2024',phLabel:'SEMÁFOROS',links:[{label:'Relatório →',href:'André_Lima_João_Almeida_Relatório.pdf'},{label:'GitHub →',href:'https://github.com/JPagear/semaforos'}]},
   {idx:'P_05',img:'Gemini_Generated_Image_nf5j9znf5j9znf5j.png',cat:'curso dev',type:'dev',tags:['bash','backups','linux'],title:'Sistemas Operativos — Shell Script',desc:'Gestão de backups para servidores web. Verificação de integridade, controlo de espaço e log persistente.',year:'2024',phLabel:'BASH · BACKUPS',links:[{label:'Relatório →',href:'Relatório_Trabalho_Prático_JoãoAlmeida_AndréLima.pdf'},{label:'GitHub →',href:'https://github.com/JPagear/-gest-o-de-backups-'}]},
@@ -831,7 +831,8 @@ const ICONS = {
     const delay=(i%3===1)?'1':((i%3===2)?'2':'');
     const tags=p.tags.map(t=>`<span>${t}</span>`).join('');
     const links=p.links.map(l=>l.mute?`<span style="color:var(--mute)">${l.label}</span>`:`<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('');
-    const imgStyle=p.imgContain?'width:100%;height:100%;object-fit:contain;padding:16px;background:#060d09':'width:100%;height:100%;object-fit:cover';
+    const imgBg=p.imgBg||'#060d09';
+    const imgStyle=p.imgContain?`width:100%;height:100%;object-fit:contain;padding:16px;background:${imgBg}`:'width:100%;height:100%;object-fit:cover';
     const mediaInner=p.img
       ?`<img src="${p.img}" alt="${p.title}" style="${imgStyle}" loading="lazy">`
       :`<div class="ph">${ICONS[p.type]||ICONS.infra}<span>${p.phLabel}</span></div>`;
