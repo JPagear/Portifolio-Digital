@@ -19,8 +19,7 @@
     networking:     { pt: 'Redes',                    en: 'Networking' },
     development:    { pt: 'Desenvolvimento / Scripts', en: 'Development / Scripts' },
     web:            { pt: 'Web / Sites',              en: 'Web / Sites' },
-    academic:       { pt: 'Académico',                en: 'Academic' },
-    professional:   { pt: 'Profissional',             en: 'Professional' }
+    academic:       { pt: 'Académico',                en: 'Academic' }
   };
   const CONF = { pt: 'Confidencial', en: 'Confidential' };
 
