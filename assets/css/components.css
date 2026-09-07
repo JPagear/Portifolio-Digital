@@ -1,0 +1,104 @@
+/* ============================================================
+   components.css — cards de projeto, filtros, timeline,
+   listas chave-valor, stack, formulário
+   ============================================================ */
+
+/* ---------- FILTROS ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.filter-btn{font-family:var(--mono);font-size:12px;padding:7px 16px;border:1px solid var(--border);border-radius:999px;color:var(--text-secondary);transition:all .18s;letter-spacing:.02em}
+.filter-btn:hover{border-color:var(--muted);color:var(--text)}
+.filter-btn.active{background:var(--accent);color:#00170e;border-color:var(--accent)}
+.filter-btn .n{color:var(--muted);margin-left:5px;font-size:10px}
+.filter-btn.active .n{color:#065c3d}
+
+/* ---------- GRELHA DE PROJETOS ---------- */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,3.5vw,48px)}
+@media(max-width:720px){.projects-grid{grid-template-columns:1fr}}
+
+.pcard{display:flex;flex-direction:column;transition:opacity .2s}
+.pcard.hide{display:none}
+.pcard-media{aspect-ratio:16/10;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:18px}
+.pcard-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.pcard-media.contain img{object-fit:contain;padding:24px}
+.pcard:hover .pcard-media img{transform:scale(1.03)}
+.pcard-meta{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;display:flex;gap:10px;flex-wrap:wrap}
+.pcard-meta .cat{color:var(--accent)}
+.pcard-title{font-family:var(--serif);font-size:clamp(20px,2vw,24px);line-height:1.2;margin-bottom:8px}
+.pcard-title a:hover{color:var(--accent)}
+.pcard-desc{font-size:14px;line-height:1.7;color:var(--text-secondary);margin-bottom:12px;max-width:56ch}
+.pcard-tags{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:14px}
+.pcard-links{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;margin-top:auto}
+.pcard-links a{color:var(--accent)}
+.pcard-links a:hover{text-decoration:underline}
+.pcard-links .muted{color:var(--muted)}
+
+/* Selected work (home) — cards maiores, editoriais */
+.selected-grid{display:grid;gap:clamp(48px,6vw,80px)}
+.sel-card{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,64px);align-items:center}
+.sel-card:nth-child(even){grid-template-columns:.85fr 1.15fr}
+.sel-card:nth-child(even) .sel-media{order:2}
+@media(max-width:820px){.sel-card,.sel-card:nth-child(even){grid-template-columns:1fr}.sel-card:nth-child(even) .sel-media{order:0}}
+.sel-media{aspect-ratio:16/10;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.sel-media img{width:100%;height:100%;object-fit:cover}
+.sel-media.contain img{object-fit:contain;padding:32px}
+.sel-meta{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.sel-meta .cat{color:var(--accent)}
+.sel-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);line-height:1.15;margin-bottom:14px}
+.sel-title a:hover{color:var(--accent)}
+.sel-desc{font-size:15px;line-height:1.75;color:var(--text-secondary);margin-bottom:18px;max-width:52ch}
+.sel-tags{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:20px}
+
+/* ---------- TIMELINE ---------- */
+.timeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px)}
+@media(max-width:720px){.timeline-grid{grid-template-columns:1fr}}
+.tl-col h3{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:32px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--border)}
+.tl-item{position:relative;padding-bottom:40px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-26px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border)}
+.tl-item.current::before{border-color:var(--accent);background:var(--accent)}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase}
+.tl-title{font-family:var(--serif);font-size:20px;line-height:1.25;margin-bottom:3px}
+.tl-org{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+.tl-desc{font-size:14px;color:var(--text-secondary);line-height:1.7;max-width:48ch}
+
+/* ---------- LISTA CHAVE-VALOR ---------- */
+.kv-list{border-top:1px solid var(--border)}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--border);font-size:14px;gap:16px}
+.kv dt{color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+.kv dd{color:var(--text-secondary);text-align:right}
+.kv dd .acc{color:var(--accent)}
+
+/* ---------- STACK ---------- */
+.stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(32px,4vw,56px) clamp(32px,5vw,72px)}
+@media(max-width:640px){.stack-grid{grid-template-columns:1fr}}
+.stack-group h3{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.stack-group ul{list-style:none}
+.stack-group li{font-size:14.5px;color:var(--text-secondary);padding:7px 0;line-height:1.5}
+
+/* ---------- FORMULÁRIO ---------- */
+.cform{border:1px solid var(--border);border-radius:var(--r);padding:clamp(24px,3vw,40px);background:var(--surface)}
+.field{display:block;margin-bottom:18px}
+.field .lab{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
+.field input,.field textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:14px;padding:11px 14px;border-radius:var(--r);transition:border-color .18s;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:110px;line-height:1.5}
+.consent-row{display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:18px}
+.consent-row input{width:auto;margin-top:3px;accent-color:var(--accent);flex-shrink:0}
+.consent-row span{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.6}
+.consent-row a{color:var(--accent);text-decoration:underline;cursor:pointer}
+.submit{background:var(--accent);color:#00170e;padding:12px 24px;border-radius:var(--r);font-size:13px;font-weight:600;letter-spacing:.04em;transition:all .18s;display:inline-flex;align-items:center;gap:8px}
+.submit:hover{background:#2fd794}
+.submit:disabled{opacity:.6;cursor:wait}
+.form-status{font-family:var(--mono);font-size:12px;margin-top:12px;min-height:1.2em}
+.form-status.ok{color:var(--accent)}
+.form-status.err{color:#ff8a7a}
+
+/* ---------- LISTA DE CONTACTOS ---------- */
+.contact-list{list-style:none;border-top:1px solid var(--border)}
+.contact-list li{border-bottom:1px solid var(--border)}
+.contact-list a,.contact-list .row{display:grid;grid-template-columns:90px 1fr 20px;align-items:center;gap:12px;padding:16px 0;font-size:13.5px;color:var(--text);transition:padding .18s}
+.contact-list a:hover{padding-left:8px;color:var(--accent)}
+.contact-list .lbl{color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.contact-list .arr{color:var(--accent);text-align:right}

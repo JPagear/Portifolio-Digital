@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>About — João Almeida</title>
+<meta name="description" content="Sobre João Almeida: systems administration, infraestrutura e segurança defensiva. Experiência em produção industrial, laboratório próprio e aprendizagem autónoma."/>
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B0D0C">
+<meta property="og:title" content="About — João Almeida">
+<meta property="og:description" content="Systems administration, infraestrutura e segurança defensiva.">
+<meta property="og:image" content="https://jpagear.github.io/Portifolio-Digital/assets/images/portifolio.jpg">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://jpagear.github.io/Portifolio-Digital/about/">
+<link rel="canonical" href="https://jpagear.github.io/Portifolio-Digital/about/">
+<style id="font-fallback">body{font-family:Georgia,'Times New Roman',serif}</style>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/pages.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="../" class="nav-brand">João Almeida</a>
+  <nav class="nav-links" aria-label="Navegação principal">
+    <a href="../projects/">Projects</a>
+    <a href="../experience/">Experience</a>
+    <a href="./" aria-current="page">About</a>
+    <a href="../contact/">Contact</a>
+  </nav>
+  <a href="../assets/documents/cv-joao-almeida.pdf" class="nav-cv" download>Download CV ↗</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Navegação móvel">
+  <a href="../projects/">Projects</a>
+  <a href="../experience/">Experience</a>
+  <a href="./" aria-current="page">About</a>
+  <a href="../contact/">Contact</a>
+  <a href="../assets/documents/cv-joao-almeida.pdf" download>Download CV ↗</a>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="about-hero" aria-label="Sobre mim">
+  <div class="reveal">
+    <!-- Segunda fotografia pessoal. Colocar o ficheiro em assets/images/joao-about.jpg.
+         Enquanto não existir, main.js/onerror troca para portifolio.jpg como fallback. -->
+    <img src="../assets/images/joao-about.jpg" alt="João Almeida" class="about-photo" loading="lazy" id="about-photo">
+  </div>
+  <div class="reveal">
+    <p class="sec-label">About</p>
+    <h1 class="about-statement">I work at the intersection of <i>systems administration</i>, infrastructure and defensive security.</h1>
+    <div class="about-body">
+      <p>Atualmente em estágio curricular na <strong>Simoldes Tools</strong>, onde trabalho diretamente em ambiente de produção industrial. Fiz o hardening de um SIEM Wazuh com 19 agentes ativos, integrei o CrowdStrike Falcon EDR via pipeline Python, o FortiGate e o Office 365, e construi 39 mapas de rede Zabbix cobrindo 8 unidades industriais do Grupo Simoldes. Alinhamento com <strong>NIST SP 800-53</strong> e <strong>CIS v8</strong> em ambiente real.</p>
+      <p>Em paralelo, construi um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server, GPOs e Wazuh SIEM. Antes disso, três outros estágios deram-me a base — desde cabling e CCTV até automação com shell scripts. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA e grande parte da experiência prática veio de laboratório próprio e documentação técnica.</p>
+    </div>
+    <dl class="kv-list about-facts">
+      <div class="kv"><dt>Nome</dt><dd>João Almeida</dd></div>
+      <div class="kv"><dt>Localização</dt><dd>Vale de Cambra <span class="acc">· PT</span></dd></div>
+      <div class="kv"><dt>Estado</dt><dd>Open to opportunities</dd></div>
+      <div class="kv"><dt>Idiomas</dt><dd>PT (nativo) · EN (B1)</dd></div>
+    </dl>
+    <p class="about-cv"><a href="../assets/documents/cv-joao-almeida.pdf" download class="btn btn-outline">Download CV (PDF)</a></p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="stack-title">
+  <p class="sec-label reveal">Stack</p>
+  <h2 class="sec-title reveal" id="stack-title" style="font-size:clamp(24px,3vw,36px)">Tecnologias e <i>ferramentas</i>.</h2>
+  <div class="stack-grid">
+    <div class="stack-group reveal">
+      <h3>Infrastructure</h3>
+      <ul>
+        <li>Active Directory · GPOs</li>
+        <li>Windows Server · Linux</li>
+        <li>Hyper-V · Proxmox</li>
+        <li>DNS / DHCP · File Server</li>
+        <li>GLPI · Amazon Linux 2</li>
+      </ul>
+    </div>
+    <div class="stack-group reveal">
+      <h3>Security &amp; Monitoring</h3>
+      <ul>
+        <li>Wazuh SIEM</li>
+        <li>CrowdStrike Falcon</li>
+        <li>FortiGate</li>
+        <li>Zabbix · Grafana · Prometheus · Loki</li>
+        <li>NIST SP 800-53 · CIS v8</li>
+      </ul>
+    </div>
+    <div class="stack-group reveal">
+      <h3>Automation</h3>
+      <ul>
+        <li>Python · Bash</li>
+        <li>Terraform · Ansible</li>
+        <li>Docker</li>
+        <li>React · HCL</li>
+      </ul>
+    </div>
+    <div class="stack-group reveal">
+      <h3>Networking</h3>
+      <ul>
+        <li>TCP/IP · VLANs</li>
+        <li>OSPF</li>
+        <li>SNMP</li>
+        <li>VoIP / SIP</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">João Almeida</div>
+  <div class="footer-links">
+    <a href="https://github.com/JPagear" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:j.joao.almeida06@gmail.com">Email</a>
+    <span class="footer-priv" data-open-privacy>Privacidade</span>
+  </div>
+  <div style="font-size:11px">© 2026 João Almeida · Vale de Cambra</div>
+</footer>
+
+<script>window.SITE_ROOT='../';</script>
+<script src="../assets/js/main.js"></script>
+<script>
+/* Fallback: enquanto joao-about.jpg não existir, usa a fotografia atual. */
+(function(){
+  var img = document.getElementById('about-photo');
+  if (img) img.addEventListener('error', function(){ this.src = '../assets/images/portifolio.jpg'; }, { once: true });
+})();
+</script>
+</body>
+</html>

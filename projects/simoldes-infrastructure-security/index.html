@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Segurança &amp; Infra — Simoldes Tools · João Almeida</title>
+<meta name="description" content="Case study: hardening de SIEM Wazuh em produção com 19 agentes, CrowdStrike Falcon EDR, FortiGate, Office 365, 39 mapas Zabbix em 8 unidades industriais. CIS v8 e NIST SP 800-53."/>
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B0D0C">
+<meta property="og:title" content="Segurança &amp; Infra — Simoldes Tools · João Almeida">
+<meta property="og:description" content="Hardening Wazuh SIEM, CrowdStrike EDR, FortiGate e observabilidade Zabbix em ambiente de produção industrial.">
+<meta property="og:image" content="https://jpagear.github.io/Portifolio-Digital/assets/images/simoldestooldivision_logo.jpg">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jpagear.github.io/Portifolio-Digital/projects/simoldes-infrastructure-security/">
+<link rel="canonical" href="https://jpagear.github.io/Portifolio-Digital/projects/simoldes-infrastructure-security/">
+<style id="font-fallback">body{font-family:Georgia,'Times New Roman',serif}</style>
+<link rel="stylesheet" href="../../assets/css/global.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="../../" class="nav-brand">João Almeida</a>
+  <nav class="nav-links" aria-label="Navegação principal">
+    <a href="../" aria-current="page">Projects</a>
+    <a href="../../experience/">Experience</a>
+    <a href="../../about/">About</a>
+    <a href="../../contact/">Contact</a>
+  </nav>
+  <a href="../../assets/documents/cv-joao-almeida.pdf" class="nav-cv" download>Download CV ↗</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Navegação móvel">
+  <a href="../">Projects</a>
+  <a href="../../experience/">Experience</a>
+  <a href="../../about/">About</a>
+  <a href="../../contact/">Contact</a>
+  <a href="../../assets/documents/cv-joao-almeida.pdf" download>Download CV ↗</a>
+</nav>
+
+<main>
+<div class="wrap">
+
+<header class="cs-head">
+  <p class="cs-kicker reveal">Case Study · Estágio Profissional</p>
+  <h1 class="cs-title reveal">Segurança &amp; Infra — <i style="color:var(--accent)">Simoldes Tools</i></h1>
+  <p class="cs-lead reveal">Segurança defensiva e observabilidade em ambiente de produção industrial: hardening de um SIEM Wazuh em produção, integração de EDR, firewall e cloud, e monitorização de 8 unidades industriais do Grupo Simoldes.</p>
+</header>
+
+<figure class="cs-hero contain reveal" style="background:#fff">
+  <img src="../../assets/images/simoldestooldivision_logo.jpg" alt="Simoldes Tool Division">
+</figure>
+
+<dl class="cs-facts reveal">
+  <div class="cs-fact"><dt>Role</dt><dd>Estagiário Sysadmin</dd></div>
+  <div class="cs-fact"><dt>Year</dt><dd>Fev 2026 — Presente · 680h</dd></div>
+  <div class="cs-fact"><dt>Technologies</dt><dd>Wazuh · CrowdStrike Falcon · FortiGate · Zabbix · Office 365 · Hyper-V · Active Directory · Python</dd></div>
+  <div class="cs-fact"><dt>Context</dt><dd>Simoldes Tools · Oliveira de Azeméis · Produção industrial</dd></div>
+</dl>
+
+<div class="cs-metrics reveal">
+  <div class="cs-metric"><span class="v">19</span><span class="l">Agentes Wazuh em produção</span></div>
+  <div class="cs-metric"><span class="v">39</span><span class="l">Mapas de rede Zabbix</span></div>
+  <div class="cs-metric"><span class="v">8</span><span class="l">Unidades industriais</span></div>
+  <div class="cs-metric"><span class="v">4,7<span class="u">M+</span></span><span class="l">Alertas FortiGate analisados</span></div>
+</div>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">01</span>Context</h2>
+  <div class="cs-section-body">
+    <p>Estágio curricular na <strong>Simoldes Tools</strong> (Oliveira de Azeméis), com trabalho direto em ambiente de produção industrial do Grupo Simoldes. O foco: segurança defensiva, observabilidade e administração de sistemas em infraestrutura real.</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">02</span>Challenge</h2>
+  <div class="cs-section-body">
+    <p>Consolidar a monitorização de segurança e de rede de várias unidades industriais, endurecer o SIEM existente e integrar as diferentes fontes de telemetria — endpoint, firewall e cloud — num ambiente que não pode parar.</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">03</span>Architecture</h2>
+  <div class="cs-section-body">
+    <ul>
+      <li><strong>Wazuh SIEM</strong> em produção com 19 agentes ativos</li>
+      <li><strong>CrowdStrike Falcon EDR</strong> integrado via pipeline Python</li>
+      <li><strong>FortiGate</strong> e <strong>Office 365</strong> como fontes de eventos</li>
+      <li><strong>Zabbix</strong> — 39 mapas de rede cobrindo 8 unidades industriais</li>
+      <li>Laboratório <strong>Hyper-V</strong> com Active Directory e 36 GPOs</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">04</span>Implementation</h2>
+  <div class="cs-section-body">
+    <p>Hardening do SIEM Wazuh em produção e integração das fontes de dados: CrowdStrike Falcon EDR ligado por pipeline Python, ingestão de eventos FortiGate (4,7M+ alertas) e Office 365. Construção dos 39 mapas de rede Zabbix para as 8 unidades industriais do grupo.</p>
+    <p>Em paralelo, montagem de um laboratório Hyper-V completo — Active Directory, DNS/DHCP, File Server e 36 GPOs — para testar configurações antes de tocar em produção.</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">05</span>Monitoring &amp; Security</h2>
+  <div class="cs-section-body">
+    <p>Alinhamento das configurações e controlos com <strong>CIS v8</strong> e <strong>NIST SP 800-53</strong>, aplicado em ambiente real. Observabilidade de rede centralizada em Zabbix; deteção e resposta no endpoint com Wazuh + CrowdStrike.</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">06</span>Result</h2>
+  <div class="cs-section-body">
+    <p>Monitorização de segurança e de rede consolidada para 8 unidades industriais, SIEM endurecido com cobertura EDR, firewall e cloud, e um laboratório reproduzível para validar mudanças. 680 horas de trabalho em infraestrutura de produção.</p>
+  </div>
+</section>
+
+<p class="cs-note reveal">Certain implementation details and infrastructure diagrams are omitted due to confidentiality requirements.</p>
+
+<div class="cs-links reveal">
+  <span class="btn btn-ghost" style="cursor:default">NDA · detalhes sob pedido</span>
+  <a href="../../contact/" class="btn btn-outline">Contact →</a>
+</div>
+
+<nav class="cs-nav" aria-label="Navegação entre projetos">
+  <a href="../luxtis/">← LUXTIS</a>
+  <a href="../" class="all">All projects</a>
+  <a href="../moliceiros-da-ria/">Moliceiros da Ria →</a>
+</nav>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">João Almeida</div>
+  <div class="footer-links">
+    <a href="https://github.com/JPagear" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:j.joao.almeida06@gmail.com">Email</a>
+    <span class="footer-priv" data-open-privacy>Privacidade</span>
+  </div>
+  <div style="font-size:11px">© 2026 João Almeida · Vale de Cambra</div>
+</footer>
+
+<script>window.SITE_ROOT='../../';</script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

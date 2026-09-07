@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projeto Final RSI — Moliceiros da Ria · João Almeida</title>
+<meta name="description" content="Case study: infraestrutura empresarial multi-site com VLANs, OSPF, VPN site-to-site, VoIP com Asterisk, DHCP, DNS, NAT, Zabbix + Grafana e Docker. Projeto final do CTeSP RSI."/>
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B0D0C">
+<meta property="og:title" content="Projeto Final RSI — Moliceiros da Ria · João Almeida">
+<meta property="og:description" content="Infraestrutura empresarial multi-site: VLANs, OSPF, VPN, VoIP, Zabbix + Grafana e Docker.">
+<meta property="og:image" content="https://jpagear.github.io/Portifolio-Digital/assets/images/Moliceiros.png">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jpagear.github.io/Portifolio-Digital/projects/moliceiros-da-ria/">
+<link rel="canonical" href="https://jpagear.github.io/Portifolio-Digital/projects/moliceiros-da-ria/">
+<style id="font-fallback">body{font-family:Georgia,'Times New Roman',serif}</style>
+<link rel="stylesheet" href="../../assets/css/global.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="../../" class="nav-brand">João Almeida</a>
+  <nav class="nav-links" aria-label="Navegação principal">
+    <a href="../" aria-current="page">Projects</a>
+    <a href="../../experience/">Experience</a>
+    <a href="../../about/">About</a>
+    <a href="../../contact/">Contact</a>
+  </nav>
+  <a href="../../assets/documents/cv-joao-almeida.pdf" class="nav-cv" download>Download CV ↗</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Navegação móvel">
+  <a href="../">Projects</a>
+  <a href="../../experience/">Experience</a>
+  <a href="../../about/">About</a>
+  <a href="../../contact/">Contact</a>
+  <a href="../../assets/documents/cv-joao-almeida.pdf" download>Download CV ↗</a>
+</nav>
+
+<main>
+<div class="wrap">
+
+<header class="cs-head">
+  <p class="cs-kicker reveal">Case Study · Projeto Final CTeSP RSI</p>
+  <h1 class="cs-title reveal">Moliceiros <i style="color:var(--accent)">da Ria</i></h1>
+  <p class="cs-lead reveal">Infraestrutura empresarial completa multi-site: segmentação com VLANs, routing OSPF, VPN site-to-site, VoIP com Asterisk e monitorização com Zabbix + Grafana — o projeto final do CTeSP em Redes e Sistemas Informáticos.</p>
+</header>
+
+<figure class="cs-hero reveal">
+  <img src="../../assets/images/Moliceiros.png" alt="Topologia da infraestrutura Moliceiros da Ria">
+</figure>
+
+<dl class="cs-facts reveal">
+  <div class="cs-fact"><dt>Role</dt><dd>Projeto final de curso</dd></div>
+  <div class="cs-fact"><dt>Year</dt><dd>2025</dd></div>
+  <div class="cs-fact"><dt>Technologies</dt><dd>VLANs · OSPF · VPN · Asterisk · DHCP · DNS · NAT · Zabbix · Grafana · Docker</dd></div>
+  <div class="cs-fact"><dt>Context</dt><dd>CTeSP RSI · ESTGA — Universidade de Aveiro</dd></div>
+</dl>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">01</span>Context</h2>
+  <div class="cs-section-body">
+    <p>Projeto final do CTeSP em Redes e Sistemas Informáticos (ESTGA-UA): desenhar e implementar a infraestrutura de rede completa de uma empresa fictícia multi-site, a "Moliceiros da Ria".</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">02</span>Challenge</h2>
+  <div class="cs-section-body">
+    <p>Ligar vários sites de forma segura, com segmentação por departamento, comunicações de voz internas, serviços de rede essenciais e visibilidade sobre o estado de toda a infraestrutura.</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">03</span>Architecture</h2>
+  <div class="cs-section-body">
+    <ul>
+      <li>Segmentação com <strong>VLANs</strong> e routing dinâmico <strong>OSPF</strong></li>
+      <li><strong>VPN site-to-site</strong> entre as localizações</li>
+      <li>Serviços core: <strong>DHCP</strong>, <strong>DNS</strong> e <strong>NAT</strong></li>
+      <li><strong>VoIP</strong> com PBX Asterisk</li>
+      <li>Monitorização com <strong>Zabbix + Grafana</strong></li>
+      <li>Serviços em contentores <strong>Docker</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">04</span>Implementation</h2>
+  <div class="cs-section-body">
+    <p>Implementação de ponta a ponta: configuração da rede multi-site com VLANs e OSPF, túneis VPN site-to-site entre localizações, serviços DHCP/DNS/NAT, central VoIP com Asterisk, e serviços de suporte orquestrados em Docker.</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">05</span>Monitoring</h2>
+  <div class="cs-section-body">
+    <p>Monitorização centralizada da infraestrutura com <strong>Zabbix</strong> e dashboards em <strong>Grafana</strong>, dando visibilidade sobre o estado dos equipamentos e serviços em todos os sites.</p>
+  </div>
+</section>
+
+<section class="cs-section reveal">
+  <h2 class="cs-section-label"><span class="num">06</span>Result</h2>
+  <div class="cs-section-body">
+    <p>Uma infraestrutura empresarial multi-site funcional — rede segmentada, comunicações seguras entre sites, voz interna e monitorização — documentada em relatório técnico completo.</p>
+  </div>
+</section>
+
+<div class="cs-links reveal">
+  <a href="../../assets/documents/Moliceiros da Ria.pdf" target="_blank" rel="noopener" class="btn btn-outline">Relatório (PDF) ↗</a>
+</div>
+
+<nav class="cs-nav" aria-label="Navegação entre projetos">
+  <a href="../simoldes-infrastructure-security/">← Simoldes Tools</a>
+  <a href="../" class="all">All projects</a>
+  <a href="../luxtis/">LUXTIS →</a>
+</nav>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">João Almeida</div>
+  <div class="footer-links">
+    <a href="https://github.com/JPagear" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-almeida-it/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:j.joao.almeida06@gmail.com">Email</a>
+    <span class="footer-priv" data-open-privacy>Privacidade</span>
+  </div>
+  <div style="font-size:11px">© 2026 João Almeida · Vale de Cambra</div>
+</footer>
+
+<script>window.SITE_ROOT='../../';</script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
