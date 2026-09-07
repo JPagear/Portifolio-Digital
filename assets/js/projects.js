@@ -40,9 +40,11 @@
       const titleHTML = p.caseStudy
         ? `<a href="${ROOT}projects/${p.slug}/">${esc(title)}</a>`
         : esc(title);
+      const mediaStyle = p.imgBg ? ` style="background:${p.imgBg}"` : '';
+      const status = p.status ? `<span>${esc(p.status[lang] || p.status.pt)}</span>` : '';
       return `<article class="pcard reveal in" data-cat="${p.cats.join(' ')}">
-        <div class="pcard-media${p.imgContain ? ' contain' : ''}">${media}</div>
-        <p class="pcard-meta"><span class="cat">${esc(p.catLabel[lang] || p.catLabel.pt)}</span><span>${esc(p.year)}</span>${p.conf ? `<span>${CONF[lang]}</span>` : ''}</p>
+        <div class="pcard-media${p.imgContain ? ' contain' : ''}"${mediaStyle}>${media}</div>
+        <p class="pcard-meta"><span class="cat">${esc(p.catLabel[lang] || p.catLabel.pt)}</span><span>${esc(p.year)}</span>${status}${p.conf ? `<span>${CONF[lang]}</span>` : ''}</p>
         <h2 class="pcard-title">${titleHTML}</h2>
         <p class="pcard-desc">${esc(p.desc[lang] || p.desc.pt)}</p>
         <p class="pcard-tags">${p.tags.map(esc).join(' · ')}</p>

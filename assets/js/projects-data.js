@@ -26,6 +26,24 @@ window.PROJECTS = [
     ]
   },
   {
+    slug: 'madap',
+    img: 'assets/images/b657477973c506dcc1f7136326a248fc.webp',
+    imgContain: true,
+    imgBg: '#ffffff',
+    cats: ['development', 'professional'],
+    catLabel: { pt: 'Profissional', en: 'Professional' },
+    status: { pt: 'Em desenvolvimento', en: 'In development' },
+    tags: ['F#', 'Fable', 'React', 'Giraffe', 'PostgreSQL'],
+    title: { pt: 'MADAP Auto Parts & Rentals', en: 'MADAP Auto Parts & Rentals' },
+    desc: {
+      pt: 'Plataforma web para peças automóveis, aluguer e gestão interna, desenvolvida para uma empresa no Luxemburgo.',
+      en: 'Web platform for automotive parts, rentals and internal management, currently being developed for a company in Luxembourg.'
+    },
+    year: '2026',
+    caseStudy: true,
+    links: [{ label: { pt: 'Ver projeto', en: 'View project' }, slug: true }]
+  },
+  {
     slug: 'moliceiros-da-ria',
     img: 'assets/images/Moliceiros.png',
     cats: ['infrastructure', 'networking', 'academic'],
