@@ -1,5 +1,5 @@
 /* ============================================================
-   projects.js — render da grelha de projetos + filtros.
+   projects.js · render da grelha de projetos + filtros.
    Usado em /projects/. Requer projects-data.js e SITE_ROOT.
    ============================================================ */
 

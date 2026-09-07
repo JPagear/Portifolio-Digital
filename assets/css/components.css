@@ -1,5 +1,5 @@
 /* ============================================================
-   components.css — cards de projeto, filtros, timeline,
+   components.css · cards de projeto, filtros, timeline,
    listas chave-valor, stack, formulário
    ============================================================ */
 
@@ -32,7 +32,7 @@
 .pcard-links a:hover{text-decoration:underline}
 .pcard-links .muted{color:var(--muted)}
 
-/* Selected work (home) — cards maiores, editoriais */
+/* Selected work (home) · cards maiores, editoriais */
 .selected-grid{display:grid;gap:clamp(48px,6vw,80px)}
 .sel-card{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,64px);align-items:center}
 .sel-card:nth-child(even){grid-template-columns:.85fr 1.15fr}

@@ -1,5 +1,5 @@
 /* ============================================================
-   main.js — comportamento partilhado por todas as páginas:
+   main.js · comportamento partilhado por todas as páginas:
    nav, menu mobile, reveal, consentimento RGPD (cookies +
    Google Fonts), modal de privacidade.
    Requer: window.SITE_ROOT definido antes deste script
@@ -34,6 +34,49 @@
       hb.setAttribute('aria-expanded', 'false');
     }));
   }
+
+  /* ---------- IDIOMA PT / EN ---------- */
+  const NAV_I18N = {
+    'nav.projects':   { pt: 'Projetos',         en: 'Projects' },
+    'nav.experience': { pt: 'Experiência',      en: 'Experience' },
+    'nav.about':      { pt: 'Sobre',            en: 'About' },
+    'nav.contact':    { pt: 'Contacto',         en: 'Contact' },
+    'nav.cv':         { pt: 'Descarregar CV ↗', en: 'Download CV ↗' }
+  };
+  /* marca os elementos traduzíveis a partir do texto atual */
+  document.querySelectorAll('.nav-links a, .mobile-menu a, .nav-cv').forEach(el => {
+    const t = el.textContent.trim();
+    for (const key in NAV_I18N) {
+      if (NAV_I18N[key].pt === t || NAV_I18N[key].en === t) { el.dataset.i18n = key; break; }
+    }
+  });
+  function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const e = NAV_I18N[el.dataset.i18n];
+      if (e && e[lang]) el.textContent = e[lang];
+    });
+    document.querySelectorAll('.lang-switch button').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('site-lang', lang); } catch (e) {}
+  }
+  function makeLangSwitch() {
+    const d = document.createElement('div');
+    d.className = 'lang-switch';
+    d.setAttribute('role', 'group');
+    d.setAttribute('aria-label', 'Idioma / Language');
+    d.innerHTML = '<button type="button" data-lang="pt">PT</button><span aria-hidden="true">|</span><button type="button" data-lang="en">EN</button>';
+    d.addEventListener('click', e => {
+      const b = e.target.closest('button[data-lang]');
+      if (b) applyLang(b.dataset.lang);
+    });
+    return d;
+  }
+  const cvBtn = document.querySelector('.site-nav .nav-cv');
+  if (cvBtn) cvBtn.before(makeLangSwitch());
+  if (mm) mm.appendChild(makeLangSwitch());
+  let savedLang = 'pt';
+  try { savedLang = localStorage.getItem('site-lang') || 'pt'; } catch (e) {}
+  applyLang(savedLang === 'en' ? 'en' : 'pt');
 
   /* ---------- REVEAL ---------- */
   const rio = new IntersectionObserver(entries => {

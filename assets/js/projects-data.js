@@ -1,5 +1,5 @@
 /* ============================================================
-   projects-data.js — fonte única de dados dos projetos.
+   projects-data.js · fonte única de dados dos projetos.
    Paths relativos à raiz do site; prefixados com SITE_ROOT
    no momento do render (compatível com GitHub Pages em subdiretório).
    ============================================================ */
@@ -12,7 +12,7 @@ window.PROJECTS = [
     cats: ['infrastructure', 'security', 'professional'],
     catLabel: 'Infrastructure · Security',
     tags: ['Wazuh', 'CrowdStrike', 'FortiGate', 'Zabbix', 'NIST SP 800-53', 'CIS v8'],
-    title: 'Segurança & Infra — Simoldes Tools',
+    title: 'Segurança & Infra · Simoldes Tools',
     desc: 'Hardening Wazuh SIEM em produção com 19 agentes ativos. CrowdStrike Falcon EDR via pipeline Python. FortiGate, Office 365, CIS v8 e NIST SP 800-53. 39 mapas Zabbix em 8 unidades industriais.',
     year: '2026 · Em curso',
     conf: true,
@@ -25,7 +25,7 @@ window.PROJECTS = [
     cats: ['infrastructure', 'networking', 'academic'],
     catLabel: 'Infrastructure · Networking',
     tags: ['VPN', 'VoIP', 'Zabbix', 'OSPF', 'Docker'],
-    title: 'Projeto Final RSI — Moliceiros da Ria',
+    title: 'Projeto Final RSI · Moliceiros da Ria',
     desc: 'Infraestrutura empresarial completa multi-site com VLANs, OSPF, VPN site-to-site, VoIP com Asterisk, DHCP, DNS, NAT, Zabbix + Grafana e Docker.',
     year: '2025',
     caseStudy: true,
@@ -38,7 +38,7 @@ window.PROJECTS = [
     cats: ['development', 'professional'],
     catLabel: 'Development',
     tags: ['React 19', 'Vite', 'Website'],
-    title: 'LUXTIS — Website Corporativo',
+    title: 'LUXTIS · Website Corporativo',
     desc: 'Website corporativo para empresa de iluminações festivas. Desenvolvido com React 19 e Vite, com design responsivo e animações.',
     year: '2026',
     caseStudy: true,
@@ -62,7 +62,7 @@ window.PROJECTS = [
     cats: ['development', 'academic'],
     catLabel: 'Development',
     tags: ['Sockets', 'Threads', 'Linux'],
-    title: 'Sistemas Operativos — Semáforos',
+    title: 'Sistemas Operativos · Semáforos',
     desc: 'Sistema distribuído de controlo de semáforos. Cliente-servidor via sockets, multithreading e sincronização entre interseções em ambiente Linux.',
     year: '2024',
     links: [
@@ -75,7 +75,7 @@ window.PROJECTS = [
     cats: ['development', 'academic'],
     catLabel: 'Development',
     tags: ['Bash', 'Backups', 'Linux'],
-    title: 'Sistemas Operativos — Shell Script',
+    title: 'Sistemas Operativos · Shell Script',
     desc: 'Sistema de gestão de backups com verificação de integridade, controlo de espaço em disco e log persistente de operações.',
     year: '2024',
     links: [
@@ -88,7 +88,7 @@ window.PROJECTS = [
     cats: ['development', 'academic'],
     catLabel: 'Development',
     tags: ['Python', 'RFID', 'API'],
-    title: 'Programação Aplicada — Weather2Travel',
+    title: 'Programação Aplicada · Weather2Travel',
     desc: 'Aplicação Python com login por cartão RFID e previsão meteorológica via API do IPMA. Interface CustomTkinter e base de dados de utilizadores.',
     year: '2024',
     links: [
@@ -101,7 +101,7 @@ window.PROJECTS = [
     cats: ['development', 'academic'],
     catLabel: 'Development',
     tags: ['Microserviços', 'Docker', 'Prometheus', 'Loki'],
-    title: 'Sistemas Distribuídos — Microserviços',
+    title: 'Sistemas Distribuídos · Microserviços',
     desc: 'Sistema de gestão de pedidos com API Gateway, REST, Prometheus, Grafana e Loki, orquestrado com Docker Compose.',
     year: '2025',
     links: [
@@ -114,7 +114,7 @@ window.PROJECTS = [
     cats: ['infrastructure', 'networking', 'academic'],
     catLabel: 'Infrastructure · Networking',
     tags: ['Asterisk', 'SIP', 'RADIUS'],
-    title: 'VoIP — Asterisk, DNS & RADIUS',
+    title: 'VoIP · Asterisk, DNS & RADIUS',
     desc: 'Infraestrutura VoIP com PBX Asterisk, DNS via Bind9, autenticação FreeRADIUS e terminais SIP.',
     year: '2025',
     links: [{ label: 'Relatório', href: 'assets/documents/RELATÓRIO infraestrutura Voip.pdf' }]
@@ -134,7 +134,7 @@ window.PROJECTS = [
     cats: ['networking', 'academic'],
     catLabel: 'Networking',
     tags: ['TCP/IP', 'DHCP', 'DNS', 'NAT'],
-    title: 'Fundamentos de Rede — Universitária',
+    title: 'Fundamentos de Rede · Universitária',
     desc: 'Rede universitária segmentada por departamentos com sub-redes IPv4, DHCP, DNS, NAT, FTP, servidor web/email, RIP e datacenter central.',
     year: '2024',
     links: [{ label: 'Relatório', href: 'assets/documents/Relatório_projetofinal_fundamentosderedes4.pdf' }]
@@ -144,7 +144,7 @@ window.PROJECTS = [
     cats: ['networking', 'academic'],
     catLabel: 'Networking',
     tags: ['VLANs', 'OSPF', 'GNS3'],
-    title: 'Planeamento de Redes — BikeParts',
+    title: 'Planeamento de Redes · BikeParts',
     desc: 'Rede multi-edifício com VLANs por departamento, OSPF, NAT, redes guest isoladas e arquitetura em camadas simulada em GNS3.',
     year: '2025',
     links: [{ label: 'Relatório', href: 'assets/documents/Relatório_projetofinal_PlaneamentoRedes_Andrelima_JoaoAlmeida-1.pdf' }]
@@ -154,7 +154,7 @@ window.PROJECTS = [
     cats: ['infrastructure', 'networking', 'academic'],
     catLabel: 'Infrastructure · Networking',
     tags: ['Zabbix', 'Prometheus', 'SNMP'],
-    title: 'Gestão de Redes — Zabbix vs Prometheus',
+    title: 'Gestão de Redes · Zabbix vs Prometheus',
     desc: 'Análise comparativa entre Zabbix e Prometheus com SNMP, ICMP e APIs, e implementação prática com alertas e métricas.',
     year: '2025',
     links: [{ label: 'Relatório', href: 'assets/documents/Projeto de Gestão de Rede.pdf' }]
