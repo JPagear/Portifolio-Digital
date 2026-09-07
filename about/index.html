@@ -23,7 +23,7 @@
 <body>
 
 <header class="site-nav">
-  <a href="../" class="nav-brand" aria-label="João Almeida · Home"><img src="../assets/images/797692869_1540294297392904_3485162081743802885_n.jpg" alt="" class="brand-logo"><span>João Almeida</span></a>
+  <a href="../" class="nav-brand" aria-label="João Almeida · Home"><span class="nav-dot" aria-hidden="true"></span><span>João Almeida</span></a>
   <nav class="nav-links" aria-label="Navegação principal">
     <a href="../projects/">Projects</a>
     <a href="../experience/">Experience</a>
@@ -47,34 +47,42 @@
 <section class="about-hero" aria-label="Sobre mim">
   <div class="reveal">
     <!-- Segunda fotografia pessoal. Colocar o ficheiro em assets/images/joao-about.jpg.
-         Enquanto não existir, main.js/onerror troca para portifolio.jpg como fallback. -->
+         Enquanto não existir, o fallback troca para portifolio.jpg. -->
     <img src="../assets/images/joao-about.jpg" alt="João Almeida" class="about-photo" loading="lazy" id="about-photo">
   </div>
   <div class="reveal">
-    <p class="sec-label">About</p>
-    <h1 class="about-statement">I work at the intersection of <i>systems administration</i>, infrastructure and defensive security.</h1>
+    <p class="sec-label"><span data-lang-pt>Sobre</span><span data-lang-en hidden>About</span></p>
+    <h1 class="about-statement"><span data-lang-pt>Trabalho na interseção de <i>administração de sistemas</i>, infraestrutura e segurança defensiva.</span><span data-lang-en hidden>I work at the intersection of <i>systems administration</i>, infrastructure and defensive security.</span></h1>
     <div class="about-body">
-      <p>Durante o estágio curricular na <strong>Simoldes Tools</strong> (fevereiro–junho de 2026), trabalhei em ambiente de produção industrial: implementação e configuração de um SIEM Wazuh, integração de fontes externas como VirusTotal, Office 365, FortiGate e Docker, e desenvolvimento de dashboards OpenSearch para monitorização de vulnerabilidades. Fiz também gestão de infraestrutura virtualizada em Hyper-V, administração de servidores Windows e Linux, e mapeamento de rede com Zabbix, com alinhamento ao framework <strong>NIS2</strong>.</p>
-      <p>Mais recentemente, integrei a equipa de Sistemas e Cibersegurança da <strong>BaseTx Consulting</strong>, com foco em infraestruturas Microsoft, SQL Server, firewalls empresariais (Endian, IPFire, WatchGuard) e segmentação de rede.</p>
-      <p>Em paralelo, construí um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server e GPOs, documentado de forma independente. Antes disso, três outros estágios deram-me a base, desde cabling e CCTV até suporte técnico presencial. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA, e grande parte da experiência prática veio de laboratório próprio e documentação técnica.</p>
-      <p>Atualmente disponível para novas oportunidades.</p>
+      <div data-lang-pt>
+        <p>Durante o estágio curricular na <strong>Simoldes Tools</strong> (fevereiro–junho de 2026), trabalhei em ambiente de produção industrial: implementação e configuração de um SIEM Wazuh, integração de fontes externas como VirusTotal, Office 365, FortiGate e Docker, e desenvolvimento de dashboards OpenSearch para monitorização de vulnerabilidades. Fiz também gestão de infraestrutura virtualizada em Hyper-V, administração de servidores Windows e Linux, e mapeamento de rede com Zabbix, com alinhamento ao framework <strong>NIS2</strong>.</p>
+        <p>Mais recentemente, integrei a equipa de Sistemas e Cibersegurança da <strong>BaseTx Consulting</strong>, com foco em infraestruturas Microsoft, SQL Server, firewalls empresariais (Endian, IPFire, WatchGuard) e segmentação de rede.</p>
+        <p>Em paralelo, construí um laboratório Hyper-V completo com Active Directory, DNS/DHCP, File Server e GPOs, documentado de forma independente. Antes disso, três outros estágios deram-me a base, desde cabling e CCTV até suporte técnico presencial. Estudo <strong>CTeSP em Redes e Sistemas Informáticos</strong> na ESTGA-UA, e grande parte da experiência prática veio de laboratório próprio e documentação técnica.</p>
+        <p>Atualmente disponível para novas oportunidades.</p>
+      </div>
+      <div data-lang-en hidden>
+        <p>During my curricular internship at <strong>Simoldes Tools</strong> (February–June 2026), I worked in an industrial production environment: deployment and configuration of a Wazuh SIEM, integration of external sources such as VirusTotal, Office 365, FortiGate and Docker, and development of OpenSearch dashboards for vulnerability monitoring. I also managed virtualized infrastructure on Hyper-V, administered Windows and Linux servers, and mapped the network with Zabbix, aligned with the <strong>NIS2</strong> framework.</p>
+        <p>More recently, I joined the Systems and Cybersecurity team at <strong>BaseTx Consulting</strong>, focused on Microsoft infrastructures, SQL Server, enterprise firewalls (Endian, IPFire, WatchGuard) and network segmentation.</p>
+        <p>In parallel, I built a complete Hyper-V lab with Active Directory, DNS/DHCP, File Server and GPOs, independently documented. Before that, three other internships gave me the foundation, from cabling and CCTV to on-site technical support. I study <strong>CTeSP in Computer Networks and Systems</strong> at ESTGA-UA, and much of my hands-on experience came from my own lab and technical documentation.</p>
+        <p>Currently open to new opportunities.</p>
+      </div>
     </div>
     <dl class="kv-list about-facts">
-      <div class="kv"><dt>Nome</dt><dd>João Almeida</dd></div>
-      <div class="kv"><dt>Localização</dt><dd>Vale de Cambra <span class="acc">· PT</span></dd></div>
-      <div class="kv"><dt>Estado</dt><dd>Open to opportunities</dd></div>
-      <div class="kv"><dt>Idiomas</dt><dd>PT (nativo) · EN (B1)</dd></div>
+      <div class="kv"><dt><span data-lang-pt>Nome</span><span data-lang-en hidden>Name</span></dt><dd>João Almeida</dd></div>
+      <div class="kv"><dt><span data-lang-pt>Localização</span><span data-lang-en hidden>Location</span></dt><dd>Vale de Cambra <span class="acc">· PT</span></dd></div>
+      <div class="kv"><dt><span data-lang-pt>Estado</span><span data-lang-en hidden>Status</span></dt><dd><span data-lang-pt>Disponível para novas oportunidades</span><span data-lang-en hidden>Open to opportunities</span></dd></div>
+      <div class="kv"><dt><span data-lang-pt>Idiomas</span><span data-lang-en hidden>Languages</span></dt><dd><span data-lang-pt>PT (nativo) · EN (B1)</span><span data-lang-en hidden>PT (native) · EN (B1)</span></dd></div>
     </dl>
-    <p class="about-cv"><a href="../assets/documents/cv-joao-almeida.pdf" download class="btn btn-outline">Download CV (PDF)</a></p>
+    <p class="about-cv"><a href="../assets/documents/cv-joao-almeida.pdf" download class="btn btn-outline"><span data-lang-pt>Descarregar CV (PDF)</span><span data-lang-en hidden>Download CV (PDF)</span></a></p>
   </div>
 </section>
 
 <section class="section" aria-labelledby="stack-title">
   <p class="sec-label reveal">Stack</p>
-  <h2 class="sec-title reveal" id="stack-title" style="font-size:clamp(24px,3vw,36px)">Tecnologias e <i>ferramentas</i>.</h2>
+  <h2 class="sec-title reveal" id="stack-title" style="font-size:clamp(24px,3vw,36px)"><span data-lang-pt>Tecnologias e <i>ferramentas</i>.</span><span data-lang-en hidden>Technologies and <i>tools</i>.</span></h2>
   <div class="stack-grid">
     <div class="stack-group reveal">
-      <h3>Infrastructure</h3>
+      <h3><span data-lang-pt>Infraestrutura</span><span data-lang-en hidden>Infrastructure</span></h3>
       <ul>
         <li>Active Directory · GPOs</li>
         <li>Windows Server · Linux</li>
@@ -84,7 +92,7 @@
       </ul>
     </div>
     <div class="stack-group reveal">
-      <h3>Security &amp; Monitoring</h3>
+      <h3><span data-lang-pt>Segurança &amp; Monitorização</span><span data-lang-en hidden>Security &amp; Monitoring</span></h3>
       <ul>
         <li>Wazuh SIEM</li>
         <li>CrowdStrike Falcon</li>
@@ -94,7 +102,7 @@
       </ul>
     </div>
     <div class="stack-group reveal">
-      <h3>Automation</h3>
+      <h3><span data-lang-pt>Automação</span><span data-lang-en hidden>Automation</span></h3>
       <ul>
         <li>Python · Bash</li>
         <li>Terraform · Ansible</li>
@@ -103,7 +111,7 @@
       </ul>
     </div>
     <div class="stack-group reveal">
-      <h3>Networking</h3>
+      <h3><span data-lang-pt>Redes</span><span data-lang-en hidden>Networking</span></h3>
       <ul>
         <li>TCP/IP · VLANs</li>
         <li>OSPF</li>

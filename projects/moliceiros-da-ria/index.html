@@ -23,7 +23,7 @@
 <body>
 
 <header class="site-nav">
-  <a href="../../" class="nav-brand" aria-label="João Almeida · Home"><img src="../../assets/images/797692869_1540294297392904_3485162081743802885_n.jpg" alt="" class="brand-logo"><span>João Almeida</span></a>
+  <a href="../../" class="nav-brand" aria-label="João Almeida · Home"><span class="nav-dot" aria-hidden="true"></span><span>João Almeida</span></a>
   <nav class="nav-links" aria-label="Navegação principal">
     <a href="../" aria-current="page">Projects</a>
     <a href="../../experience/">Experience</a>
@@ -45,9 +45,9 @@
 <div class="wrap">
 
 <header class="cs-head">
-  <p class="cs-kicker reveal">Case Study · Projeto Final CTeSP RSI</p>
+  <p class="cs-kicker reveal"><span data-lang-pt>Case Study · Projeto Final CTeSP RSI</span><span data-lang-en hidden>Case Study · CTeSP RSI Final Project</span></p>
   <h1 class="cs-title reveal">Moliceiros <i style="color:var(--accent)">da Ria</i></h1>
-  <p class="cs-lead reveal">Infraestrutura empresarial completa multi-site: segmentação com VLANs, routing OSPF, VPN site-to-site, VoIP com Asterisk e monitorização com Zabbix + Grafana. O projeto final do CTeSP em Redes e Sistemas Informáticos.</p>
+  <p class="cs-lead reveal"><span data-lang-pt>Infraestrutura empresarial completa multi-site: segmentação com VLANs, routing OSPF, VPN site-to-site, VoIP com Asterisk e monitorização com Zabbix + Grafana. O projeto final do CTeSP em Redes e Sistemas Informáticos.</span><span data-lang-en hidden>Complete multi-site enterprise infrastructure: VLAN segmentation, OSPF routing, site-to-site VPN, VoIP with Asterisk and monitoring with Zabbix + Grafana. The final project of the CTeSP in Computer Networks and Systems.</span></p>
 </header>
 
 <figure class="cs-hero reveal">
@@ -55,30 +55,32 @@
 </figure>
 
 <dl class="cs-facts reveal">
-  <div class="cs-fact"><dt>Role</dt><dd>Projeto final de curso</dd></div>
-  <div class="cs-fact"><dt>Year</dt><dd>2025</dd></div>
-  <div class="cs-fact"><dt>Technologies</dt><dd>VLANs · OSPF · VPN · Asterisk · DHCP · DNS · NAT · Zabbix · Grafana · Docker</dd></div>
-  <div class="cs-fact"><dt>Context</dt><dd>CTeSP RSI · ESTGA · Universidade de Aveiro</dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Função</span><span data-lang-en hidden>Role</span></dt><dd><span data-lang-pt>Projeto final de curso</span><span data-lang-en hidden>Final course project</span></dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Ano</span><span data-lang-en hidden>Year</span></dt><dd>2025</dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Tecnologias</span><span data-lang-en hidden>Technologies</span></dt><dd>VLANs · OSPF · VPN · Asterisk · DHCP · DNS · NAT · Zabbix · Grafana · Docker</dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Contexto</span><span data-lang-en hidden>Context</span></dt><dd><span data-lang-pt>CTeSP RSI · ESTGA · Universidade de Aveiro</span><span data-lang-en hidden>CTeSP RSI · ESTGA · University of Aveiro</span></dd></div>
 </dl>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">01</span>Context</h2>
+  <h2 class="cs-section-label"><span class="num">01</span><span data-lang-pt>Contexto</span><span data-lang-en hidden>Context</span></h2>
   <div class="cs-section-body">
-    <p>Projeto final do CTeSP em Redes e Sistemas Informáticos (ESTGA-UA): desenhar e implementar a infraestrutura de rede completa de uma empresa fictícia multi-site, a "Moliceiros da Ria".</p>
+    <p data-lang-pt>Projeto final do CTeSP em Redes e Sistemas Informáticos (ESTGA-UA): desenhar e implementar a infraestrutura de rede completa de uma empresa fictícia multi-site, a "Moliceiros da Ria".</p>
+    <p data-lang-en hidden>Final project of the CTeSP in Computer Networks and Systems (ESTGA-UA): design and implement the complete network infrastructure of a fictional multi-site company, "Moliceiros da Ria".</p>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">02</span>Challenge</h2>
+  <h2 class="cs-section-label"><span class="num">02</span><span data-lang-pt>Desafio</span><span data-lang-en hidden>Challenge</span></h2>
   <div class="cs-section-body">
-    <p>Ligar vários sites de forma segura, com segmentação por departamento, comunicações de voz internas, serviços de rede essenciais e visibilidade sobre o estado de toda a infraestrutura.</p>
+    <p data-lang-pt>Ligar vários sites de forma segura, com segmentação por departamento, comunicações de voz internas, serviços de rede essenciais e visibilidade sobre o estado de toda a infraestrutura.</p>
+    <p data-lang-en hidden>Connect multiple sites securely, with per-department segmentation, internal voice communications, essential network services and visibility over the state of the whole infrastructure.</p>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">03</span>Architecture</h2>
+  <h2 class="cs-section-label"><span class="num">03</span><span data-lang-pt>Arquitetura</span><span data-lang-en hidden>Architecture</span></h2>
   <div class="cs-section-body">
-    <ul>
+    <ul data-lang-pt>
       <li>Segmentação com <strong>VLANs</strong> e routing dinâmico <strong>OSPF</strong></li>
       <li><strong>VPN site-to-site</strong> entre as localizações</li>
       <li>Serviços core: <strong>DHCP</strong>, <strong>DNS</strong> e <strong>NAT</strong></li>
@@ -86,37 +88,48 @@
       <li>Monitorização com <strong>Zabbix + Grafana</strong></li>
       <li>Serviços em contentores <strong>Docker</strong></li>
     </ul>
+    <ul data-lang-en hidden>
+      <li>Segmentation with <strong>VLANs</strong> and dynamic <strong>OSPF</strong> routing</li>
+      <li><strong>Site-to-site VPN</strong> between locations</li>
+      <li>Core services: <strong>DHCP</strong>, <strong>DNS</strong> and <strong>NAT</strong></li>
+      <li><strong>VoIP</strong> with Asterisk PBX</li>
+      <li>Monitoring with <strong>Zabbix + Grafana</strong></li>
+      <li>Services in <strong>Docker</strong> containers</li>
+    </ul>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">04</span>Implementation</h2>
+  <h2 class="cs-section-label"><span class="num">04</span><span data-lang-pt>Implementação</span><span data-lang-en hidden>Implementation</span></h2>
   <div class="cs-section-body">
-    <p>Implementação de ponta a ponta: configuração da rede multi-site com VLANs e OSPF, túneis VPN site-to-site entre localizações, serviços DHCP/DNS/NAT, central VoIP com Asterisk, e serviços de suporte orquestrados em Docker.</p>
+    <p data-lang-pt>Implementação de ponta a ponta: configuração da rede multi-site com VLANs e OSPF, túneis VPN site-to-site entre localizações, serviços DHCP/DNS/NAT, central VoIP com Asterisk, e serviços de suporte orquestrados em Docker.</p>
+    <p data-lang-en hidden>End-to-end implementation: multi-site network configuration with VLANs and OSPF, site-to-site VPN tunnels between locations, DHCP/DNS/NAT services, a VoIP exchange with Asterisk, and supporting services orchestrated in Docker.</p>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">05</span>Monitoring</h2>
+  <h2 class="cs-section-label"><span class="num">05</span><span data-lang-pt>Monitorização</span><span data-lang-en hidden>Monitoring</span></h2>
   <div class="cs-section-body">
-    <p>Monitorização centralizada da infraestrutura com <strong>Zabbix</strong> e dashboards em <strong>Grafana</strong>, dando visibilidade sobre o estado dos equipamentos e serviços em todos os sites.</p>
+    <p data-lang-pt>Monitorização centralizada da infraestrutura com <strong>Zabbix</strong> e dashboards em <strong>Grafana</strong>, dando visibilidade sobre o estado dos equipamentos e serviços em todos os sites.</p>
+    <p data-lang-en hidden>Centralized infrastructure monitoring with <strong>Zabbix</strong> and <strong>Grafana</strong> dashboards, giving visibility over the state of devices and services across all sites.</p>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">06</span>Result</h2>
+  <h2 class="cs-section-label"><span class="num">06</span><span data-lang-pt>Resultado</span><span data-lang-en hidden>Result</span></h2>
   <div class="cs-section-body">
-    <p>Uma infraestrutura empresarial multi-site funcional (rede segmentada, comunicações seguras entre sites, voz interna e monitorização), documentada em relatório técnico completo.</p>
+    <p data-lang-pt>Uma infraestrutura empresarial multi-site funcional (rede segmentada, comunicações seguras entre sites, voz interna e monitorização), documentada em relatório técnico completo.</p>
+    <p data-lang-en hidden>A working multi-site enterprise infrastructure (segmented network, secure inter-site communications, internal voice and monitoring), documented in a complete technical report.</p>
   </div>
 </section>
 
 <div class="cs-links reveal">
-  <a href="../../assets/documents/Moliceiros da Ria.pdf" target="_blank" rel="noopener" class="btn btn-outline">Relatório (PDF) ↗</a>
+  <a href="../../assets/documents/Moliceiros da Ria.pdf" target="_blank" rel="noopener" class="btn btn-outline"><span data-lang-pt>Relatório (PDF) ↗</span><span data-lang-en hidden>Report (PDF) ↗</span></a>
 </div>
 
 <nav class="cs-nav" aria-label="Navegação entre projetos">
   <a href="../simoldes-infrastructure-security/">← Simoldes Tools</a>
-  <a href="../" class="all">All projects</a>
+  <a href="../" class="all"><span data-lang-pt>Todos os projetos</span><span data-lang-en hidden>All projects</span></a>
   <a href="../luxtis/">LUXTIS →</a>
 </nav>
 

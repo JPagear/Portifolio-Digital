@@ -4,12 +4,12 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Segurança &amp; Infra · Simoldes Tools · João Almeida</title>
-<meta name="description" content="Case study: hardening de SIEM Wazuh em produção com 19 agentes, CrowdStrike Falcon EDR, FortiGate, Office 365, 39 mapas Zabbix em 8 unidades industriais. CIS v8 e NIST SP 800-53."/>
+<meta name="description" content="Case study: implementação e hardening de SIEM Wazuh em produção com 19 agentes, VirusTotal, FortiGate, Office 365, dashboards OpenSearch, 39 mapas Zabbix em 8 unidades industriais. NIS2."/>
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
 <meta property="og:title" content="Segurança &amp; Infra · Simoldes Tools · João Almeida">
-<meta property="og:description" content="Hardening Wazuh SIEM, CrowdStrike EDR, FortiGate e observabilidade Zabbix em ambiente de produção industrial.">
+<meta property="og:description" content="Wazuh SIEM, EDR, FortiGate e observabilidade Zabbix em ambiente de produção industrial.">
 <meta property="og:image" content="https://jpagear.github.io/Portifolio-Digital/assets/images/simoldestooldivision_logo.jpg">
 <meta property="og:locale" content="pt_PT">
 <meta property="og:type" content="article">
@@ -23,7 +23,7 @@
 <body>
 
 <header class="site-nav">
-  <a href="../../" class="nav-brand" aria-label="João Almeida · Home"><img src="../../assets/images/797692869_1540294297392904_3485162081743802885_n.jpg" alt="" class="brand-logo"><span>João Almeida</span></a>
+  <a href="../../" class="nav-brand" aria-label="João Almeida · Home"><span class="nav-dot" aria-hidden="true"></span><span>João Almeida</span></a>
   <nav class="nav-links" aria-label="Navegação principal">
     <a href="../" aria-current="page">Projects</a>
     <a href="../../experience/">Experience</a>
@@ -45,9 +45,9 @@
 <div class="wrap">
 
 <header class="cs-head">
-  <p class="cs-kicker reveal">Case Study · Estágio Profissional</p>
-  <h1 class="cs-title reveal">Segurança &amp; Infra · <i style="color:var(--accent)">Simoldes Tools</i></h1>
-  <p class="cs-lead reveal">Segurança defensiva e observabilidade em ambiente de produção industrial: hardening de um SIEM Wazuh em produção, integração de EDR, firewall e cloud, e monitorização de 8 unidades industriais do Grupo Simoldes.</p>
+  <p class="cs-kicker reveal"><span data-lang-pt>Case Study · Estágio Profissional</span><span data-lang-en hidden>Case Study · Professional Internship</span></p>
+  <h1 class="cs-title reveal"><span data-lang-pt>Segurança &amp; Infra · <i style="color:var(--accent)">Simoldes Tools</i></span><span data-lang-en hidden>Security &amp; Infra · <i style="color:var(--accent)">Simoldes Tools</i></span></h1>
+  <p class="cs-lead reveal"><span data-lang-pt>Segurança defensiva e observabilidade em ambiente de produção industrial: implementação e hardening de um SIEM Wazuh em produção, integração de fontes externas e monitorização de 8 unidades industriais do Grupo Simoldes.</span><span data-lang-en hidden>Defensive security and observability in an industrial production environment: deployment and hardening of a production Wazuh SIEM, integration of external sources and monitoring of 8 industrial units of the Simoldes Group.</span></p>
 </header>
 
 <figure class="cs-hero contain reveal" style="background:#fff">
@@ -55,78 +55,95 @@
 </figure>
 
 <dl class="cs-facts reveal">
-  <div class="cs-fact"><dt>Role</dt><dd>Estagiário Sysadmin</dd></div>
-  <div class="cs-fact"><dt>Year</dt><dd>Fev 2026 · Presente · 680h</dd></div>
-  <div class="cs-fact"><dt>Technologies</dt><dd>Wazuh · CrowdStrike Falcon · FortiGate · Zabbix · Office 365 · Hyper-V · Active Directory · Python</dd></div>
-  <div class="cs-fact"><dt>Context</dt><dd>Simoldes Tools · Oliveira de Azeméis · Produção industrial</dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Função</span><span data-lang-en hidden>Role</span></dt><dd><span data-lang-pt>Estagiário Sysadmin</span><span data-lang-en hidden>Sysadmin Intern</span></dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Período</span><span data-lang-en hidden>Period</span></dt><dd><span data-lang-pt>Fev 2026 · Jun 2026 · 680h</span><span data-lang-en hidden>Feb 2026 · Jun 2026 · 680h</span></dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Tecnologias</span><span data-lang-en hidden>Technologies</span></dt><dd>Wazuh · VirusTotal · FortiGate · Zabbix · Office 365 · OpenSearch · Hyper-V · Active Directory · Python</dd></div>
+  <div class="cs-fact"><dt><span data-lang-pt>Contexto</span><span data-lang-en hidden>Context</span></dt><dd><span data-lang-pt>Simoldes Tools · Oliveira de Azeméis · Produção industrial</span><span data-lang-en hidden>Simoldes Tools · Oliveira de Azeméis · Industrial production</span></dd></div>
 </dl>
 
 <div class="cs-metrics reveal">
-  <div class="cs-metric"><span class="v">19</span><span class="l">Agentes Wazuh em produção</span></div>
-  <div class="cs-metric"><span class="v">39</span><span class="l">Mapas de rede Zabbix</span></div>
-  <div class="cs-metric"><span class="v">8</span><span class="l">Unidades industriais</span></div>
-  <div class="cs-metric"><span class="v">4,7<span class="u">M+</span></span><span class="l">Alertas FortiGate analisados</span></div>
+  <div class="cs-metric"><span class="v">19</span><span class="l"><span data-lang-pt>Agentes Wazuh em produção</span><span data-lang-en hidden>Wazuh agents in production</span></span></div>
+  <div class="cs-metric"><span class="v">39</span><span class="l"><span data-lang-pt>Mapas de rede Zabbix</span><span data-lang-en hidden>Zabbix network maps</span></span></div>
+  <div class="cs-metric"><span class="v">8</span><span class="l"><span data-lang-pt>Unidades industriais</span><span data-lang-en hidden>Industrial units</span></span></div>
+  <div class="cs-metric"><span class="v">4,7<span class="u">M+</span></span><span class="l"><span data-lang-pt>Alertas FortiGate analisados</span><span data-lang-en hidden>FortiGate alerts analyzed</span></span></div>
 </div>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">01</span>Context</h2>
+  <h2 class="cs-section-label"><span class="num">01</span><span data-lang-pt>Contexto</span><span data-lang-en hidden>Context</span></h2>
   <div class="cs-section-body">
-    <p>Estágio curricular na <strong>Simoldes Tools</strong> (Oliveira de Azeméis), com trabalho direto em ambiente de produção industrial do Grupo Simoldes. O foco: segurança defensiva, observabilidade e administração de sistemas em infraestrutura real.</p>
+    <p data-lang-pt>Estágio curricular na <strong>Simoldes Tools</strong> (Oliveira de Azeméis), com trabalho direto em ambiente de produção industrial do Grupo Simoldes. O foco: segurança defensiva, observabilidade e administração de sistemas em infraestrutura real.</p>
+    <p data-lang-en hidden>Curricular internship at <strong>Simoldes Tools</strong> (Oliveira de Azeméis), working directly in the industrial production environment of the Simoldes Group. The focus: defensive security, observability and systems administration on real infrastructure.</p>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">02</span>Challenge</h2>
+  <h2 class="cs-section-label"><span class="num">02</span><span data-lang-pt>Desafio</span><span data-lang-en hidden>Challenge</span></h2>
   <div class="cs-section-body">
-    <p>Consolidar a monitorização de segurança e de rede de várias unidades industriais, endurecer o SIEM existente e integrar as diferentes fontes de telemetria · endpoint, firewall e cloud · num ambiente que não pode parar.</p>
+    <p data-lang-pt>Consolidar a monitorização de segurança e de rede de várias unidades industriais, endurecer o SIEM e integrar as diferentes fontes de telemetria (endpoint, firewall e cloud) num ambiente que não pode parar.</p>
+    <p data-lang-en hidden>Consolidate security and network monitoring across several industrial units, harden the SIEM and integrate the different telemetry sources (endpoint, firewall and cloud) in an environment that cannot stop.</p>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">03</span>Architecture</h2>
+  <h2 class="cs-section-label"><span class="num">03</span><span data-lang-pt>Arquitetura</span><span data-lang-en hidden>Architecture</span></h2>
   <div class="cs-section-body">
-    <ul>
+    <ul data-lang-pt>
       <li><strong>Wazuh SIEM</strong> em produção com 19 agentes ativos</li>
-      <li><strong>CrowdStrike Falcon EDR</strong> integrado via pipeline Python</li>
-      <li><strong>FortiGate</strong> e <strong>Office 365</strong> como fontes de eventos</li>
+      <li>Fontes externas integradas: <strong>VirusTotal</strong>, <strong>Office 365</strong>, <strong>FortiGate</strong> e <strong>Docker</strong></li>
+      <li>Dashboards <strong>OpenSearch</strong> para monitorização de vulnerabilidades</li>
       <li><strong>Zabbix</strong> · 39 mapas de rede cobrindo 8 unidades industriais</li>
-      <li>Laboratório <strong>Hyper-V</strong> com Active Directory e 36 GPOs</li>
+      <li>Infraestrutura virtualizada em <strong>Hyper-V</strong> com Active Directory e GPOs</li>
+    </ul>
+    <ul data-lang-en hidden>
+      <li><strong>Wazuh SIEM</strong> in production with 19 active agents</li>
+      <li>External sources integrated: <strong>VirusTotal</strong>, <strong>Office 365</strong>, <strong>FortiGate</strong> and <strong>Docker</strong></li>
+      <li><strong>OpenSearch</strong> dashboards for vulnerability monitoring</li>
+      <li><strong>Zabbix</strong> · 39 network maps covering 8 industrial units</li>
+      <li>Virtualized infrastructure on <strong>Hyper-V</strong> with Active Directory and GPOs</li>
     </ul>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">04</span>Implementation</h2>
+  <h2 class="cs-section-label"><span class="num">04</span><span data-lang-pt>Implementação</span><span data-lang-en hidden>Implementation</span></h2>
   <div class="cs-section-body">
-    <p>Hardening do SIEM Wazuh em produção e integração das fontes de dados: CrowdStrike Falcon EDR ligado por pipeline Python, ingestão de eventos FortiGate (4,7M+ alertas) e Office 365. Construção dos 39 mapas de rede Zabbix para as 8 unidades industriais do grupo.</p>
-    <p>Em paralelo, montagem de um laboratório Hyper-V completo (Active Directory, DNS/DHCP, File Server e 36 GPOs) para testar configurações antes de tocar em produção.</p>
+    <div data-lang-pt>
+      <p>Implementação, configuração e hardening do SIEM Wazuh em produção, com integração das fontes de dados: VirusTotal, Office 365, ingestão de eventos FortiGate (4,7M+ alertas) e Docker. Desenvolvimento de dashboards OpenSearch para monitorização de vulnerabilidades e construção dos 39 mapas de rede Zabbix para as 8 unidades industriais do grupo.</p>
+      <p>Em paralelo, gestão de infraestrutura virtualizada em Hyper-V e administração de servidores Windows e Linux, com um laboratório completo (Active Directory, DNS/DHCP, File Server e GPOs) para testar configurações antes de tocar em produção.</p>
+    </div>
+    <div data-lang-en hidden>
+      <p>Deployment, configuration and hardening of the production Wazuh SIEM, integrating the data sources: VirusTotal, Office 365, FortiGate event ingestion (4.7M+ alerts) and Docker. Development of OpenSearch dashboards for vulnerability monitoring and construction of the 39 Zabbix network maps for the group&#39;s 8 industrial units.</p>
+      <p>In parallel, management of virtualized infrastructure on Hyper-V and administration of Windows and Linux servers, with a complete lab (Active Directory, DNS/DHCP, File Server and GPOs) to test configurations before touching production.</p>
+    </div>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">05</span>Monitoring &amp; Security</h2>
+  <h2 class="cs-section-label"><span class="num">05</span><span data-lang-pt>Monitorização &amp; Segurança</span><span data-lang-en hidden>Monitoring &amp; Security</span></h2>
   <div class="cs-section-body">
-    <p>Alinhamento das configurações e controlos com <strong>CIS v8</strong> e <strong>NIST SP 800-53</strong>, aplicado em ambiente real. Observabilidade de rede centralizada em Zabbix; deteção e resposta no endpoint com Wazuh + CrowdStrike.</p>
+    <p data-lang-pt>Alinhamento das configurações e controlos com o framework <strong>NIS2</strong>, aplicado em ambiente real. Observabilidade de rede centralizada em Zabbix; deteção no endpoint e correlação de eventos no Wazuh, com dashboards OpenSearch para vulnerabilidades.</p>
+    <p data-lang-en hidden>Configurations and controls aligned with the <strong>NIS2</strong> framework, applied in a real environment. Centralized network observability in Zabbix; endpoint detection and event correlation in Wazuh, with OpenSearch dashboards for vulnerabilities.</p>
   </div>
 </section>
 
 <section class="cs-section reveal">
-  <h2 class="cs-section-label"><span class="num">06</span>Result</h2>
+  <h2 class="cs-section-label"><span class="num">06</span><span data-lang-pt>Resultado</span><span data-lang-en hidden>Result</span></h2>
   <div class="cs-section-body">
-    <p>Monitorização de segurança e de rede consolidada para 8 unidades industriais, SIEM endurecido com cobertura EDR, firewall e cloud, e um laboratório reproduzível para validar mudanças. 680 horas de trabalho em infraestrutura de produção.</p>
+    <p data-lang-pt>Monitorização de segurança e de rede consolidada para 8 unidades industriais, SIEM endurecido com fontes externas integradas e dashboards de vulnerabilidades, e um laboratório reproduzível para validar mudanças. 680 horas de trabalho em infraestrutura de produção.</p>
+    <p data-lang-en hidden>Consolidated security and network monitoring for 8 industrial units, a hardened SIEM with integrated external sources and vulnerability dashboards, and a reproducible lab to validate changes. 680 hours of work on production infrastructure.</p>
   </div>
 </section>
 
-<p class="cs-note reveal">Certain implementation details and infrastructure diagrams are omitted due to confidentiality requirements.</p>
+<p class="cs-note reveal"><span data-lang-pt>Alguns detalhes de implementação e diagramas de infraestrutura são omitidos por requisitos de confidencialidade.</span><span data-lang-en hidden>Certain implementation details and infrastructure diagrams are omitted due to confidentiality requirements.</span></p>
 
 <div class="cs-links reveal">
-  <span class="btn btn-ghost" style="cursor:default">NDA · detalhes sob pedido</span>
-  <a href="../../contact/" class="btn btn-outline">Contact →</a>
+  <span class="btn btn-ghost" style="cursor:default"><span data-lang-pt>NDA · detalhes sob pedido</span><span data-lang-en hidden>NDA · details on request</span></span>
+  <a href="../../contact/" class="btn btn-outline"><span data-lang-pt>Contacto →</span><span data-lang-en hidden>Contact →</span></a>
 </div>
 
 <nav class="cs-nav" aria-label="Navegação entre projetos">
   <a href="../luxtis/">← LUXTIS</a>
-  <a href="../" class="all">All projects</a>
+  <a href="../" class="all"><span data-lang-pt>Todos os projetos</span><span data-lang-en hidden>All projects</span></a>
   <a href="../moliceiros-da-ria/">Moliceiros da Ria →</a>
 </nav>
 

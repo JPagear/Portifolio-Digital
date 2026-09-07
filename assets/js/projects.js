@@ -1,6 +1,7 @@
 /* ============================================================
-   projects.js · render da grelha de projetos + filtros.
+   projects.js · render bilingue da grelha de projetos + filtros.
    Usado em /projects/. Requer projects-data.js e SITE_ROOT.
+   Re-renderiza no evento 'langchange' (main.js).
    ============================================================ */
 
 (() => {
@@ -8,65 +9,76 @@
 
   const ROOT = window.SITE_ROOT || '';
   const grid = document.getElementById('projects');
+  const filters = document.getElementById('filters');
   if (!grid || !window.PROJECTS) return;
 
   const CAT_LABELS = {
-    all: 'All',
-    infrastructure: 'Infrastructure',
-    security: 'Security',
-    networking: 'Networking',
-    development: 'Development / Scripts',
-    academic: 'Academic',
-    professional: 'Professional'
+    all:            { pt: 'Todos',                    en: 'All' },
+    infrastructure: { pt: 'Infraestrutura',           en: 'Infrastructure' },
+    security:       { pt: 'Segurança',                en: 'Security' },
+    networking:     { pt: 'Redes',                    en: 'Networking' },
+    development:    { pt: 'Desenvolvimento / Scripts', en: 'Development / Scripts' },
+    academic:       { pt: 'Académico',                en: 'Academic' },
+    professional:   { pt: 'Profissional',             en: 'Professional' }
   };
+  const CONF = { pt: 'Confidencial', en: 'Confidential' };
 
   const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  let activeFilter = 'all';
 
-  /* ---------- render dos cards ---------- */
-  grid.innerHTML = window.PROJECTS.map(p => {
-    const links = (p.links || []).map(l => {
-      if (l.mute) return `<span class="muted">${esc(l.label)}</span>`;
-      const href = l.slug
-        ? `${ROOT}projects/${p.slug}/`
-        : (l.ext ? l.href : ROOT + l.href);
-      const target = l.ext ? ' target="_blank" rel="noopener"' : '';
-      return `<a href="${esc(href)}"${target}>${esc(l.label)} →</a>`;
+  function render(lang) {
+    grid.innerHTML = window.PROJECTS.map(p => {
+      const links = (p.links || []).map(l => {
+        const label = l.label[lang] || l.label.pt;
+        if (l.mute) return `<span class="muted">${esc(label)}</span>`;
+        const href = l.slug ? `${ROOT}projects/${p.slug}/` : (l.ext ? l.href : ROOT + l.href);
+        const target = l.ext ? ' target="_blank" rel="noopener"' : '';
+        return `<a href="${esc(href)}"${target}>${esc(label)} →</a>`;
+      }).join('');
+      const title = p.title[lang] || p.title.pt;
+      const media = `<img src="${esc(ROOT + p.img)}" alt="${esc(title)}" loading="lazy">`;
+      const titleHTML = p.caseStudy
+        ? `<a href="${ROOT}projects/${p.slug}/">${esc(title)}</a>`
+        : esc(title);
+      return `<article class="pcard reveal in" data-cat="${p.cats.join(' ')}">
+        <div class="pcard-media${p.imgContain ? ' contain' : ''}">${media}</div>
+        <p class="pcard-meta"><span class="cat">${esc(p.catLabel[lang] || p.catLabel.pt)}</span><span>${esc(p.year)}</span>${p.conf ? `<span>${CONF[lang]}</span>` : ''}</p>
+        <h2 class="pcard-title">${titleHTML}</h2>
+        <p class="pcard-desc">${esc(p.desc[lang] || p.desc.pt)}</p>
+        <p class="pcard-tags">${p.tags.map(esc).join(' · ')}</p>
+        <p class="pcard-links">${links}</p>
+      </article>`;
     }).join('');
-    const media = `<img src="${esc(ROOT + p.img)}" alt="${esc(p.title)}" loading="lazy">`;
-    const title = p.caseStudy
-      ? `<a href="${ROOT}projects/${p.slug}/">${esc(p.title)}</a>`
-      : esc(p.title);
-    return `<article class="pcard reveal" data-cat="${p.cats.join(' ')}">
-      <div class="pcard-media${p.imgContain ? ' contain' : ''}">${media}</div>
-      <p class="pcard-meta"><span class="cat">${esc(p.catLabel)}</span><span>${esc(p.year)}</span>${p.conf ? '<span>Confidencial</span>' : ''}</p>
-      <h2 class="pcard-title">${title}</h2>
-      <p class="pcard-desc">${esc(p.desc)}</p>
-      <p class="pcard-tags">${p.tags.map(esc).join(' · ')}</p>
-      <p class="pcard-links">${links}</p>
-    </article>`;
-  }).join('');
+    applyFilter(activeFilter);
 
-  /* ---------- filtros ---------- */
-  const filters = document.getElementById('filters');
+    if (filters) {
+      const counts = { all: window.PROJECTS.length };
+      window.PROJECTS.forEach(p => p.cats.forEach(c => { counts[c] = (counts[c] || 0) + 1; }));
+      filters.innerHTML = Object.keys(CAT_LABELS)
+        .filter(c => counts[c])
+        .map(c =>
+          `<button class="filter-btn${c === activeFilter ? ' active' : ''}" type="button" data-filter="${c}">${CAT_LABELS[c][lang]} <span class="n">${counts[c]}</span></button>`
+        ).join('');
+    }
+  }
+
+  function applyFilter(f) {
+    activeFilter = f;
+    grid.querySelectorAll('.pcard').forEach(c => {
+      c.classList.toggle('hide', !(f === 'all' || (c.dataset.cat || '').split(/\s+/).includes(f)));
+    });
+  }
+
   if (filters) {
-    const counts = { all: window.PROJECTS.length };
-    window.PROJECTS.forEach(p => p.cats.forEach(c => { counts[c] = (counts[c] || 0) + 1; }));
-    filters.innerHTML = Object.keys(CAT_LABELS)
-      .filter(c => counts[c])
-      .map((c, i) =>
-        `<button class="filter-btn${i === 0 ? ' active' : ''}" type="button" data-filter="${c}">${CAT_LABELS[c]} <span class="n">${counts[c]}</span></button>`
-      ).join('');
     filters.addEventListener('click', e => {
       const btn = e.target.closest('.filter-btn');
       if (!btn) return;
       filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const f = btn.dataset.filter;
-      grid.querySelectorAll('.pcard').forEach(c => {
-        c.classList.toggle('hide', !(f === 'all' || (c.dataset.cat || '').split(/\s+/).includes(f)));
-      });
+      applyFilter(btn.dataset.filter);
     });
   }
 
-  if (window.observeReveals) window.observeReveals();
+  render(window.currentLang || 'pt');
+  document.addEventListener('langchange', e => render(e.detail.lang));
 })();
