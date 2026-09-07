@@ -154,6 +154,8 @@
       if (NAV_I18N[key].pt === t || NAV_I18N[key].en === t) { el.dataset.i18n = key; break; }
     }
   });
+  /* Links de download do CV: href muda consoante o idioma ativo */
+  document.querySelectorAll('a[href*="joao_almeida_cv_"], a[href*="cv-joao-almeida.pdf"]').forEach(a => a.setAttribute('data-cv', ''));
   window.currentLang = 'pt';
   function applyLang(lang) {
     window.currentLang = lang;
@@ -164,6 +166,9 @@
     });
     document.querySelectorAll('[data-lang-pt]').forEach(el => { el.hidden = lang !== 'pt'; });
     document.querySelectorAll('[data-lang-en]').forEach(el => { el.hidden = lang !== 'en'; });
+    document.querySelectorAll('a[data-cv]').forEach(a => {
+      a.setAttribute('href', ROOT + 'assets/documents/joao_almeida_cv_' + (lang === 'en' ? 'EN' : 'PT') + '.pdf');
+    });
     document.querySelectorAll('.lang-switch button').forEach(b =>
       b.classList.toggle('active', b.dataset.lang === lang));
     try { localStorage.setItem('site-lang', lang); } catch (e) {}
