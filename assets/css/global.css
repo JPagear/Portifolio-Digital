@@ -144,4 +144,8 @@ main{padding-top:60px}
   *{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
+  /* motion.js never runs in this mode (main.js sets mode to 'none' before it
+     loads), so nothing else ever sets these — force the static end-state here. */
+  .tl-progress{transform:scaleY(1)!important}
+  .pcard::before,.sel-card::before{display:none!important}
 }
