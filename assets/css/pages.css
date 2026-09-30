@@ -4,8 +4,12 @@
    ============================================================ */
 
 /* ---------- HERO (home) ---------- */
-.hero{min-height:calc(100vh - 60px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,100px);align-items:center;padding:clamp(48px,7vw,96px) 0}
+.hero{position:relative;min-height:calc(100vh - 60px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,100px);align-items:center;padding:clamp(48px,7vw,96px) 0}
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:44px;min-height:0}}
+.hero-bg{position:absolute;inset:clamp(-40px,-4vw,-10px) calc(var(--g) * -1) auto auto;width:min(1000px,70vw);height:100%;pointer-events:none;z-index:0;opacity:.9;overflow:hidden}
+.hero-bg svg{width:100%;height:100%}
+@media(max-width:900px){.hero-bg{display:none}}
+.hero > div{position:relative;z-index:1}
 .hero-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:22px}
 .hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent)}
 .hero-name{font-family:var(--serif);font-size:clamp(48px,7.5vw,88px);line-height:.98;letter-spacing:-.02em;margin-bottom:14px}
@@ -18,10 +22,22 @@
 .hero-meta span{display:flex;align-items:center;gap:6px}
 .hero-meta span::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent)}
 .hero-visual{display:flex;justify-content:flex-end}
-.hero-visual img{width:100%;max-width:440px;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--border)}
+.hero-frame{position:relative;width:100%;max-width:440px}
+.hero-frame::before{content:'';position:absolute;inset:-10px;border:1px solid var(--border-faint);border-radius:14px;pointer-events:none}
+.hero-visual img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--border);display:block}
+.sys-panel{position:absolute;left:-18px;bottom:-28px;width:calc(100% - 20px);max-width:280px;background:var(--panel-1);border:1px solid var(--border-faint);border-radius:10px;padding:16px 18px;backdrop-filter:blur(6px);box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+.sys-panel-title{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border-faint)}
+.sys-panel-title .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex-shrink:0}
+.sys-panel-title .acc{color:var(--accent)}
+.sys-panel-list{display:flex;flex-direction:column;gap:8px}
+.sys-panel-list div{display:flex;justify-content:space-between;gap:12px;font-size:11.5px}
+.sys-panel-list dt{font-family:var(--mono);color:var(--muted);letter-spacing:.03em}
+.sys-panel-list dd{color:var(--text-secondary);text-align:right}
 @media(max-width:900px){
   .hero-visual{order:-1;justify-content:flex-start}
-  .hero-visual img{max-width:100%;aspect-ratio:16/10;object-position:center 20%}
+  .hero-frame{max-width:100%}
+  .hero-visual img{aspect-ratio:16/10;object-position:center 20%}
+  .sys-panel{position:static;width:100%;max-width:none;margin-top:14px}
 }
 
 /* ---------- CABEÇALHO DE PÁGINA INTERNA ---------- */
@@ -75,6 +91,13 @@
 .about-facts{margin-top:36px;max-width:420px}
 .about-cv{margin-top:28px}
 
+/* ---------- ABOUT BENTO ---------- */
+.about-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-faint);border:1px solid var(--border-faint);border-radius:var(--r);overflow:hidden;margin-top:36px}
+@media(max-width:820px){.about-bento{grid-template-columns:repeat(2,1fr)}}
+.bento-cell{background:var(--panel-1);padding:18px 16px;min-height:104px}
+.bento-cell h4{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.bento-cell p{font-size:13px;color:var(--text-secondary);line-height:1.5}
+
 /* ---------- EXPERIENCE ---------- */
 .exp-section{padding:clamp(36px,5vw,64px) 0}
 
@@ -84,6 +107,12 @@
 .contact-lead{font-family:var(--serif);font-size:clamp(24px,3vw,36px);line-height:1.3;margin-bottom:28px;max-width:20ch}
 .contact-lead i{color:var(--accent);font-style:italic}
 .contact-shortcuts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+
+/* ---------- CONTACT FORM PANEL HEADER ---------- */
+.cform-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid var(--border)}
+.cform-head .t{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text)}
+.cform-head .s{font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.cform-head .s::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px var(--accent)}
 
 /* ---------- VIEW ALL ---------- */
 .view-all{margin-top:clamp(40px,6vw,64px);text-align:center}

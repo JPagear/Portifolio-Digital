@@ -73,6 +73,12 @@
       <div class="kv"><dt><span data-lang-pt>Estado</span><span data-lang-en hidden>Status</span></dt><dd><span data-lang-pt>Disponível para novas oportunidades</span><span data-lang-en hidden>Open to opportunities</span></dd></div>
       <div class="kv"><dt><span data-lang-pt>Idiomas</span><span data-lang-en hidden>Languages</span></dt><dd><span data-lang-pt>PT (nativo) · EN (B1)</span><span data-lang-en hidden>PT (native) · EN (B1)</span></dd></div>
     </dl>
+    <div class="about-bento reveal">
+      <div class="bento-cell"><h4><span data-lang-pt>Formação</span><span data-lang-en hidden>Education</span></h4><p>CTeSP RSI · ESTGA-UA</p></div>
+      <div class="bento-cell"><h4><span data-lang-pt>Infraestrutura</span><span data-lang-en hidden>Infrastructure</span></h4><p>AD · Windows Server · Linux · Hyper-V</p></div>
+      <div class="bento-cell"><h4><span data-lang-pt>Segurança</span><span data-lang-en hidden>Security</span></h4><p>Wazuh · FortiGate · CrowdStrike</p></div>
+      <div class="bento-cell"><h4><span data-lang-pt>Redes</span><span data-lang-en hidden>Network</span></h4><p>VLAN · OSPF · VPN · DNS/DHCP</p></div>
+    </div>
     <p class="about-cv"><a href="../assets/documents/joao_almeida_cv_PT.pdf" download class="btn btn-outline"><span data-lang-pt>Descarregar CV (PDF)</span><span data-lang-en hidden>Download CV (PDF)</span></a></p>
   </div>
 </section>
@@ -82,7 +88,7 @@
   <h2 class="sec-title reveal" id="stack-title" style="font-size:clamp(24px,3vw,36px)"><span data-lang-pt>Tecnologias e <i>ferramentas</i>.</span><span data-lang-en hidden>Technologies and <i>tools</i>.</span></h2>
   <div class="stack-grid">
     <div class="stack-group reveal">
-      <h3><span data-lang-pt>Infraestrutura</span><span data-lang-en hidden>Infrastructure</span></h3>
+      <h3><span class="idx">01</span> <span data-lang-pt>Infraestrutura</span><span data-lang-en hidden>Infrastructure</span></h3>
       <ul>
         <li>Active Directory · GPOs</li>
         <li>Windows Server · Linux</li>
@@ -92,7 +98,7 @@
       </ul>
     </div>
     <div class="stack-group reveal">
-      <h3><span data-lang-pt>Segurança &amp; Monitorização</span><span data-lang-en hidden>Security &amp; Monitoring</span></h3>
+      <h3><span class="idx">02</span> <span data-lang-pt>Segurança &amp; Monitorização</span><span data-lang-en hidden>Security &amp; Monitoring</span></h3>
       <ul>
         <li>Wazuh SIEM</li>
         <li>CrowdStrike Falcon</li>
@@ -102,7 +108,7 @@
       </ul>
     </div>
     <div class="stack-group reveal">
-      <h3><span data-lang-pt>Automação</span><span data-lang-en hidden>Automation</span></h3>
+      <h3><span class="idx">03</span> <span data-lang-pt>Automação</span><span data-lang-en hidden>Automation</span></h3>
       <ul>
         <li>Python · Bash</li>
         <li>Terraform · Ansible</li>
@@ -111,7 +117,7 @@
       </ul>
     </div>
     <div class="stack-group reveal">
-      <h3><span data-lang-pt>Redes</span><span data-lang-en hidden>Networking</span></h3>
+      <h3><span class="idx">04</span> <span data-lang-pt>Redes</span><span data-lang-en hidden>Networking</span></h3>
       <ul>
         <li>TCP/IP · VLANs</li>
         <li>OSPF</li>
@@ -137,7 +143,10 @@
 </footer>
 
 <script>window.SITE_ROOT='../';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/motion.js"></script>
 <script>
 /* Fallback: enquanto joao-about.jpg não existir, usa a fotografia atual. */
 (function(){

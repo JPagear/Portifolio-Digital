@@ -1,0 +1,52 @@
+<svg id="hero-grid-svg" width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="hgFade" cx="70%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#0d2a1e" stop-opacity=".55"/>
+      <stop offset="60%" stop-color="#06110c" stop-opacity=".25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#hgFade)"/>
+
+  <g stroke="#1c3a2c" stroke-width="1" fill="none" opacity=".8">
+    <line x1="760" y1="120" x2="920" y2="210"/>
+    <line x1="920" y1="210" x2="880" y2="360"/>
+    <line x1="880" y1="360" x2="1040" y2="420"/>
+    <line x1="1040" y1="420" x2="1180" y2="330"/>
+    <line x1="920" y1="210" x2="1100" y2="180"/>
+    <line x1="1100" y1="180" x2="1180" y2="330"/>
+    <line x1="880" y1="360" x2="760" y2="470"/>
+    <line x1="760" y1="470" x2="900" y2="600"/>
+    <line x1="1040" y1="420" x2="1120" y2="560"/>
+    <line x1="900" y1="600" x2="1120" y2="560"/>
+    <line x1="1180" y1="330" x2="1300" y2="440"/>
+  </g>
+
+  <g fill="#26C485" opacity=".55">
+    <circle cx="760" cy="120" r="2.5"/>
+    <circle cx="1100" cy="180" r="2.5"/>
+    <circle cx="1180" cy="330" r="2.5"/>
+    <circle cx="760" cy="470" r="2.5"/>
+    <circle cx="1120" cy="560" r="2.5"/>
+    <circle cx="1300" cy="440" r="2.5"/>
+  </g>
+  <g fill="#26C485" opacity=".8">
+    <circle cx="920" cy="210" r="4"/>
+    <circle cx="880" cy="360" r="4"/>
+    <circle cx="1040" cy="420" r="4"/>
+    <circle cx="900" cy="600" r="4"/>
+  </g>
+
+  <g class="hg-packets" fill="#8be9c8">
+    <circle r="2.2" opacity=".9">
+      <animateMotion path="M760,120 L920,210 L880,360 L1040,420" dur="26s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="2.2" opacity=".9">
+      <animateMotion path="M1100,180 L1180,330 L1300,440" dur="22s" begin="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="2.2" opacity=".9">
+      <animateMotion path="M760,470 L900,600 L1120,560 L1040,420" dur="30s" begin="9s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
