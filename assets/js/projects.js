@@ -36,7 +36,15 @@
         return `<a href="${esc(href)}"${target}>${esc(label)} →</a>`;
       }).join('');
       const title = p.title[lang] || p.title.pt;
-      const media = `<img src="${esc(ROOT + p.img)}" alt="${esc(title)}" loading="lazy">`;
+      const media = p.imgOptimized ? (() => {
+        const base = p.img.replace(/^.*\//, '').replace(/\.(png|jpe?g|webp)$/i, '');
+        const opt = ROOT + 'assets/images/optimized/' + base;
+        return `<picture>
+          <source type="image/avif" srcset="${esc(opt)}.avif">
+          <source type="image/webp" srcset="${esc(opt)}.webp">
+          <img src="${esc(opt)}.png" alt="${esc(title)}" loading="lazy">
+        </picture>`;
+      })() : `<img src="${esc(ROOT + p.img)}" alt="${esc(title)}" loading="lazy">`;
       const titleHTML = p.caseStudy
         ? `<a href="${ROOT}projects/${p.slug}/">${esc(title)}</a>`
         : esc(title);

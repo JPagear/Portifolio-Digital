@@ -1,26 +1,29 @@
 /* ============================================================
    motion.js · GSAP + ScrollTrigger choreography.
-   Progressive enhancement over the CSS .reveal system in
-   global.css: when GSAP is available and the visitor has not
-   requested reduced motion, this file takes over .reveal
-   animation (staggered, eased) and adds hero entrance,
-   card/timeline scroll reveal, a timeline progress line and a
-   light parallax on hero/case-study imagery.
-   Falls back silently to the plain CSS .reveal fade otherwise.
+   Ownership of .reveal is decided once, deterministically, in
+   main.js (window.__motionMode). This file only runs its GSAP
+   choreography when that mode is exactly 'gsap' — otherwise it
+   exits immediately and touches nothing, leaving either the
+   plain CSS reveal (reduced motion) or the IntersectionObserver
+   fallback (main.js) fully in charge. No viewport heuristics,
+   no race conditions: GSAP is vendored locally (assets/vendor/)
+   and loaded synchronously before this file, so by the time
+   main.js makes its decision, gsap/ScrollTrigger are already
+   defined or definitively not available.
    ============================================================ */
 
 (() => {
   'use strict';
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- pause SMIL packets in the hero background when reduced motion is requested ---------- */
-  const heroSvg = document.getElementById('hero-grid-svg');
-  if (reduceMotion && heroSvg && typeof heroSvg.pauseAnimations === 'function') {
-    heroSvg.pauseAnimations();
+  /* Reduced motion: pause the hero background's SMIL packets regardless of
+     GSAP availability (SMIL does not honour prefers-reduced-motion itself). */
+  if (window.__motionMode === 'none') {
+    const heroSvg = document.getElementById('hero-grid-svg');
+    if (heroSvg && typeof heroSvg.pauseAnimations === 'function') heroSvg.pauseAnimations();
+    return;
   }
 
-  if (reduceMotion || typeof gsap === 'undefined') return;
+  if (window.__motionMode !== 'gsap') return; // fallback mode: main.js's IntersectionObserver owns .reveal
 
   gsap.registerPlugin(ScrollTrigger);
   document.documentElement.classList.add('js-gsap');
@@ -41,14 +44,10 @@
     if (heroVisualEl) tl.to(heroVisualEl, { opacity: 1, y: 0, duration: SLOW, ease: EASE }, 0);
   }
 
-  /* ---------- GENERIC SCROLL REVEAL (everything else with .reveal) ---------- */
-  /* Elements already inside the viewport when this script runs are left alone:
-     main.js's IntersectionObserver may not have flagged them '.in' yet (that
-     callback is always async), and re-hiding content that is about to be
-     shown anyway causes a visible flash if GSAP loads late (slow network). */
-  const inViewport = el => el.getBoundingClientRect().top < window.innerHeight;
-  const rest = Array.from(document.querySelectorAll('.reveal'))
-    .filter(el => !heroEls.includes(el) && !el.classList.contains('in') && !inViewport(el));
+  /* ---------- GENERIC SCROLL REVEAL (everything else with .reveal) ----------
+     main.js guarantees it has not touched any .reveal element in this mode,
+     so every one of them is fair game here without exceptions. */
+  const rest = Array.from(document.querySelectorAll('.reveal')).filter(el => !heroEls.includes(el));
   if (rest.length) {
     gsap.set(rest, { opacity: 0, y: 16 });
     ScrollTrigger.batch(rest, {

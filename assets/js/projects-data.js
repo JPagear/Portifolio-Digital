@@ -46,6 +46,7 @@ window.PROJECTS = [
   {
     slug: 'moliceiros-da-ria',
     img: 'assets/images/Moliceiros.png',
+    imgOptimized: true,
     cats: ['infrastructure', 'networking', 'academic'],
     catLabel: { pt: 'Infraestrutura · Redes', en: 'Infrastructure · Networking' },
     tags: ['VPN', 'VoIP', 'Zabbix', 'OSPF', 'Docker'],
@@ -82,6 +83,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/administracao.png',
+    imgOptimized: true,
     cats: ['infrastructure', 'security', 'academic'],
     catLabel: { pt: 'Infraestrutura · Automação', en: 'Infrastructure · Automation' },
     tags: ['Terraform', 'Ansible', 'Azure', 'NGINX'],
@@ -98,6 +100,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_k0aatfk0aatfk0aa.png',
+    imgOptimized: true,
     cats: ['development', 'academic'],
     catLabel: { pt: 'Desenvolvimento', en: 'Development' },
     tags: ['Sockets', 'Threads', 'Linux'],
@@ -114,6 +117,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_nf5j9znf5j9znf5j.png',
+    imgOptimized: true,
     cats: ['development', 'academic'],
     catLabel: { pt: 'Desenvolvimento', en: 'Development' },
     tags: ['Bash', 'Backups', 'Linux'],
@@ -130,6 +134,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_9zw4419zw4419zw4.png',
+    imgOptimized: true,
     cats: ['development', 'academic'],
     catLabel: { pt: 'Desenvolvimento', en: 'Development' },
     tags: ['Python', 'RFID', 'API'],
@@ -146,6 +151,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_28ar0l28ar0l28ar.png',
+    imgOptimized: true,
     cats: ['development', 'academic'],
     catLabel: { pt: 'Desenvolvimento', en: 'Development' },
     tags: ['Microserviços', 'Docker', 'Prometheus', 'Loki'],
@@ -162,6 +168,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_3mdbq3mdbq3mdbq3.png',
+    imgOptimized: true,
     cats: ['infrastructure', 'networking', 'academic'],
     catLabel: { pt: 'Infraestrutura · Redes', en: 'Infrastructure · Networking' },
     tags: ['Asterisk', 'SIP', 'RADIUS'],
@@ -175,6 +182,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_ywoxlkywoxlkywox.png',
+    imgOptimized: true,
     cats: ['networking', 'academic'],
     catLabel: { pt: 'Redes', en: 'Networking' },
     tags: ['Telemática', 'Redes'],
@@ -188,6 +196,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_m8wgm8m8wgm8m8wg.png',
+    imgOptimized: true,
     cats: ['networking', 'academic'],
     catLabel: { pt: 'Redes', en: 'Networking' },
     tags: ['TCP/IP', 'DHCP', 'DNS', 'NAT'],
@@ -201,6 +210,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_sejtdysejtdysejt.png',
+    imgOptimized: true,
     cats: ['networking', 'academic'],
     catLabel: { pt: 'Redes', en: 'Networking' },
     tags: ['VLANs', 'OSPF', 'GNS3'],
@@ -214,6 +224,7 @@ window.PROJECTS = [
   },
   {
     img: 'assets/images/Gemini_Generated_Image_m9e7dgm9e7dgm9e7.png',
+    imgOptimized: true,
     cats: ['infrastructure', 'networking', 'academic'],
     catLabel: { pt: 'Infraestrutura · Redes', en: 'Infrastructure · Networking' },
     tags: ['Zabbix', 'Prometheus', 'SNMP'],

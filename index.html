@@ -137,7 +137,11 @@
 
     <article class="sel-card reveal">
       <div class="sel-media">
-        <img src="assets/images/Moliceiros.png" alt="Projeto Moliceiros da Ria" loading="lazy">
+        <picture>
+          <source type="image/avif" srcset="assets/images/optimized/Moliceiros.avif">
+          <source type="image/webp" srcset="assets/images/optimized/Moliceiros.webp">
+          <img src="assets/images/optimized/Moliceiros.png" alt="Projeto Moliceiros da Ria" loading="lazy">
+        </picture>
       </div>
       <div>
         <p class="sel-meta"><span data-lang-pt><span class="cat">Infraestrutura · Redes</span> · 2025</span><span data-lang-en hidden><span class="cat">Infrastructure · Networking</span> · 2025</span></p>
@@ -180,8 +184,8 @@
 </footer>
 
 <script>window.SITE_ROOT='';</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/motion.js"></script>
 </body>

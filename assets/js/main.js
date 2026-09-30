@@ -36,14 +36,31 @@
     }));
   }
 
-  /* ---------- REVEAL ---------- */
-  const rio = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); }
-    });
-  }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
-  window.observeReveals = () => document.querySelectorAll('.reveal:not(.in)').forEach(el => rio.observe(el));
-  window.observeReveals();
+  /* ---------- REVEAL: single deterministic decision, made once, here ----------
+     'none'     → prefers-reduced-motion: content shown immediately, nothing animates.
+     'gsap'     → GSAP + ScrollTrigger are already loaded (local vendor scripts,
+                  loaded synchronously above this one) → motion.js takes full
+                  ownership of .reveal; this file does not touch it.
+     'fallback' → GSAP unavailable (vendor files missing/blocked) → the plain
+                  IntersectionObserver below runs instead.
+     Scripts are local (assets/vendor/), loaded before this one, so this check
+     is synchronous and race-free: no network fetch to wait for. */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const gsapReady = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  window.__motionMode = reduceMotion ? 'none' : (gsapReady ? 'gsap' : 'fallback');
+
+  if (window.__motionMode === 'none') {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  } else if (window.__motionMode === 'fallback') {
+    const rio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); }
+      });
+    }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+    window.observeReveals = () => document.querySelectorAll('.reveal:not(.in)').forEach(el => rio.observe(el));
+    window.observeReveals();
+  }
+  /* mode === 'gsap': intentionally left to motion.js */
 
   /* ---------- CONSENTIMENTO + PRIVACIDADE (injetado, bilingue) ---------- */
   const consentHTML = `
